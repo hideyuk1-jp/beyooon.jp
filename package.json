@@ -33,8 +33,16 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-typescript": "^2.5.0",
-    "prettier": "2.1.2",
+    "prettier": "^2.1.2",
     "typescript": "^4.0.5"
   },
   "homepage": "https://github.com/hideyuk1-jp/beyooon.jp",
@@ -50,7 +58,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,tsx}*\"",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

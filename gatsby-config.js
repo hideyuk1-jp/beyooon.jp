@@ -1,14 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    title: `beyooon`,
+    author: `Hideyuki Hashimoto`,
+    description: `Webサイト制作/アプリ開発を中心にお客様の事業の発展に貢献するモノづくりを行っています。`,
+    siteUrl: `https://beyooon.jp`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `hideyuk1_jp`,
     },
   },
   plugins: [
@@ -60,9 +57,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `beyooon | Webサイト制作/アプリ開発`,
+        short_name: `beyooon`,
         start_url: `/`,
+        // TODO: 背景色やテーマカラー、アイコンは変更する
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,

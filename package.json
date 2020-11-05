@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "beyooon",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "beyooon - Website and Application Development.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Hideyuki Hashimoto <hello@beyooon.jp>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hideyuk1-jp/beyooon.jp/issues"
   },
   "dependencies": {
     "gatsby": "^2.25.1",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "prettier": "2.1.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/hideyuk1-jp/beyooon.jp",
   "keywords": [
     "gatsby"
   ],

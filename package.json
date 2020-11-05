@@ -32,7 +32,9 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
-    "prettier": "2.1.2"
+    "gatsby-plugin-typescript": "^2.5.0",
+    "prettier": "2.1.2",
+    "typescript": "^4.0.5"
   },
   "homepage": "https://github.com/hideyuk1-jp/beyooon.jp",
   "keywords": [

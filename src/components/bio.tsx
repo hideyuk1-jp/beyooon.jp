@@ -10,10 +10,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
 const Bio = () => {
-  const data = useStaticQuery<
-    GatsbyTypes.BioQueryQuery
-  >(graphql`
-    query BioQuery {
+  const data = useStaticQuery<GatsbyTypes.BioQuery>(graphql`
+    query Bio {
       avatar: file(
         absolutePath: { regex: "/profile-pic.jpg/" }
       ) {

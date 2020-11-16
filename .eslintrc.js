@@ -30,4 +30,9 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     'react/prop-types': 'off',
   },
+  settings: {
+    react: {
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+    },
+  },
 };

@@ -2,9 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    node: true,
   },
   extends: [
-    'eslint/recommended',
+    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended',
@@ -24,5 +25,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: { 'react/prop-types': 'off' },
+  rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'react/prop-types': 'off',
+  },
 };

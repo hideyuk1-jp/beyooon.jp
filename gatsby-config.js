@@ -73,21 +73,22 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-typescript`,
     {
-      resolve: "gatsby-plugin-graphql-codegen",
+      resolve: `gatsby-plugin-typegen`,
       options: {
-        fileName: `types/graphql-types.d.ts`,
-        documentPaths: [
-          "./src/**/*.{ts,tsx}",
-          "./node_modules/gatsby-*/**/*.js",
-        ],
+        emitSchema: {
+          'src/__generated__/gatsby-introspection.json': true,
+        },
+        emitPluginDocuments: {
+          'src/__generated__/gatsby-plugin-documents.graphql': true,
+        },
       },
     },
     {
-      resolve: "gatsby-plugin-eslint",
+      resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
         exclude: /(node_modules|.cache|public)/,
-        stages: ["develop"],
+        stages: ['develop'],
         options: {
           emitWarning: true,
           failOnError: true,
@@ -95,4 +96,4 @@ module.exports = {
       },
     },
   ],
-}
+};

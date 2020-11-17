@@ -80,3 +80,6 @@ yarn-error.log
 # Ignore all local history of files
 .history
 .ionide
+
+# gatsby-plugin-typegen
+src/__generated__

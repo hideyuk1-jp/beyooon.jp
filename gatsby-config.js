@@ -3,7 +3,7 @@ module.exports = {
     title: `beyooon`,
     author: {
       name: `Hideyuki Hashimoto`,
-      summary: `Hideyuki Hashimoto`,
+      summary: `Web Developer`,
     },
     description: `Webサイト制作/アプリ開発を中心にお客様の事業の発展に貢献するモノづくりを行っています。`,
     siteUrl: `https://beyooon.jp`,
@@ -26,6 +26,7 @@ module.exports = {
         name: `assets`,
       },
     },
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

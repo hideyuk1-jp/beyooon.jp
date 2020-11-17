@@ -4,6 +4,7 @@ import { WindowLocation } from '@reach/router';
 import GlobalStyle from '../styles/global';
 
 import Header from '../components/header';
+import Footer from '../components/footer';
 
 const Layout: React.FC<{
   location: WindowLocation<unknown>;
@@ -19,11 +20,7 @@ const Layout: React.FC<{
     >
       <Header title={title} location={location} />
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <Footer title={title} />
       <GlobalStyle />
     </div>
   );

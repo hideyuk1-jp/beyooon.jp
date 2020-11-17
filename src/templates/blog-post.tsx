@@ -6,6 +6,13 @@ import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+import styled from '@emotion/styled';
+import SyntaxHighlightStyle from '../styles/syntaxHighlight';
+
+const PostContent = styled.section`
+  ${SyntaxHighlightStyle}
+`;
+
 const BlogPostTemplate: React.FC<PageProps<
   GatsbyTypes.BlogPostBySlugQuery
 >> = ({ data, location }) => {
@@ -33,7 +40,7 @@ const BlogPostTemplate: React.FC<PageProps<
           </h1>
           <p>{post?.frontmatter?.date}</p>
         </header>
-        <section
+        <PostContent
           dangerouslySetInnerHTML={{
             __html: post?.html ?? '',
           }}

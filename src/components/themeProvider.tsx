@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider as EmotionProvider } from 'emotion-theming';
 
 import { ThemeContext } from '../themeContext';
@@ -6,14 +6,18 @@ import { getTheme } from '../styles/theme';
 import { ColorMode } from '../types';
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const initialColorMode =
-    localStorage.getItem('colorMode') === 'dark'
-      ? 'dark'
-      : 'light';
   const [colorMode, setColorMode] = useState<ColorMode>(
-    initialColorMode,
+    'light',
   );
   const theme = getTheme(colorMode);
+
+  useEffect(() =>
+    setColorMode(
+      localStorage.getItem('colorMode') === 'dark'
+        ? 'dark'
+        : 'light',
+    ),
+  );
 
   function toggleColorMode() {
     // colorMode切り替え用関数

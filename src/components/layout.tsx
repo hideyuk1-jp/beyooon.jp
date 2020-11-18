@@ -1,7 +1,8 @@
 import React from 'react';
 import { WindowLocation } from '@reach/router';
 
-import GlobalStyle from '../styles/global';
+import { Global } from '@emotion/core';
+import globalStyle from '../styles/global';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -21,7 +22,7 @@ const Layout: React.FC<{
       <Header title={title} location={location} />
       <main>{children}</main>
       <Footer title={title} />
-      <GlobalStyle />
+      <Global styles={globalStyle} />
     </div>
   );
 };

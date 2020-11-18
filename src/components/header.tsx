@@ -44,7 +44,7 @@ const Header: React.FC<{
   const isRootPath = location.pathname === rootPath;
 
   const logoLink = (
-    <Link to={`/`} className="logo-link">
+    <Link to={`/`} className="logo-link" ariaLabel="HOME">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 85.768 25"

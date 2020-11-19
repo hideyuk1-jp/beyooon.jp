@@ -91,12 +91,6 @@ const baseStyle = css`
     );
     --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
   }
-
-  body {
-    font-family: 'Helvetica Neue', Arial,
-      'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
-      sans-serif;
-  }
 `;
 
 const globalStyle = css`

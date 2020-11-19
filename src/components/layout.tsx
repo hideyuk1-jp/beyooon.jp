@@ -30,5 +30,12 @@ const GlobalWrapper = styled.div`
   height: 100vh;
   background: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.base};
+  font-family: 'Helvetica Neue', Arial,
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+    sans-serif;
   transition: ${(props) => props.theme.colorModeTransition};
+  a {
+    color: ${(props) => props.theme.colors.link};
+    text-decoration: none;
+  }
 `;

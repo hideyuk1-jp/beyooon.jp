@@ -44,7 +44,7 @@ const Header: React.FC<{
   const isRootPath = location.pathname === rootPath;
 
   const logoLink = (
-    <Link to={`/`} className="logo-link" ariaLabel="HOME">
+    <Link to={`/`} className="logo-link" aria-label="Home">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 85.768 25"
@@ -68,17 +68,33 @@ const Header: React.FC<{
 
   const menuLink = (
     <>
-      <Link to={`/`} className="navbar-item menu-link">
-        {'Blog'}
+      <Link
+        to={`/`}
+        className="navbar-item menu-link"
+        aria-label="Blog"
+      >
+        {'ブログ'}
       </Link>
-      <Link to={`/`} className="navbar-item menu-link">
-        {'Works'}
+      <Link
+        to={`/`}
+        className="navbar-item menu-link"
+        aria-label="Works"
+      >
+        {'制作実績'}
       </Link>
-      <Link to={`/`} className="navbar-item menu-link">
-        {'About'}
+      <Link
+        to={`/`}
+        className="navbar-item menu-link"
+        aria-label="About"
+      >
+        {'beyooonとは'}
       </Link>
-      <Link to={`/`} className="navbar-item menu-link">
-        {'Contact'}
+      <Link
+        to={`/`}
+        className="navbar-item menu-link"
+        aria-label="Contact"
+      >
+        {'お問い合わせ'}
       </Link>
     </>
   );
@@ -96,8 +112,8 @@ const Header: React.FC<{
               {logoLink}
             </h3>
           )}
-          {menuLink}
         </NavbarLeft>
+        <NavbarCenter>{menuLink}</NavbarCenter>
         <NavbarRight>
           <DarkModeToggle />
         </NavbarRight>
@@ -131,7 +147,8 @@ const Navbar = styled.nav`
   }
   .menu-link {
     display: block;
-    color: ${(props) => props.theme.sideSpace.base};
+    color: ${(props) => props.theme.colors.base};
+    text-decoration: none;
   }
   .logo {
     display: block;
@@ -139,6 +156,11 @@ const Navbar = styled.nav`
 `;
 
 const NavbarLeft = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NavbarCenter = styled.div`
   display: flex;
   align-items: center;
 `;

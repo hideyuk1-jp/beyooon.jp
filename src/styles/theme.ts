@@ -11,6 +11,7 @@ export const baseTheme = {
     highlight: '#20a8ea',
     red: '#f7615f',
     orange: '#ffa22b',
+    link: '#26a6ed',
     gradient:
       'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
   },
@@ -40,6 +41,7 @@ export const darkTheme = {
     highlight: '#20a8ea',
     red: '#f7615f',
     orange: '#ffa22b',
+    link: '#3eb0ef',
     gradient:
       'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
   },

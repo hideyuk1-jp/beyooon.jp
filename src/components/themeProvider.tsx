@@ -11,12 +11,14 @@ const ThemeProvider: React.FC = ({ children }) => {
   );
   const theme = getTheme(colorMode);
 
-  useEffect(() =>
-    setColorMode(
-      localStorage.getItem('colorMode') === 'dark'
-        ? 'dark'
-        : 'light',
-    ),
+  useEffect(
+    () =>
+      setColorMode(
+        localStorage.getItem('colorMode') === 'dark'
+          ? 'dark'
+          : 'light',
+      ),
+    [],
   );
 
   function toggleColorMode() {

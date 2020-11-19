@@ -92,7 +92,7 @@ const Header: React.FC<{
               {logoLink}
             </h1>
           ) : (
-            <h3 className="nabvar-item main-heading">
+            <h3 className="navbar-item main-heading">
               {logoLink}
             </h3>
           )}

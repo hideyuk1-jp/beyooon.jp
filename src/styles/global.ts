@@ -99,4 +99,9 @@ const baseStyle = css`
   }
 `;
 
-export default [resetStyle, baseStyle];
+const globalStyle = css`
+  ${resetStyle}
+  ${baseStyle}
+`;
+
+export default globalStyle;

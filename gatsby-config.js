@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `beyooon`,
+    longTitle: `beyooon | Webサイト制作・アプリ開発`,
     author: {
       name: `Hideyuki Hashimoto`,
       summary: `Web Developer`,

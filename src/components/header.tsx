@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import { useTheme } from 'emotion-theming';
@@ -6,6 +10,13 @@ import { useTheme } from 'emotion-theming';
 import styled from '../components/styled';
 import { Theme } from '../types';
 import { useColorMode } from '../themeContext';
+
+const MENU_ITEMS = [
+  { title: 'ブログ', name: 'Blog' },
+  { title: '制作実績', name: 'Works' },
+  { title: 'beyooonについて', name: 'About' },
+  { title: 'お問い合わせ', name: 'Contact' },
+];
 
 const DarkModeToggle: React.FC<{}> = () => {
   const { colorMode, setColorMode } = useColorMode();
@@ -20,7 +31,6 @@ const DarkModeToggle: React.FC<{}> = () => {
 
   return (
     <IconWrapper
-      isDark={isDark}
       onClick={toggleColorMode}
       data-a11y="false"
       aria-label={
@@ -36,12 +46,47 @@ const DarkModeToggle: React.FC<{}> = () => {
   );
 };
 
+const SearchIcon: React.FC<{ fill: string }> = ({
+  fill,
+}) => (
+  <IconWrapper
+    data-a11y="false"
+    aria-label="検索"
+    title="検索"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
+      fill={fill}
+    >
+      <path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z" />
+    </svg>
+  </IconWrapper>
+);
+
 const Header: React.FC<{
   location: WindowLocation<unknown>;
 }> = ({ location }) => {
   const theme: Theme = useTheme();
+  const [hasScrolled, setHasScrolled] = useState(false);
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
+
+  const handleScroll = useCallback(
+    (event: Event) => {
+      setHasScrolled(window.pageYOffset > 32);
+      console.log(hasScrolled, location.pathname);
+    },
+    [hasScrolled, location],
+  );
+
+  // 初回レンダリングのみ発火させるため第二引数
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    console.log('called!');
+  }, [handleScroll]);
 
   const logoLink = (
     <Link to={`/`} className="logo-link" aria-label="Home">
@@ -66,36 +111,24 @@ const Header: React.FC<{
     </Link>
   );
 
-  const menuLink = (
+  const menuLinks = (
     <>
-      <Link
-        to={`/`}
-        className="navbar-item menu-link"
-        aria-label="Blog"
-      >
-        {'ブログ'}
-      </Link>
-      <Link
-        to={`/`}
-        className="navbar-item menu-link"
-        aria-label="Works"
-      >
-        {'制作実績'}
-      </Link>
-      <Link
-        to={`/`}
-        className="navbar-item menu-link"
-        aria-label="About"
-      >
-        {'beyooonとは'}
-      </Link>
-      <Link
-        to={`/`}
-        className="navbar-item menu-link"
-        aria-label="Contact"
-      >
-        {'お問い合わせ'}
-      </Link>
+      {MENU_ITEMS.map((menuItem) => (
+        <Link
+          to={rootPath + menuItem.name.toLowerCase()}
+          className={`navbar-item menu-link ${
+            location.pathname.startsWith(
+              rootPath + menuItem.name.toLowerCase(),
+            )
+              ? 'active'
+              : ''
+          }`}
+          aria-label={menuItem.name}
+          key={menuItem.name}
+        >
+          {menuItem.title}
+        </Link>
+      ))}
     </>
   );
 
@@ -113,8 +146,9 @@ const Header: React.FC<{
             </h3>
           )}
         </NavbarLeft>
-        <NavbarCenter>{menuLink}</NavbarCenter>
+        <NavbarCenter>{menuLinks}</NavbarCenter>
         <NavbarRight>
+          <SearchIcon fill={theme.colors.base} />
           <DarkModeToggle />
         </NavbarRight>
       </Navbar>
@@ -136,6 +170,10 @@ const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  svg {
+    transition: ${(props) =>
+      props.theme.colorModeTransition};
+  }
   .navbar-item {
     padding: 10px 15px;
   }
@@ -149,6 +187,10 @@ const Navbar = styled.nav`
     display: block;
     color: ${(props) => props.theme.colors.base};
     text-decoration: none;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
   }
   .logo {
     display: block;
@@ -170,8 +212,8 @@ const NavbarRight = styled.div`
   align-items: center;
 `;
 
-const IconWrapper = styled.button<{ isDark: boolean }>`
-  opacity: 0.5;
+const IconWrapper = styled.button`
+  opacity: 0.8;
   position: relative;
   border: none;
   outline: none;
@@ -182,7 +224,7 @@ const IconWrapper = styled.button<{ isDark: boolean }>`
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease;
-  margin-left: 30px;
+  margin-left: 15px;
   &:hover {
     opacity: 1;
   }
@@ -205,15 +247,13 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: ${(props) => (!props.isDark ? '4px' : '2px')}
-    solid ${(props) => props.theme.colors.base};
+  border: ${(props) => (props.isDark ? '4px' : '2px')} solid
+    ${(props) => props.theme.colors.base};
   background: ${(props) => props.theme.colors.base};
-  transform: scale(
-    ${(props) => (!props.isDark ? 0.55 : 1)}
-  );
+  transform: scale(${(props) => (props.isDark ? 0.55 : 1)});
   transition: all 0.45s ease;
   overflow: ${(props) =>
-    !props.isDark ? 'visible' : 'hidden'};
+    props.isDark ? 'visible' : 'hidden'};
   &::before {
     content: '';
     position: absolute;
@@ -226,7 +266,7 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     transform: translate(
       ${(props) => (props.isDark ? '14px, -14px' : '0, 0')}
     );
-    opacity: ${(props) => (!props.isDark ? 0 : 1)};
+    opacity: ${(props) => (props.isDark ? 0 : 1)};
     transition: transform 0.45s ease;
   }
   &::after {
@@ -246,7 +286,7 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
       -15px 15px 0 ${(props) => props.theme.colors.base},
       15px -15px 0 ${(props) => props.theme.colors.base},
       -15px -15px 0 ${(props) => props.theme.colors.base};
-    transform: scale(${(props) => (!props.isDark ? 1 : 0)});
+    transform: scale(${(props) => (props.isDark ? 1 : 0)});
     transition: all 0.35s ease;
   }
 `;
@@ -261,9 +301,9 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   border: 0;
   background: ${(props) => props.theme.colors.background};
   transform: translate(
-    ${(props) => (!props.isDark ? '14px, -14px' : '0, 0')}
+    ${(props) => (props.isDark ? '14px, -14px' : '0, 0')}
   );
-  opacity: ${(props) => (!props.isDark ? 0 : 1)};
+  opacity: ${(props) => (props.isDark ? 0 : 1)};
   transition: ${(props) => props.theme.colorModeTransition},
     transform 0.45s ease;
 `;

@@ -27,8 +27,10 @@ const Layout: React.FC<{
 export default Layout;
 
 const GlobalWrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
   background: ${(props) => props.theme.colors.background};
+  font-size: 0.875rem;
   color: ${(props) => props.theme.colors.base};
   font-family: 'Helvetica Neue', Arial,
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
@@ -37,5 +39,17 @@ const GlobalWrapper = styled.div`
   a {
     color: ${(props) => props.theme.colors.link};
     text-decoration: none;
+    transition: ${(props) =>
+      props.theme.colorModeTransition};
+  }
+  button,
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .inner {
+    margin: 0 auto;
+    max-width: ${(props) => props.theme.sizes.maxWidth};
+    width: 100%;
   }
 `;

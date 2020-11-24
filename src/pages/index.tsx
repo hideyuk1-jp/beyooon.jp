@@ -16,7 +16,7 @@ const BlogIndex: React.FC<PageProps<
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO />
         <Bio />
         <p>
           No blog posts found. Add markdown posts to
@@ -31,7 +31,7 @@ const BlogIndex: React.FC<PageProps<
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO />
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map((post) => {

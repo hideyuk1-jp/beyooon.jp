@@ -18,7 +18,7 @@ type Props = {
   description?: string;
   lang?: string;
   meta?: Meta[];
-  title: string;
+  title?: string;
 };
 
 const SEO: React.FC<Props> = ({
@@ -33,6 +33,7 @@ const SEO: React.FC<Props> = ({
         site {
           siteMetadata {
             title
+            longTitle
             description
             social {
               twitter
@@ -45,16 +46,18 @@ const SEO: React.FC<Props> = ({
 
   const metaDescription =
     description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const defaultTitle = title
+    ? site.siteMetadata?.title
+    : site.siteMetadata?.longTitle;
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || defaultTitle || ''}
       titleTemplate={
-        defaultTitle ? `%s | ${defaultTitle}` : ''
+        title && defaultTitle ? `%s | ${defaultTitle}` : ''
       }
       meta={[
         {

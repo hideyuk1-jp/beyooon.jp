@@ -4,16 +4,10 @@ export const baseTheme = {
   colors: {
     base: '#121212',
     background: '#f8fafc',
-    blackLight: '#313746',
-    gray: '#727d86',
-    silver: '#969fa7',
-    whitesmoke: '#f1f4f7',
-    highlight: '#20a8ea',
-    red: '#f7615f',
-    orange: '#ffa22b',
-    link: '#26a6ed',
-    gradient:
-      'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
+    link: '#20a8ea',
+    gradient: {
+      orange: 'linear-gradient(to right, #f12711, #f5af19)',
+    },
   },
   sizes: {
     maxWidth: '1024px',
@@ -27,35 +21,24 @@ export const baseTheme = {
     large: '950px',
   },
   colorModeTransition:
-    'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)',
+    'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), fill 0.25s var(--ease-in-out-quad)',
 };
 
 export const darkTheme = {
   colors: {
     base: '#fff',
     background: '#15212a',
-    blackLight: '#313746',
-    gray: '#727d86',
-    silver: '#969fa7',
-    whitesmoke: '#f1f4f7',
-    highlight: '#20a8ea',
-    red: '#f7615f',
-    orange: '#ffa22b',
-    link: '#3eb0ef',
-    gradient:
-      'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
   },
 };
 
 export function getTheme(colorMode: ColorMode): Theme {
-  switch (colorMode) {
-    case 'light':
-      return baseTheme;
-    case 'dark':
-      return { ...baseTheme, ...darkTheme };
-    default:
-      return baseTheme;
-  }
+  const theme = JSON.parse(JSON.stringify(baseTheme));
+  if (colorMode === 'dark')
+    theme.colors = {
+      ...baseTheme.colors,
+      ...darkTheme.colors,
+    };
+  return theme;
 }
 
 export default getTheme;

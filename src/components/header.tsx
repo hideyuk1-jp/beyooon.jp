@@ -46,6 +46,7 @@ const DarkModeToggle: React.FC<{}> = () => {
   );
 };
 
+/* TODO: 検索機能実装時に使う
 const SearchIcon: React.FC<{ fill: string }> = ({
   fill,
 }) => (
@@ -65,6 +66,7 @@ const SearchIcon: React.FC<{ fill: string }> = ({
     </svg>
   </IconWrapper>
 );
+*/
 
 const Header: React.FC<{
   location: WindowLocation<unknown>;
@@ -148,7 +150,6 @@ const Header: React.FC<{
         </NavbarLeft>
         <NavbarCenter>{menuLinks}</NavbarCenter>
         <NavbarRight>
-          <SearchIcon fill={theme.colors.base} />
           <DarkModeToggle />
         </NavbarRight>
       </Navbar>

@@ -16,9 +16,9 @@ export const baseTheme = {
     base: '4vw',
   },
   responsive: {
-    small: '500px',
+    small: '480px',
     medium: '768px',
-    large: '950px',
+    large: '1024px',
   },
   colorModeTransition:
     'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), fill 0.25s var(--ease-in-out-quad)',

@@ -18,7 +18,7 @@ const Layout: React.FC<{
       data-is-root-path={isRootPath}
     >
       <Header location={location} />
-      <main>{children}</main>
+      <Main>{children}</Main>
       <Footer title={title} />
     </GlobalWrapper>
   );
@@ -52,4 +52,9 @@ const GlobalWrapper = styled.div`
     max-width: ${(props) => props.theme.sizes.maxWidth};
     width: 100%;
   }
+`;
+
+const Main = styled.main`
+  padding: 64px ${(props) => props.theme.sideSpace.base} 0
+    ${(props) => props.theme.sideSpace.base};
 `;

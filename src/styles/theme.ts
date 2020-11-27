@@ -4,7 +4,9 @@ export const baseTheme = {
   colors: {
     base: '#121212',
     background: '#f8fafc',
+    backgroundAccent: '#f8fafc',
     link: '#20a8ea',
+    border: '#e5eff5',
     gradient: {
       orange: 'linear-gradient(to right, #f12711, #f5af19)',
     },
@@ -27,7 +29,9 @@ export const baseTheme = {
 export const darkTheme = {
   colors: {
     base: '#fff',
-    background: '#15212a',
+    background: '#131417',
+    backgroundAccent: '#1e1f26',
+    border: '#2c303a',
   },
 };
 

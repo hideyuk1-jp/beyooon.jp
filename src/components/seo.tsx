@@ -23,7 +23,7 @@ type Props = {
 
 const SEO: React.FC<Props> = ({
   description = '',
-  lang = 'en',
+  lang = 'ja',
   meta = [],
   title,
 }) => {

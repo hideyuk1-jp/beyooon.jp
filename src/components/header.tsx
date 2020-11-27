@@ -196,7 +196,7 @@ const HeaderTag = styled.header`
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 48px;
+  height: 64px;
   background: ${(props) =>
     props.theme.colors.backgroundAccent};
   overflow: hidden;
@@ -236,7 +236,7 @@ const Navbar = styled.nav`
   padding: 0 ${(props) => props.theme.sideSpace.base};
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: 64px;
   svg {
     transition: ${(props) =>
       props.theme.colorModeTransition};

@@ -198,10 +198,12 @@ const HeaderTag = styled.header`
   width: 100%;
   height: 64px;
   background: ${(props) =>
-    props.theme.colors.backgroundAccent};
+    props.theme.colors.backgroundHeader};
+  backdrop-filter: saturate(180%) blur(5px);
   overflow: hidden;
   transform: translateY(0);
   transition: height 0.25s var(--ease-in-out-quad),
+    transform 0.25s var(--ease-in-out-quad),
     ${(props) => props.theme.colorModeTransition};
   &.hidden {
     transform: translateY(-200%);

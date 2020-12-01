@@ -5,6 +5,7 @@ export const baseTheme = {
     base: '#121212',
     background: '#f8fafc',
     backgroundAccent: '#f8fafc',
+    backgroundHeader: 'hsl(210 40% 98% / 0.8)',
     link: '#20a8ea',
     border: '#e5eff5',
     gradient: {
@@ -31,6 +32,7 @@ export const darkTheme = {
     base: '#fff',
     background: '#131417',
     backgroundAccent: '#1e1f26',
+    backgroundHeader: 'hsl(225 10% 8% / 0.8)',
     border: '#2c303a',
   },
 };

@@ -20,9 +20,11 @@ export default Footer;
 const FooterTag = styled.footer<{}>`
   background: ${(props) =>
     props.theme.colors.backgroundAccent};
+  color: ${(props) => props.theme.colors.base};
+  transition: ${(props) => props.theme.colorModeTransition};
 `;
 
-const FooterContent = styled.footer<{}>`
+const FooterContent = styled.div<{}>`
   padding: 40px 0;
 `;
 

@@ -202,8 +202,7 @@ const HeaderTag = styled.header`
   overflow: hidden;
   transform: translateY(0);
   transition: height 0.25s var(--ease-in-out-quad),
-    background 0.25s var(--ease-in-out-quad),
-    transform 0.25s var(--ease-in-out-quad);
+    ${(props) => props.theme.colorModeTransition};
   &.hidden {
     transform: translateY(-200%);
   }
@@ -329,7 +328,8 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
       color: ${(props) => props.theme.colors.base};
       border-bottom: 1px solid
         ${(props) => props.theme.colors.border};
-      transition: color 0.25s var(--ease-in-out-quad),
+      transition: ${(props) =>
+          props.theme.colorModeTransition},
         border 0.25s var(--ease-in-out-quad);
     }
   }

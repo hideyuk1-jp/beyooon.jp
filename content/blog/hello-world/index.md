@@ -2,7 +2,8 @@
 title: "コーポレートサイトはじめました"
 date: "2015-05-01T22:12:03.284Z"
 description: "前々から使ってみたかったGatsbyでコーポレートサイトを作りました"
-category: "others"
+category: Others
+image: './thumbnail.jpg'
 ---
 
 個人事業主として活動していくにあたり、屋号ドメインでコーポレートサイトを作りました。

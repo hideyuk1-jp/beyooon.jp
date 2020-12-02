@@ -42,15 +42,69 @@ const GlobalWrapper = styled.div`
     transition: ${(props) =>
       props.theme.colorModeTransition};
   }
-  button,
-  a {
+  button {
     text-decoration: none;
     cursor: pointer;
   }
-  .inner {
+  .by-spacer {
+    padding: 64px 0;
+  }
+  .by-container {
     margin: 0 auto;
     max-width: ${(props) => props.theme.sizes.maxWidth};
     width: 100%;
+  }
+  .by-section-head {
+    margin-bottom: 24px;
+
+    h2 {
+      position: relative;
+      margin: 0 0 8px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-left: 16px;
+        transform: translateY(-1px);
+        width: 80px;
+        height: 2px;
+        background: ${(props) =>
+          props.theme.colors.gradient};
+      }
+    }
+    p {
+      color: ${(props) => props.theme.colors.light};
+    }
+  }
+
+  .by-section-foot {
+    margin-top: 24px;
+  }
+
+  .by-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    color: ${(props) => props.theme.colors.light};
+    border: 1px solid ${(props) => props.theme.colors.light};
+    cursor: pointer;
+    padding: 8px 16px;
+    position: relative;
+    font-weight: 400;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: box-shadow 0.25s var(--ease-in-out-quad);
+
+    &:hover {
+      background: ${(props) =>
+        props.theme.colors.backgroundAccent};
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    }
+
+    svg {
+      fill: ${(props) => props.theme.colors.light};
+      margin-left: 4px;
+    }
   }
 `;
 

@@ -6,7 +6,8 @@ module.exports = {
       name: `Hideyuki Hashimoto`,
       summary: `Web Developer`,
     },
-    description: `Webサイト制作/アプリ開発を中心にお客様の事業の発展に貢献するモノづくりを行っています。`,
+    description: `Web制作 /
+    アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`,
     siteUrl: `https://beyooon.jp`,
     social: {
       twitter: `hideyuk1_jp`,

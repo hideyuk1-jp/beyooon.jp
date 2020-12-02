@@ -117,7 +117,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String
       description: String
+      category: String
+      tags: [String]
       date: Date @dateformat
+      image: File @fileByRelativePath
     }
 
     type Fields {

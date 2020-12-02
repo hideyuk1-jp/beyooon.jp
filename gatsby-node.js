@@ -20,8 +20,8 @@ exports.createPages = async ({
     `
       {
         allMarkdownRemark(
+          filter: { fields: { draft: { eq: false } } }
           sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
         ) {
           nodes {
             id

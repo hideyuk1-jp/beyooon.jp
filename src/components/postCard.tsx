@@ -69,8 +69,7 @@ const PostCard: React.FC<{
                   <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                 </svg>
               </IconWrapper>
-              {/* TODO:  readtime ちゃんとする */}
-              {`${node.frontmatter?.date} • 1 min read`}
+              {node.frontmatter?.date}
             </PostCardPublishedDate>
           </PostCardFooter>
         </PostCardContent>

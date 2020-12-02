@@ -1,8 +1,9 @@
 ---
-title: My Second Post!
-date: 2015-05-06T23:46:37.121Z
+title: draftがtrueなので表示されない
+date: 2015-05-06T23:46:37+09:00
 category: Dev
 image: ./thumbnail.jpg
+draft: true
 ---
 
 Wow! I love blogging so much already.

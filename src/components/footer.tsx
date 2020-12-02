@@ -5,11 +5,13 @@ import styled from '../components/styled';
 
 const Footer: React.FC<{ title: string }> = ({ title }) => (
   <FooterTag>
-    <FooterContent className="inner">
+    <FooterContent className="by-container">
       <Copyright>
         © {new Date().getFullYear()}
         {` `}
-        <Link to={`/`}>{title}</Link>
+        <Link to={`/`} className="by-foot-title">
+          {title}
+        </Link>
       </Copyright>
     </FooterContent>
   </FooterTag>
@@ -32,7 +34,7 @@ const Copyright = styled.div<{}>`
   padding: 0 ${(props) => props.theme.sideSpace.base};
   text-align: center;
 
-  a {
+  a.by-foot-title {
     color: ${(props) => props.theme.colors.base};
   }
 `;

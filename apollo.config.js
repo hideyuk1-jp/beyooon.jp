@@ -9,7 +9,7 @@ module.exports = {
     service: {
       name: 'GatsbyJS',
       localSchemaFile:
-        './src/__generated__/gatsby-schema.graphql',
+        './src/__generated__/gatsby-introspection.json',
     },
   },
 };

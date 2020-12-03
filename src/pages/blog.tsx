@@ -13,7 +13,7 @@ const Hero = styled.header`
   h2 {
     position: relative;
     display: block;
-    font-size: 4rem;
+    font-size: 3.2rem;
     font-weight: 700;
     padding-bottom: 26px;
     line-height: 1.15;

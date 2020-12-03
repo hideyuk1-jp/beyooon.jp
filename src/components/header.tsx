@@ -11,7 +11,8 @@ import { Theme } from '../types';
 
 const MENU_ITEMS = [
   { title: 'ブログ', name: 'Blog' },
-  { title: '制作実績', name: 'Works' },
+  /* TODO: 制作実績ページを作る
+  { title: '制作実績', name: 'Works' },*/
   { title: 'beyooonについて', name: 'About' },
   { title: 'お問い合わせ', name: 'Contact' },
 ];
@@ -199,7 +200,8 @@ const HeaderTag = styled.header`
   height: 64px;
   background: ${(props) =>
     props.theme.colors.backgroundHeader};
-  backdrop-filter: saturate(180%) blur(5px);
+  border-bottom: 1px solid
+    ${(props) => props.theme.colors.border};
   overflow: hidden;
   transform: translateY(0);
   transition: height 0.25s var(--ease-in-out-quad),
@@ -260,6 +262,10 @@ const Navbar = styled.nav`
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.25s ease;
+    transition: ${(props) =>
+        props.theme.colorModeTransition},
+      opacity 0.25s var(--ease-in-out-quad);
+
     &:hover {
       opacity: 1;
     }
@@ -324,7 +330,7 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
       transition-property: opacity, transform;
     }
 
-    a {
+    a.menu-link {
       display: block;
       padding: 10px 0;
       color: ${(props) => props.theme.colors.base};

@@ -54,27 +54,56 @@ const GlobalWrapper = styled.div`
     max-width: ${(props) => props.theme.sizes.maxWidth};
     width: 100%;
   }
+  .by-center {
+    text-align: center;
+  }
+  .by-container-small {
+    margin: 0 auto;
+    max-width: ${(props) =>
+      props.theme.sizes.maxWidthSmall};
+    width: 100%;
+  }
   .by-section-head {
     margin-bottom: 24px;
 
     h2 {
       position: relative;
-      margin: 0 0 8px;
+      margin: 0 0 12px;
 
       &:after {
         content: '';
         position: absolute;
         top: 50%;
         margin-left: 16px;
-        transform: translateY(-1px);
+        transform: translateY(-2px);
         width: 80px;
-        height: 2px;
+        height: 4px;
+        border-radius: 2px;
         background: ${(props) =>
           props.theme.colors.gradient};
       }
     }
+
     p {
       color: ${(props) => props.theme.colors.light};
+    }
+
+    &.by-section-head-center {
+      text-align: center;
+
+      h2 {
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+
+        &:after {
+          top: auto;
+          bottom: 0;
+          left: 50%;
+          margin-left: 0px;
+          transform: translateX(-40px);
+          width: 80px;
+        }
+      }
     }
   }
 
@@ -82,28 +111,40 @@ const GlobalWrapper = styled.div`
     margin-top: 24px;
   }
 
-  .by-btn-outline {
+  .by-btn {
     display: inline-flex;
+    position: relative;
     align-items: center;
-    color: ${(props) => props.theme.colors.light};
-    border: 1px solid ${(props) => props.theme.colors.light};
     cursor: pointer;
     padding: 8px 16px;
-    position: relative;
     font-weight: 400;
     white-space: nowrap;
     border-radius: 4px;
-    transition: box-shadow 0.25s var(--ease-in-out-quad);
+    transition: background 0.25s var(--ease-in-out-quad),
+      box-shadow 0.25s var(--ease-in-out-quad),
+      transform 0.25s var(--ease-in-out-quad);
 
     &:hover {
       background: ${(props) =>
         props.theme.colors.backgroundAccent};
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+      transform: scale(1.1);
     }
 
     svg {
       fill: ${(props) => props.theme.colors.light};
       margin-left: 4px;
+    }
+
+    &.by-btn-primary {
+      color: #ffffff;
+      background: ${(props) => props.theme.colors.primary};
+    }
+
+    &.by-btn-outline {
+      color: ${(props) => props.theme.colors.light};
+      border: 1px solid
+        ${(props) => props.theme.colors.light};
     }
   }
 `;

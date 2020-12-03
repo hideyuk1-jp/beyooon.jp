@@ -31,9 +31,11 @@ const PostCard: React.FC<{
               />
             </PostCardImage>
           )}
-          <PostCardCategory>
-            {node.frontmatter?.category}
-          </PostCardCategory>
+          <header>
+            <PostCardCategory>
+              {node.frontmatter?.category}
+            </PostCardCategory>
+          </header>
           <PostCardTitle>
             <span itemProp="headline">
               {node.frontmatter?.title}
@@ -117,10 +119,14 @@ const PostCardImage = styled.div`
 `;
 
 const PostCardCategory = styled.div`
+  display: inline-block;
   font-size: 0.75rem;
   margin-top: 16px;
   margin-bottom: 8px;
+  padding: 2px 8px;
+  border-radius: 8px;
   color: ${(props) => props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors.primary};
   transition: ${(props) => props.theme.colorModeTransition};
 `;
 
@@ -137,7 +143,7 @@ const PostCardDescription = styled.p`
   color: ${(props) => props.theme.colors.light};
 `;
 
-const PostCardFooter = styled.div`
+const PostCardFooter = styled.footer`
   font-size: 0.75rem;
   width: 100%;
   display: flex;

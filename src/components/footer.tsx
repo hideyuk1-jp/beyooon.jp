@@ -20,8 +20,10 @@ const Footer: React.FC<{ title: string }> = ({ title }) => (
 export default Footer;
 
 const FooterTag = styled.footer<{}>`
-  background: ${(props) =>
-    props.theme.colors.backgroundAccent};
+  background: ${(props) => props.theme.colors.background};
+  border-top: 1px solid
+    ${(props) => props.theme.colors.border};
+
   color: ${(props) => props.theme.colors.base};
   transition: ${(props) => props.theme.colorModeTransition};
 `;

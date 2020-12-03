@@ -9,14 +9,15 @@ export const baseTheme = {
     tertiary: '#FEAC5E',
     background: '#f8fafc',
     backgroundAccent: '#ffffff',
-    backgroundHeader: 'hsl(210 40% 98% / 0.8)',
+    backgroundHeader: '#f8fafc',
     link: '#20a8ea',
-    border: '#e5eff5',
+    border: '#d3e4ee',
     gradient:
       'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
   },
   sizes: {
     maxWidth: '1024px',
+    maxWidthSmall: '768px',
   },
   sideSpace: {
     base: '4vw',
@@ -36,8 +37,8 @@ export const darkTheme = {
     light: '#92a3ab',
     background: '#131417',
     backgroundAccent: '#1e1f26',
-    backgroundHeader: 'hsl(225 10% 8% / 0.8)',
-    border: '#2c303a',
+    backgroundHeader: '#131417',
+    border: '#353946',
   },
 };
 

@@ -1,11 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `beyooon`,
+    longTitle: `beyooon | Webサイト制作・アプリ開発`,
     author: {
       name: `Hideyuki Hashimoto`,
       summary: `Web Developer`,
     },
-    description: `Webサイト制作/アプリ開発を中心にお客様の事業の発展に貢献するモノづくりを行っています。`,
+    description: `Web制作 /
+    アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`,
     siteUrl: `https://beyooon.jp`,
     social: {
       twitter: `hideyuk1_jp`,
@@ -34,7 +36,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 768,
             },
           },
           {
@@ -43,7 +45,17 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
+          `gatsby-remark-code-titles`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -51,6 +63,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-draft`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

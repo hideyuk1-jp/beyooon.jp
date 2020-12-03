@@ -8,3 +8,28 @@ export interface ThemeContextType {
   colorMode: ColorMode;
   setColorMode: () => void;
 }
+
+export type Posts = ReadonlyArray<Post>;
+
+export type Post = Pick<
+  GatsbyTypes.MarkdownRemark,
+  'excerpt'
+> & {
+  readonly fields: GatsbyTypes.Maybe<
+    Pick<GatsbyTypes.Fields, 'slug'>
+  >;
+  readonly frontmatter: GatsbyTypes.Maybe<
+    Pick<
+      GatsbyTypes.Frontmatter,
+      'date' | 'title' | 'description' | 'category' | 'tags'
+    > & {
+      readonly image: GatsbyTypes.Maybe<{
+        readonly childImageSharp: GatsbyTypes.Maybe<{
+          readonly fluid: GatsbyTypes.Maybe<
+            GatsbyTypes.GatsbyImageSharpFluidFragment
+          >;
+        }>;
+      }>;
+    }
+  >;
+};

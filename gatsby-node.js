@@ -20,8 +20,8 @@ exports.createPages = async ({
     `
       {
         allMarkdownRemark(
+          filter: { fields: { draft: { eq: false } } }
           sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
         ) {
           nodes {
             id
@@ -117,7 +117,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String
       description: String
+      category: String
+      tags: [String]
       date: Date @dateformat
+      image: File @fileByRelativePath
     }
 
     type Fields {

@@ -3,59 +3,53 @@ import { ColorMode, Theme } from '../types';
 export const baseTheme = {
   colors: {
     base: '#121212',
+    light: '#738a94',
+    primary: '#4BC0C8',
+    secondary: '#C779D0',
+    tertiary: '#FEAC5E',
     background: '#f8fafc',
-    blackLight: '#313746',
-    gray: '#727d86',
-    silver: '#969fa7',
-    whitesmoke: '#f1f4f7',
-    highlight: '#20a8ea',
-    red: '#f7615f',
-    orange: '#ffa22b',
-    link: '#26a6ed',
+    backgroundAccent: '#ffffff',
+    backgroundHeader: '#f8fafc',
+    link: '#20a8ea',
+    border: '#d3e4ee',
     gradient:
-      'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
+      'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
   },
   sizes: {
     maxWidth: '1024px',
+    maxWidthSmall: '768px',
   },
   sideSpace: {
     base: '4vw',
   },
   responsive: {
-    small: '500px',
+    small: '480px',
     medium: '768px',
-    large: '950px',
+    large: '1024px',
   },
   colorModeTransition:
-    'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)',
+    'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad), fill 0.25s var(--ease-in-out-quad), border 0.25s var(--ease-in-out-quad)',
 };
 
 export const darkTheme = {
   colors: {
     base: '#fff',
-    background: '#15212a',
-    blackLight: '#313746',
-    gray: '#727d86',
-    silver: '#969fa7',
-    whitesmoke: '#f1f4f7',
-    highlight: '#20a8ea',
-    red: '#f7615f',
-    orange: '#ffa22b',
-    link: '#3eb0ef',
-    gradient:
-      'linear-gradient(-45deg,#ffa649,#f7645b,#805ed4)',
+    light: '#92a3ab',
+    background: '#131417',
+    backgroundAccent: '#1e1f26',
+    backgroundHeader: '#131417',
+    border: '#353946',
   },
 };
 
 export function getTheme(colorMode: ColorMode): Theme {
-  switch (colorMode) {
-    case 'light':
-      return baseTheme;
-    case 'dark':
-      return { ...baseTheme, ...darkTheme };
-    default:
-      return baseTheme;
-  }
+  const theme = JSON.parse(JSON.stringify(baseTheme));
+  if (colorMode === 'dark')
+    theme.colors = {
+      ...baseTheme.colors,
+      ...darkTheme.colors,
+    };
+  return theme;
 }
 
 export default getTheme;

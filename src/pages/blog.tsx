@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
 import styled from '../components/styled';
@@ -13,7 +13,7 @@ const Hero = styled.header`
   h2 {
     position: relative;
     display: block;
-    font-size: 4rem;
+    font-size: 3.2rem;
     font-weight: 700;
     padding-bottom: 26px;
     line-height: 1.15;
@@ -37,8 +37,8 @@ const Hero = styled.header`
   }
 `;
 
-const Index: React.FC<PageProps<
-  GatsbyTypes.IndexQuery
+const BlogIndex: React.FC<PageProps<
+  GatsbyTypes.BlogIndexQuery
 >> = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
@@ -46,68 +46,26 @@ const Index: React.FC<PageProps<
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO />
+      <SEO title={`Blog`} />
       <Hero className="by-hero by-spacer">
         <div className="by-container">
-          <h2>{`Develop & Design`}</h2>
+          <h2>{`beyooon Blog`}</h2>
           <p>
-            {`Web制作 /
-            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`}
+            {`Web制作やアプリ開発に関する知見や事業に関すること、その他雑記などを書いています。`}
           </p>
         </div>
       </Hero>
       <section className="by-spacer">
-        <header className="by-section-head by-container">
-          <h2>{`ブログ`}</h2>
-          <p>
-            {`Web制作やアプリ開発に関する知見などを書いています。`}
-          </p>
-        </header>
         <PostList posts={posts} />
-        <footer className="by-section-foot by-container">
-          <Link
-            to="/blog"
-            className="by-btn by-btn-outline"
-          >
-            {`ブログをもっと見る`}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              width="14"
-              viewBox="0 0 24 24"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-          </Link>
-        </footer>
-      </section>
-      <section className="by-spacer">
-        <header className="by-container by-section-head by-section-head-center">
-          <h2>{`お気軽にお問い合わせください`}</h2>
-          <p>
-            {`仕事のご依頼、ブログに関することなど`}
-            <br />
-            {`お気軽にお問い合わせください。`}
-          </p>
-        </header>
-        <footer className="by-container by-section-foot by-center">
-          <Link
-            to={`/contact`}
-            className="by-btn by-btn-primary"
-          >
-            {`お問い合わせ`}
-          </Link>
-        </footer>
       </section>
     </Layout>
   );
 };
 
-export default Index;
+export default BlogIndex;
 
 export const pageQuery = graphql`
-  query Index {
+  query BlogIndex {
     site {
       siteMetadata {
         title
@@ -116,7 +74,6 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fields: { draft: { eq: false } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 6
     ) {
       nodes {
         excerpt

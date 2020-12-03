@@ -13,7 +13,7 @@ const MENU_ITEMS = [
   { title: 'ブログ', name: 'Blog' },
   /* TODO: 制作実績ページを作る
   { title: '制作実績', name: 'Works' },*/
-  { title: 'beyooonについて', name: 'About' },
+  { title: 'beyooonとは', name: 'About' },
   { title: 'お問い合わせ', name: 'Contact' },
 ];
 

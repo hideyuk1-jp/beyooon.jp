@@ -9,172 +9,30 @@ import SEO from '../components/seo';
 import styled from '../components/styled';
 import SyntaxHighlightStyle from '../styles/syntaxHighlight';
 
-const BlogPostTemplate: React.FC<PageProps<
-  GatsbyTypes.BlogPostBySlugQuery
->> = ({ data, location }) => {
-  const post = data.markdownRemark;
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
-  const { previous, next } = data;
-
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post?.frontmatter?.title ?? ''}
-        description={
-          post?.frontmatter?.description || post?.excerpt
-        }
-      />
-      <PostWrapper
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <div className="by-container-small by-spacer">
-            <PostHeadCategory className="head-category">
-              {post?.frontmatter?.category}
-            </PostHeadCategory>
-            <h1 itemProp="headline">
-              {post?.frontmatter?.title}
-            </h1>
-            <PostHeadFooter>
-              <div className="head-date">
-                <IconWrapper>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="14"
-                    width="14"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                  </svg>
-                </IconWrapper>
-                {post?.frontmatter?.date}
-              </div>
-            </PostHeadFooter>
-          </div>
-          <Img
-            className="by-container head-image"
-            fluid={
-              post?.frontmatter?.image?.childImageSharp
-                ?.fluid
-            }
-          />
-        </header>
-        <PostContent
-          className="by-container-small by-spacer"
-          dangerouslySetInnerHTML={{
-            __html: post?.html ?? '',
-          }}
-          itemProp="articleBody"
-        />
-      </PostWrapper>
-      <nav className="blog-post-nav by-container">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous?.fields?.slug && (
-              <Link to={previous?.fields?.slug} rel="prev">
-                ← {previous?.frontmatter?.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next?.fields?.slug && (
-              <Link to={next?.fields?.slug} rel="next">
-                {next?.frontmatter?.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
-    </Layout>
-  );
-};
-
-export default BlogPostTemplate;
-
-export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "YYYY.MM.DD")
-        description
-        category
-        tags
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1024) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const PostWrapper = styled.article`
   header {
     h1 {
-      font-size: 3.2rem;
+      font-size: 2rem;
+
+      @media screen and (min-width: ${(props) =>
+          props.theme.responsive.small}) {
+        font-size: 2.4rem;
+      }
+
+      @media screen and (min-width: ${(props) =>
+          props.theme.responsive.medium}) {
+        font-size: 2.8rem;
+      }
+
+      @media screen and (min-width: ${(props) =>
+          props.theme.responsive.large}) {
+        font-size: 3.2rem;
+      }
     }
 
     .head-image {
       border-radius: 8px;
+      max-height: 480px;
     }
 
     .head-date {
@@ -216,7 +74,7 @@ const PostContent = styled.section`
 
     &::before {
       z-index: -1;
-      width: 160px;
+      width: 20%;
       background: linear-gradient(
         90deg,
         ${(props) => props.theme.colors.primary} 0%,
@@ -336,7 +194,6 @@ const PostContent = styled.section`
   pre[class*='language-'] {
     padding: 16px;
     margin: 0;
-    background: #1e1f26;
   }
   .gatsby-highlight {
     margin: 0px 0px 24px 0px;
@@ -392,5 +249,170 @@ const IconWrapper = styled.div`
 
   svg {
     fill: ${(props) => props.theme.colors.light};
+  }
+`;
+
+const BlogPostTemplate: React.FC<PageProps<
+  GatsbyTypes.BlogPostBySlugQuery
+>> = ({ data, location }) => {
+  const post = data.markdownRemark;
+  const siteTitle =
+    data.site?.siteMetadata?.title || `Title`;
+  const { previous, next } = data;
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post?.frontmatter?.title ?? ''}
+        description={
+          post?.frontmatter?.description || post?.excerpt
+        }
+        image={
+          post?.frontmatter?.image?.childImageSharp?.fluid
+            ?.src
+        }
+      />
+      <PostWrapper
+        className="blog-post"
+        itemScope
+        itemType="http://schema.org/Article"
+      >
+        <header>
+          <div className="by-container-small by-spacer">
+            <PostHeadCategory className="head-category">
+              {post?.frontmatter?.category}
+            </PostHeadCategory>
+            <h1 itemProp="headline">
+              {post?.frontmatter?.title}
+            </h1>
+            <PostHeadFooter>
+              <div className="head-date">
+                <IconWrapper>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    width="14"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                  </svg>
+                </IconWrapper>
+                {post?.frontmatter?.date}
+              </div>
+            </PostHeadFooter>
+          </div>
+          {post?.frontmatter?.image?.childImageSharp
+            ?.fluid && (
+            <Img
+              className="by-container head-image"
+              fluid={
+                post?.frontmatter?.image?.childImageSharp
+                  ?.fluid
+              }
+            />
+          )}
+        </header>
+        <PostContent
+          className="by-container-small by-spacer"
+          dangerouslySetInnerHTML={{
+            __html: post?.html ?? '',
+          }}
+          itemProp="articleBody"
+        />
+      </PostWrapper>
+      <nav className="blog-post-nav by-container">
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {previous?.fields?.slug && (
+              <Link to={previous?.fields?.slug} rel="prev">
+                ← {previous?.frontmatter?.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next?.fields?.slug && (
+              <Link to={next?.fields?.slug} rel="next">
+                {next?.frontmatter?.title} →
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>
+    </Layout>
+  );
+};
+
+export default BlogPostTemplate;
+
+export const pageQuery = graphql`
+  query BlogPostBySlug(
+    $id: String!
+    $previousPostId: String
+    $nextPostId: String
+  ) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(id: { eq: $id }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      frontmatter {
+        title
+        date(formatString: "YYYY.MM.DD")
+        description
+        category
+        tags
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1024) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        image {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        image {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
   }
 `;

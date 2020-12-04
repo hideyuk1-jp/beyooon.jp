@@ -19,6 +19,7 @@ type Props = {
   lang?: string;
   meta?: Meta[];
   title?: string;
+  image?: string;
 };
 
 const SEO: React.FC<Props> = ({
@@ -26,15 +27,17 @@ const SEO: React.FC<Props> = ({
   lang = 'ja',
   meta = [],
   title,
+  image = '',
 }) => {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<GatsbyTypes.SEOQuery>(
     graphql`
-      query {
+      query SEO {
         site {
           siteMetadata {
             title
             longTitle
             description
+            siteUrl
             social {
               twitter
             }
@@ -45,10 +48,10 @@ const SEO: React.FC<Props> = ({
   );
 
   const metaDescription =
-    description || site.siteMetadata.description;
+    description || site?.siteMetadata?.description;
   const defaultTitle = title
-    ? site.siteMetadata?.title
-    : site.siteMetadata?.longTitle;
+    ? site?.siteMetadata?.title
+    : site?.siteMetadata?.longTitle;
 
   return (
     <Helmet
@@ -77,12 +80,19 @@ const SEO: React.FC<Props> = ({
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: image
+            ? `${site?.siteMetadata?.siteUrl}${image}`
+            : `${site?.siteMetadata?.siteUrl}/images/ogp.png`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
+          content:
+            site?.siteMetadata?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,

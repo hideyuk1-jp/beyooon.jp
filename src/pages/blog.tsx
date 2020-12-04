@@ -18,7 +18,7 @@ const Hero = styled.header`
     padding-bottom: 26px;
     line-height: 1.15;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -50,9 +50,6 @@ const BlogIndex: React.FC<PageProps<
       <Hero className="by-hero by-spacer">
         <div className="by-container">
           <h2>{`beyooon Blog`}</h2>
-          <p>
-            {`Web制作やアプリ開発に関する知見や事業に関すること、その他雑記などを書いています。`}
-          </p>
         </div>
       </Hero>
       <section className="by-spacer">
@@ -80,8 +77,10 @@ export const pageQuery = graphql`
         fields {
           slug
         }
+        timeToRead
         frontmatter {
           date(formatString: "YYYY.MM.DD")
+          update(formatString: "YYYY.MM.DD")
           title
           description
           category

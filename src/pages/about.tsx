@@ -16,7 +16,7 @@ const Hero = styled.header`
     padding-bottom: 26px;
     line-height: 1.15;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       bottom: 0;

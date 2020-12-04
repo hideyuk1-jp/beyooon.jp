@@ -18,7 +18,7 @@ const Hero = styled.header`
     padding-bottom: 26px;
     line-height: 1.15;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -115,7 +115,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fields: { draft: { eq: false } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___update], order: DESC }
       limit: 6
     ) {
       nodes {
@@ -123,8 +123,10 @@ export const pageQuery = graphql`
         fields {
           slug
         }
+        timeToRead
         frontmatter {
           date(formatString: "YYYY.MM.DD")
+          update(formatString: "YYYY.MM.DD")
           title
           description
           category

@@ -13,7 +13,7 @@ export type Posts = ReadonlyArray<Post>;
 
 export type Post = Pick<
   GatsbyTypes.MarkdownRemark,
-  'excerpt'
+  'excerpt' | 'timeToRead'
 > & {
   readonly fields: GatsbyTypes.Maybe<
     Pick<GatsbyTypes.Fields, 'slug'>

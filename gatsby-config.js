@@ -63,7 +63,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-draft`,
+    {
+      resolve: `gatsby-plugin-draft`,
+      options: {
+        publishDraft: process.env.NODE_ENV !== 'production',
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

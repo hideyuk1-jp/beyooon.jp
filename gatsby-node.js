@@ -120,6 +120,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       category: String
       tags: [String]
       date: Date @dateformat
+      update: Date @dateformat
       image: File @fileByRelativePath
     }
 

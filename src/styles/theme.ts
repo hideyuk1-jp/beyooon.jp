@@ -2,15 +2,16 @@ import { ColorMode, Theme } from '../types';
 
 export const baseTheme = {
   colors: {
-    base: '#121212',
-    light: '#738a94',
+    base: '#000',
+    light: '#62767e',
     primary: '#4BC0C8',
     secondary: '#C779D0',
     tertiary: '#FEAC5E',
-    background: '#f8fafc',
-    backgroundAccent: '#ffffff',
-    backgroundHeader: '#f8fafc',
-    link: '#20a8ea',
+    background: '#fff',
+    backgroundAccent: '#f8fafc',
+    backgroundHeader: 'rgba(255, 255, 255, 0.8)',
+    backgroundPostCard: 'transparent',
+    link: '#0070f3',
     border: '#d3e4ee',
     gradient:
       'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
@@ -35,9 +36,10 @@ export const darkTheme = {
   colors: {
     base: '#fff',
     light: '#92a3ab',
-    background: '#131417',
+    background: '#000',
     backgroundAccent: '#1e1f26',
-    backgroundHeader: '#131417',
+    backgroundHeader: 'rgba(0, 0, 0, 0.8)',
+    backgroundPostCard: '#1e1f26',
     border: '#353946',
   },
 };

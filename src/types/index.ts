@@ -21,7 +21,12 @@ export type Post = Pick<
   readonly frontmatter: GatsbyTypes.Maybe<
     Pick<
       GatsbyTypes.Frontmatter,
-      'date' | 'title' | 'description' | 'category' | 'tags'
+      | 'date'
+      | 'update'
+      | 'title'
+      | 'description'
+      | 'category'
+      | 'tags'
     > & {
       readonly image: GatsbyTypes.Maybe<{
         readonly childImageSharp: GatsbyTypes.Maybe<{

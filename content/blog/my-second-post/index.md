@@ -1,7 +1,9 @@
 ---
 title: draftがtrueなので表示されない
 date: 2015-05-06T23:46:37+09:00
+update: 2015-05-06T23:46:37+09:00
 category: Dev
+tags: []
 image: ./thumbnail.jpg
 draft: true
 ---

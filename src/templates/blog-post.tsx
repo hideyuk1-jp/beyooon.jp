@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 import Img from 'gatsby-image';
+import moment from 'moment';
+import 'moment-timezone';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -13,6 +15,7 @@ const PostWrapper = styled.article`
   header {
     h1 {
       font-size: 2rem;
+      margin-bottom: 16px;
 
       @media screen and (min-width: ${(props) =>
           props.theme.responsive.small}) {
@@ -33,12 +36,6 @@ const PostWrapper = styled.article`
     .head-image {
       border-radius: 8px;
       max-height: 480px;
-    }
-
-    .head-date {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
     }
   }
 `;
@@ -169,7 +166,7 @@ const PostContent = styled.section`
     margin: 0 0 24px 0;
     padding: 8px 16px;
     border-left: 4px solid
-      ${(props) => props.theme.colors.light};
+      ${(props) => props.theme.colors.border};
     p {
       white-space: pre-wrap;
       margin: 4px 0;
@@ -181,7 +178,40 @@ const PostContent = styled.section`
   }
 
   table {
+    display: block;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    overflow: auto;
+    width: auto;
     margin-bottom: 24px;
+
+    th,
+    td {
+      border-top: 1px solid
+        ${(props) => props.theme.colors.border};
+      border-bottom: 1px solid
+        ${(props) => props.theme.colors.border};
+      padding: 8px 16px;
+      transition: ${(props) =>
+        props.theme.colorModeTransition};
+    }
+
+    th {
+      background: ${(props) => props.theme.colors.border};
+    }
+
+    td {
+    }
+
+    tbody tr:last-child {
+      td:first-child {
+        border-radius: 0px 0px 0px 8px;
+      }
+
+      td:last-child {
+        border-radius: 0px 0px 8px 0px;
+      }
+    }
   }
 
   .gatsby-resp-image-wrapper {
@@ -219,15 +249,32 @@ const PostContent = styled.section`
   }
 `;
 
-const PostHeadCategory = styled.div`
-  display: inline-block;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  padding: 2px 8px;
-  border-radius: 8px;
-  color: ${(props) => props.theme.colors.primary};
-  border: 1px solid ${(props) => props.theme.colors.primary};
-  transition: ${(props) => props.theme.colorModeTransition};
+const PostHeadHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  .head-category,
+  .head-tag {
+    display: inline-block;
+    margin: 0px 8px 16px 0px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    transition: ${(props) =>
+      props.theme.colorModeTransition};
+  }
+
+  .head-category {
+    color: ${(props) => props.theme.colors.background};
+    background: ${(props) => props.theme.colors.base};
+    border: 1px solid ${(props) => props.theme.colors.base};
+  }
+
+  .head-tag {
+    color: ${(props) => props.theme.colors.base};
+    border: 1px solid ${(props) => props.theme.colors.base};
+  }
 `;
 
 const PostHeadFooter = styled.footer`
@@ -241,14 +288,29 @@ const PostHeadFooter = styled.footer`
   padding-top: 8px;
   color: ${(props) => props.theme.colors.light};
   transition: ${(props) => props.theme.colorModeTransition};
+
+  .head-date,
+  .head-update {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 12px;
+  }
 `;
 
 const IconWrapper = styled.div`
   line-height: 0;
   margin-right: 4px;
 
-  svg {
+  .date-icon,
+  .update-icon {
+    width: 16px;
+    height: 16px;
     fill: ${(props) => props.theme.colors.light};
+  }
+
+  .update-icon {
+    transform: rotate(-45deg);
   }
 `;
 
@@ -279,27 +341,75 @@ const BlogPostTemplate: React.FC<PageProps<
       >
         <header>
           <div className="by-container-small by-spacer">
-            <PostHeadCategory className="head-category">
-              {post?.frontmatter?.category}
-            </PostHeadCategory>
+            <PostHeadHeader>
+              <div className="head-category">
+                {post?.frontmatter?.category}
+              </div>
+              {post?.frontmatter?.tags &&
+                post?.frontmatter?.tags.length > 0 &&
+                post?.frontmatter?.tags.map((tag) => (
+                  <div key={tag} className="head-tag">
+                    {`# ${tag}`}
+                  </div>
+                ))}
+            </PostHeadHeader>
             <h1 itemProp="headline">
               {post?.frontmatter?.title}
             </h1>
             <PostHeadFooter>
               <div className="head-date">
                 <IconWrapper>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="14"
-                    width="14"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                  </svg>
+                  {post?.frontmatter?.date ===
+                  post?.frontmatter?.update ? (
+                    <svg
+                      className="date-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      width="24"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="update-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      width="24"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+                    </svg>
+                  )}
                 </IconWrapper>
-                {post?.frontmatter?.date}
+                {post?.frontmatter?.date ===
+                post?.frontmatter?.update ? (
+                  <time
+                    dateTime={moment(
+                      post?.frontmatter?.date,
+                    )
+                      .tz('Asia/Tokyo')
+                      .format()}
+                  >
+                    {moment(post?.frontmatter?.date)
+                      .local()
+                      .format('YYYY.MM.DD')}
+                  </time>
+                ) : (
+                  <time
+                    dateTime={moment(
+                      post?.frontmatter?.update,
+                    )
+                      .tz('Asia/Tokyo')
+                      .format()}
+                  >
+                    {moment(post?.frontmatter?.update)
+                      .local()
+                      .format('YYYY.MM.DD')}
+                  </time>
+                )}
               </div>
             </PostHeadFooter>
           </div>
@@ -371,7 +481,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "YYYY.MM.DD")
+        date
+        update
         description
         category
         tags

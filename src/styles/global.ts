@@ -75,10 +75,6 @@ const resetStyle = css`
 `;
 
 const baseStyle = css`
-  /**
-  * Thanks to Benjamin De Cock
-  * https://gist.github.com/bendc/ac03faac0bf2aee25b49e5fd260a727d
-  */
   :root {
     --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
     --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
@@ -91,6 +87,16 @@ const baseStyle = css`
       0.955
     );
     --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
   }
 `;
 

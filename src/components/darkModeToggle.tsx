@@ -3,6 +3,98 @@ import React from 'react';
 import styled from '../components/styled';
 import { useColorMode } from '../themeContext';
 
+const IconWrapper = styled.button<{
+  isDark: boolean;
+}>`
+  position: relative;
+  background-color: ${(props) =>
+    props.isDark ? '#1e1f26' : '#0984e3'};
+  border: none;
+  border-radius: 12px;
+  box-sizing: border-box;
+  height: 24px;
+  width: 48px;
+  outline: none;
+  padding: 0;
+  text-align: left;
+  transition: ${(props) => props.theme.colorModeTransition};
+
+  .u-a11y {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  &::before {
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    content: '';
+    height: 20px;
+    left: ${(props) => (props.isDark ? '26px' : '2px')};
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.25s var(--ease-in-out-quad),
+      transform 0.25s var(--ease-in-out-quad);
+    width: 20px;
+    z-index: 2;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+    &::before,
+    .moon,
+    .sun {
+      animation: none;
+      transition: none;
+    }
+  }
+`;
+
+const MoonOrSun = styled.div<{ isDark: boolean }>`
+  position: relative;
+  padding: 4px 0 0 4px;
+
+  .moon,
+  .sun {
+    position: absolute;
+    top: 0;
+    height: 16px;
+    width: 16px;
+    transition: opacity 0.25s var(--ease-in-out-quad),
+      transform 0.25s var(--ease-in-out-quad),
+      visibility 0.25s var(--ease-in-out-quad);
+  }
+  .moon {
+    transform: ${(props) =>
+      props.isDark ? 'translateX(0px)' : 'translateX(8px)'};
+    opacity: ${(props) => (props.isDark ? '1' : '0')};
+    visibility: ${(props) =>
+      props.isDark ? 'visible' : 'hidden'};
+  }
+  .sun {
+    transform: ${(props) =>
+      !props.isDark
+        ? 'translateX(24px)'
+        : 'translateX(20px)'};
+    opacity: ${(props) => (!props.isDark ? '1' : '0')};
+    visibility: ${(props) =>
+      !props.isDark ? 'visible' : 'hidden'};
+  }
+`;
+
 const DarkModeToggle: React.FC<{}> = () => {
   const { colorMode, setColorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -54,95 +146,3 @@ const DarkModeToggle: React.FC<{}> = () => {
 };
 
 export default DarkModeToggle;
-
-const IconWrapper = styled.button<{
-  isDark: boolean;
-}>`
-  position: relative;
-  background-color: ${(props) =>
-    props.isDark ? '#000000' : '#0984e3'};
-  border: 0;
-  border-radius: 12px;
-  box-sizing: border-box;
-  height: 24px;
-  width: 48px;
-  outline: none;
-  padding: 0;
-  text-align: left;
-  transition: background 0.25s var(--ease-in-out-quad);
-
-  .u-a11y {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  &:before {
-    background: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    box-sizing: border-box;
-    content: '';
-    height: 20px;
-    left: ${(props) => (props.isDark ? '26px' : '2px')};
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: left 0.25s var(--ease-in-out-quad),
-      transform 0.25s var(--ease-in-out-quad);
-    width: 20px;
-    z-index: 2;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media screen and (prefers-reduced-motion: reduce) {
-    animation: none;
-    transition: none;
-    &:before,
-    .moon,
-    .sun {
-      animation: none;
-      transition: none;
-    }
-  }
-`;
-
-const MoonOrSun = styled.div<{ isDark: boolean }>`
-  position: relative;
-  padding: 4px 0 0 4px;
-
-  .moon,
-  .sun {
-    position: absolute;
-    top: 0;
-    height: 16px;
-    width: 16px;
-    transition: opacity 0.25s var(--ease-in-out-quad),
-      transform 0.25s var(--ease-in-out-quad),
-      visibility 0.25s var(--ease-in-out-quad);
-  }
-  .moon {
-    transform: ${(props) =>
-      props.isDark ? 'translateX(0px)' : 'translateX(8px)'};
-    opacity: ${(props) => (props.isDark ? '1' : '0')};
-    visibility: ${(props) =>
-      props.isDark ? 'visible' : 'hidden'};
-  }
-  .sun {
-    transform: ${(props) =>
-      !props.isDark
-        ? 'translateX(24px)'
-        : 'translateX(20px)'};
-    opacity: ${(props) => (!props.isDark ? '1' : '0')};
-    visibility: ${(props) =>
-      !props.isDark ? 'visible' : 'hidden'};
-  }
-`;

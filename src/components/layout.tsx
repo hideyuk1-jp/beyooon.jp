@@ -70,7 +70,7 @@ const GlobalWrapper = styled.div`
       position: relative;
       margin: 0 0 12px;
 
-      &:after {
+      &::after {
         content: '';
         position: absolute;
         top: 50%;
@@ -95,7 +95,7 @@ const GlobalWrapper = styled.div`
         margin-bottom: 14px;
         padding-bottom: 14px;
 
-        &:after {
+        &::after {
           top: auto;
           bottom: 0;
           left: 50%;
@@ -115,20 +115,26 @@ const GlobalWrapper = styled.div`
     display: inline-flex;
     position: relative;
     align-items: center;
+    justify-content: center;
+    flex-direction: row;
     cursor: pointer;
     padding: 8px 16px;
     font-weight: 400;
     white-space: nowrap;
-    border-radius: 4px;
+    border: 0;
+    border-radius: 8px;
+    color: ${(props) => props.theme.colors.background};
+    border: 1px solid ${(props) => props.theme.colors.base};
+    background: ${(props) => props.theme.colors.base};
     transition: background 0.25s var(--ease-in-out-quad),
       box-shadow 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);
 
     &:hover {
-      background: ${(props) =>
-        props.theme.colors.backgroundAccent};
-      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-      transform: scale(1.1);
+      color: ${(props) => props.theme.colors.base};
+      border: 1px solid
+        ${(props) => props.theme.colors.base};
+      background: transparent;
     }
 
     svg {
@@ -136,15 +142,21 @@ const GlobalWrapper = styled.div`
       margin-left: 4px;
     }
 
-    &.by-btn-primary {
-      color: #ffffff;
-      background: ${(props) => props.theme.colors.primary};
-    }
-
     &.by-btn-outline {
       color: ${(props) => props.theme.colors.light};
       border: 1px solid
         ${(props) => props.theme.colors.light};
+      background: transparent;
+
+      &:hover {
+        color: ${(props) => props.theme.colors.base};
+        border: 1px solid
+          ${(props) => props.theme.colors.base};
+
+        svg {
+          fill: ${(props) => props.theme.colors.base};
+        }
+      }
     }
   }
 `;

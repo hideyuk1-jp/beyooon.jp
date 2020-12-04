@@ -1,8 +1,10 @@
 ---
 title: Markdownチートシート
 date: 2015-05-28T22:40:32+09:00
+update: 2015-05-29T22:40:32+09:00
 description: 自分用のMarkdownチートシート。
 category: Dev
+tags: [Markdown]
 image: ./thumbnail.jpg
 ---
 
@@ -100,7 +102,7 @@ h5以降はスタイルを設定していないので使わない。
 
 ## コード
 
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">```css
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">```css:title=style.css
   body {
     color: red;
   }

@@ -1,23 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import moment from 'moment';
+import 'moment-timezone';
 
 import styled from '../components/styled';
-
-const Footer: React.FC<{ title: string }> = ({ title }) => (
-  <FooterTag>
-    <FooterContent className="by-container">
-      <Copyright>
-        © {new Date().getFullYear()}
-        {` `}
-        <Link to={`/`} className="by-foot-title">
-          {title}
-        </Link>
-      </Copyright>
-    </FooterContent>
-  </FooterTag>
-);
-
-export default Footer;
 
 const FooterTag = styled.footer<{}>`
   background: ${(props) => props.theme.colors.background};
@@ -40,3 +26,40 @@ const Copyright = styled.div<{}>`
     color: ${(props) => props.theme.colors.base};
   }
 `;
+
+const Footer: React.FC<{ title: string }> = ({ title }) => {
+  const { site } = useStaticQuery<GatsbyTypes.FooterQuery>(
+    graphql`
+      query Footer {
+        site {
+          buildTime
+        }
+      }
+    `,
+  );
+
+  return (
+    <FooterTag>
+      <FooterContent className="by-container">
+        <Copyright>
+          © {new Date().getFullYear()}
+          {` `}
+          <Link to={`/`} className="by-foot-title">
+            {title}
+          </Link>
+          {` `}
+          <span className="tooltip-container">
+            {`🚀`}
+            <span className="tooltip-text tooltip-right">{`Last build: ${moment(
+              site.buildTime,
+            )
+              .tz('Asia/Tokyo')
+              .format()}`}</span>
+          </span>
+        </Copyright>
+      </FooterContent>
+    </FooterTag>
+  );
+};
+
+export default Footer;

@@ -324,6 +324,67 @@ const BlogPostTemplate: React.FC<PageProps<
     data.site?.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
+  const HeadDate = () => (
+    <div className="head-date">
+      <IconWrapper>
+        <svg
+          className="date-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        </svg>
+      </IconWrapper>
+      <time
+        dateTime={moment(post?.frontmatter?.date)
+          .tz('Asia/Tokyo')
+          .format()}
+      >
+        {moment(post?.frontmatter?.date)
+          .local()
+          .format('YYYY.MM.DD')}
+      </time>
+    </div>
+  );
+
+  const HeadUpdate = () => (
+    <div className="head-date tooltip-container">
+      <IconWrapper>
+        <svg
+          className="update-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+        </svg>
+      </IconWrapper>
+      <time
+        dateTime={moment(post?.frontmatter?.update)
+          .tz('Asia/Tokyo')
+          .format()}
+      >
+        {moment(post?.frontmatter?.update)
+          .local()
+          .format('YYYY.MM.DD')}
+      </time>
+      <span className="tooltip-text tooltip-bottom">
+        {`投稿日: ${moment(post?.frontmatter?.date)
+          .local()
+          .format('YYYY.MM.DD')}`}
+        <br />
+        {`更新日: ${moment(post?.frontmatter?.update)
+          .local()
+          .format('YYYY.MM.DD')}`}
+      </span>
+    </div>
+  );
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -359,60 +420,12 @@ const BlogPostTemplate: React.FC<PageProps<
               {post?.frontmatter?.title}
             </h1>
             <PostHeadFooter>
-              <div className="head-date">
-                <IconWrapper>
-                  {post?.frontmatter?.date ===
-                  post?.frontmatter?.update ? (
-                    <svg
-                      className="date-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      width="24"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="update-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      width="24"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
-                    </svg>
-                  )}
-                </IconWrapper>
-                {post?.frontmatter?.date ===
-                post?.frontmatter?.update ? (
-                  <time
-                    dateTime={moment(
-                      post?.frontmatter?.date,
-                    )
-                      .tz('Asia/Tokyo')
-                      .format()}
-                  >
-                    {moment(post?.frontmatter?.date)
-                      .local()
-                      .format('YYYY.MM.DD')}
-                  </time>
-                ) : (
-                  <time
-                    dateTime={moment(
-                      post?.frontmatter?.update,
-                    )
-                      .tz('Asia/Tokyo')
-                      .format()}
-                  >
-                    {moment(post?.frontmatter?.update)
-                      .local()
-                      .format('YYYY.MM.DD')}
-                  </time>
-                )}
-              </div>
+              {post?.frontmatter?.date ===
+              post?.frontmatter?.update ? (
+                <HeadDate />
+              ) : (
+                <HeadUpdate />
+              )}
               <div className="head-timetoread">
                 <IconWrapper>
                   <svg

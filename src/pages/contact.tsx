@@ -83,7 +83,10 @@ const FormWrapper = styled.div`
       border-radius: 8px;
       padding: 8px 16px;
       color: ${(props) => props.theme.colors.base};
-      background: transparent;
+      background: ${(props) =>
+        props.theme.colors.backgroundAccent};
+      transition: ${(props) =>
+        props.theme.colorModeTransition};
 
       &:focus {
         outline: none;

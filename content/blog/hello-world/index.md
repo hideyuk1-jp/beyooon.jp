@@ -5,7 +5,7 @@ update: 2015-05-01T22:12:03+09:00
 description: フリーランスとして活動していくにあたり、事業用のWebサイトを作りました。
 category: News
 tags: []
-image: ./thumbnail.jpg
+image: ./beyooon.png
 ---
 
 フリーランス（個人事業主）として活動していくにあたり、屋号ドメインで事業用のWebサイトを作りました。

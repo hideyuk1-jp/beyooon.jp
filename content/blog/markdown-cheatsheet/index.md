@@ -9,22 +9,23 @@ image: ./thumbnail.jpg
 ---
 
 自分用のMarkdownチートシートです。
+アイキャッチ画像は適当。
 
 ------
 
 ## 見出し
 
 ```text
-## Heading2
-### Heading3
-#### Heading4
+## 見出し h2
+### 見出し h3
+#### 見出し h4
 ```
 
-## Heading2
+## 見出し h2
 
-### Heading3
+### 見出し h3
 
-#### Heading4
+#### 見出し h4
 
 h5以降はスタイルを設定していないので使わない。
 
@@ -33,54 +34,54 @@ h5以降はスタイルを設定していないので使わない。
 ## リスト
 
 ```text
-- Sample text
-- Sample text
-- Sample text
-  - Sample text
-  - Sample text
+- 普通のリスト
+- 普通のリスト
+- 普通のリスト
+  - 普通のリスト
+  - 普通のリスト
 ```
 
-- Sample text
-- Sample text
-- Sample text
-  - Sample text
-  - Sample text
+- 普通のリスト
+- 普通のリスト
+- 普通のリスト
+  - 普通のリスト
+  - 普通のリスト
 
 ```text
-1. Sample text
-2. Sample text
-3. Sample text
-4. Sample text
-5. Sample text
+1. 数字のリスト
+2. 数字のリスト
+3. 数字のリスト
+4. 数字のリスト
+5. 数字のリスト
 ```
 
-1. Sample text
-2. Sample text
-3. Sample text
-4. Sample text
-5. Sample text
+1. 数字のリスト
+2. 数字のリスト
+3. 数字のリスト
+4. 数字のリスト
+5. 数字のリスト
 
 ------
 
 ## インラインテキスト装飾
 
 ```text
-*イタリック*
-**太字**
+*イタリック*になる
+**太字**になる
 ~~打ち消し線~~
 インラインで`code`を挿入する
-こちらは[僕のTwitterのリンク](https://twitter.com/hideyuk1_jp)
+[Twitter](https://twitter.com/hideyuk1_jp)
 ```
 
-*イタリック*
+*イタリック*になる
 
-**太字**
+**太字**になる
 
 ~~打ち消し線~~
 
 インラインで`code`を挿入する
 
-こちらは[僕のTwitterのリンク](https://twitter.com/hideyuk1_jp)です。
+[Twitter](https://twitter.com/hideyuk1_jp)
 
 ------
 
@@ -102,17 +103,20 @@ h5以降はスタイルを設定していないので使わない。
 
 ## コード
 
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">```css:title=style.css
-  body {
-    color: red;
-  }
+<div class="gatsby-highlight" data-language="text">
+<pre class="language-text">
+<code class="language-text">
+```js:title=hoge.js
+const hoge = 'hoge';
+console.log(hoge);
 ```
-</code></pre></div>
+</code>
+</pre>
+</div>
 
-```css:title=style.css
-  body {
-    color: red;
-  }
+```js:title=hoge.js
+const hoge = 'hoge';
+console.log(hoge);
 ```
 
 ------

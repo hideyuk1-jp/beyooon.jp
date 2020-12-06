@@ -7,6 +7,7 @@ import 'moment-timezone';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import ShareButtons from '../components/shareButtons';
 
 import styled from '../components/styled';
 import SyntaxHighlightStyle from '../styles/syntaxHighlight';
@@ -48,12 +49,12 @@ const PostContent = styled.section`
   h3,
   h4,
   h5 {
+    position: relative;
     margin-top: 48px;
     margin-bottom: 24px;
   }
 
   h2 {
-    position: relative;
     padding-bottom: 16px;
     z-index: 0;
 
@@ -84,6 +85,28 @@ const PostContent = styled.section`
       z-index: -2;
       width: 100%;
       background: ${(props) => props.theme.colors.border};
+    }
+  }
+
+  h3 {
+    padding: 2px 8px 2px 14px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.colors.primary} 0%,
+        ${(props) => props.theme.colors.secondary} 50%,
+        ${(props) => props.theme.colors.tertiary} 100%
+      );
+      transition: ${(props) =>
+        props.theme.colorModeTransition};
     }
   }
 
@@ -167,6 +190,8 @@ const PostContent = styled.section`
     padding: 8px 16px;
     border-left: 4px solid
       ${(props) => props.theme.colors.border};
+    transition: border 0.25s var(--ease-in-out-quad);
+
     p {
       white-space: pre-wrap;
       margin: 4px 0;
@@ -462,33 +487,42 @@ const BlogPostTemplate: React.FC<PageProps<
           }}
           itemProp="articleBody"
         />
+        <div className="by-container-small flex-right">
+          <ShareButtons
+            title={`${post?.frontmatter?.title} | ${siteTitle}`}
+            postUrl={`${data.site?.siteMetadata?.siteUrl}${post?.fields?.slug}`}
+          />
+        </div>
+        <nav className="blog-post-nav by-container-small">
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous?.fields?.slug && (
+                <Link
+                  to={previous?.fields?.slug}
+                  rel="prev"
+                >
+                  ← {previous?.frontmatter?.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next?.fields?.slug && (
+                <Link to={next?.fields?.slug} rel="next">
+                  {next?.frontmatter?.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
       </PostWrapper>
-      <nav className="blog-post-nav by-container">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous?.fields?.slug && (
-              <Link to={previous?.fields?.slug} rel="prev">
-                ← {previous?.frontmatter?.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next?.fields?.slug && (
-              <Link to={next?.fields?.slug} rel="next">
-                {next?.frontmatter?.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   );
 };
@@ -504,6 +538,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -511,6 +546,9 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       timeToRead
+      fields {
+        slug
+      }
       frontmatter {
         title
         date

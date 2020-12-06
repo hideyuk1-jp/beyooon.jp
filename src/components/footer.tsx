@@ -9,18 +9,19 @@ const FooterTag = styled.footer<{}>`
   background: ${(props) => props.theme.colors.background};
   border-top: 1px solid
     ${(props) => props.theme.colors.border};
-
+  padding: 0 ${(props) => props.theme.sideSpace.base};
   color: ${(props) => props.theme.colors.base};
   transition: ${(props) => props.theme.colorModeTransition};
 `;
 
 const FooterContent = styled.div<{}>`
+  display: flex;
+  justify-content: space-between;
   padding: 40px 0;
 `;
 
 const Copyright = styled.div<{}>`
-  padding: 0 ${(props) => props.theme.sideSpace.base};
-  text-align: center;
+  display: inline-block;
 
   a.by-foot-title {
     color: ${(props) => props.theme.colors.base};
@@ -50,7 +51,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
           {` `}
           <span className="tooltip-container">
             {`🚀`}
-            <span className="tooltip-text tooltip-right">{`Last build: ${moment(
+            <span className="tooltip-text tooltip-top">{`Last build: ${moment(
               site.buildTime,
             )
               .tz('Asia/Tokyo')

@@ -21,7 +21,10 @@ exports.createPages = async ({
       {
         allMarkdownRemark(
           filter: { fields: { draft: { eq: false } } }
-          sort: { fields: [frontmatter___date], order: ASC }
+          sort: {
+            fields: [frontmatter___update]
+            order: ASC
+          }
         ) {
           nodes {
             id

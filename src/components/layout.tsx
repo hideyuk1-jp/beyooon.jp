@@ -67,6 +67,11 @@ const GlobalWrapper = styled.div`
       props.theme.sizes.maxWidthSmall};
     width: 100%;
   }
+  .flex-right {
+    display: flex;
+    justify-content: center;
+  }
+
   .by-section-head {
     margin-bottom: 24px;
 

@@ -205,6 +205,16 @@ const ContactIndex: React.FC<PageProps<
     ),
   });
 
+  const encode: (data: FormValues) => string = (data) =>
+    Object.keys(data)
+      .map(
+        (key) =>
+          encodeURIComponent(key) +
+          '=' +
+          encodeURIComponent(data[key]),
+      )
+      .join('&');
+
   const handleSubmit: (
     values: FormValues,
     actions: FormikHelpers<FormValues>,
@@ -219,14 +229,16 @@ const ContactIndex: React.FC<PageProps<
           'Content-Type':
             'application/x-www-form-urlencoded',
         },
-        data: values,
+        data: encode(values),
         url: '/',
       })
         .then((res) => {
-          setFormState(
-            res.status === 200 ? 'success' : 'fail',
-          );
-          if (formState === 'success') actions.resetForm();
+          if (res.status === 200) {
+            setFormState('success');
+            actions.resetForm();
+          } else {
+            setFormState('fail');
+          }
           actions.setSubmitting(false);
           setTimeout(() => setFormState(''), 5000);
         })

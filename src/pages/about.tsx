@@ -189,21 +189,21 @@ const AboutIndex: React.FC<PageProps<
             <h3>{`資格`}</h3>
             <ul>
               <li>{`AWS認定SysOpsアドミニストレーター -
-                アソシエイト（2020.01）`}</li>
-              <li>{`AWS認定デベロッパー - アソシエイト（2019.12）`}</li>
-              <li>{`AWS認定ソリューションアーキテクト - アソシエイト（2019.10）`}</li>
-              <li>{`Python3エンジニア認定データ分析試験（2019.09）`}</li>
-              <li>{`AWS認定クラウドプラクティショナー（2019.07）`}</li>
-              <li>{`Python3エンジニア認定基礎試験（2019.03）`}</li>
-              <li>{`日商簿記2級（2019.03）`}</li>
-              <li>{`Excel VBA Standard（2019.01）`}</li>
-              <li>{`ほめ達検定3級、2級（2018.12）`}</li>
-              <li>{`Microsoft Office Specialist 2013 Master（2017.12）`}</li>
-              <li>{`応用情報技術者（2014.12）`}</li>
+                アソシエイト`}</li>
+              <li>{`AWS認定デベロッパー - アソシエイト`}</li>
+              <li>{`AWS認定ソリューションアーキテクト - アソシエイト`}</li>
+              <li>{`Python3エンジニア認定データ分析試験`}</li>
+              <li>{`AWS認定クラウドプラクティショナー`}</li>
+              <li>{`Python3エンジニア認定基礎試験`}</li>
+              <li>{`日商簿記2級`}</li>
+              <li>{`Excel VBA Standard`}</li>
+              <li>{`ほめ達検定3級、2級`}</li>
+              <li>{`Microsoft Office Specialist 2013 Master`}</li>
+              <li>{`応用情報技術者`}</li>
             </ul>
           </div>
           <div className="by-container-small">
-            <h3>{`スキルスタック`}</h3>
+            <h3>{`スキル`}</h3>
             <ul>
               <li>{`PHP / Laravel`}</li>
               <li>{`React / Next.js / Gatsby`}</li>

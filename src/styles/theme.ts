@@ -9,7 +9,13 @@ export const baseTheme = {
     tertiary: '#FEAC5E',
     background: '#fff',
     backgroundAccent: '#e2ebf3',
-    backgroundHeader: 'rgba(255, 255, 255, 0.8)',
+
+    header: '#fff',
+    headerLight: '#92a3ab',
+    backgroundHeader: '#000',
+    backgroundHeaderNavbar: 'rgba(0, 0, 0, 0.8)',
+    borderHeader: '#353946',
+
     backgroundPostCard: 'transparent',
     link: '#0070f3',
     border: '#b6d2e2',
@@ -38,7 +44,6 @@ export const darkTheme = {
     light: '#92a3ab',
     background: '#000',
     backgroundAccent: '#1e1f26',
-    backgroundHeader: 'rgba(0, 0, 0, 0.8)',
     backgroundPostCard: '#1e1f26',
     border: '#353946',
   },

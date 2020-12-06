@@ -228,12 +228,12 @@ const PostContent = styled.section`
     td {
     }
 
-    tbody tr:last-child {
-      td:first-child {
+    tbody tr:last-of-type {
+      td:first-of-type {
         border-radius: 0px 0px 0px 8px;
       }
 
-      td:last-child {
+      td:last-of-type {
         border-radius: 0px 0px 8px 0px;
       }
     }

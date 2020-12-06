@@ -51,9 +51,9 @@ const ShareButtons: React.FC<{
   postUrl: string;
 }> = ({ title, postUrl }) => {
   const data = useStaticQuery<
-    GatsbyTypes.SnsShareQuery
+    GatsbyTypes.ShareButtonsQuery
   >(graphql`
-    query SnsShare {
+    query ShareButtons {
       site {
         siteMetadata {
           social {

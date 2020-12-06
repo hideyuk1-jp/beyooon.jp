@@ -56,6 +56,9 @@ const GlobalWrapper = styled.div`
   .by-spacer-large {
     padding: 128px 0;
   }
+  .by-spacer-small {
+    padding: 32px 0;
+  }
   .by-container {
     margin: 0 auto;
     max-width: ${(props) => props.theme.sizes.maxWidth};
@@ -81,18 +84,33 @@ const GlobalWrapper = styled.div`
     h2 {
       position: relative;
       margin: 0 0 12px;
+      padding-bottom: 16px;
 
       &::after {
         content: '';
         position: absolute;
-        top: 50%;
-        margin-left: 16px;
-        transform: translateY(-2px);
-        width: 80px;
-        height: 4px;
         border-radius: 2px;
         background: ${(props) =>
           props.theme.colors.gradient};
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+      }
+
+      @media screen and (min-width: ${(props) =>
+          props.theme.responsive.medium}) {
+        padding-bottom: 0px;
+
+        &::after {
+          top: 50%;
+          bottom: unset;
+          left: auto;
+          margin-left: 16px;
+          transform: translateY(-2px);
+          width: 80px;
+          height: 4px;
+        }
       }
     }
 

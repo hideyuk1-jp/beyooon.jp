@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://beyooon.jp`,
     social: {
       twitter: `hideyuk1_jp`,
+      github: `hideyuk1-jp`,
     },
   },
   plugins: [
@@ -75,7 +76,39 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            query: `
+                 {
+                   allMarkdownRemark(
+                     filter: { fields: { draft: { eq: false } } }
+                     sort: {order: DESC, fields: [frontmatter___update]},
+                     limit: 1000,
+                     ) {
+                     edges {
+                       node {
+                         excerpt
+                         html
+                         fields {
+                           slug
+                         }
+                         frontmatter {
+                           title
+                           date
+                         }
+                       }
+                     }
+                   }
+                 }
+                 `,
+            output: `rss.xml`,
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

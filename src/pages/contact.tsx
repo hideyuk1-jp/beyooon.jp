@@ -222,32 +222,29 @@ const ContactIndex: React.FC<PageProps<
     actions.setSubmitting(true);
     setFormState('loading');
 
-    setTimeout(() => {
-      axios({
-        method: 'POST',
-        headers: {
-          'Content-Type':
-            'application/x-www-form-urlencoded',
-        },
-        data: encode(values),
-        url: '/',
-      })
-        .then((res) => {
-          if (res.status === 200) {
-            setFormState('success');
-            actions.resetForm();
-          } else {
-            setFormState('fail');
-          }
-          actions.setSubmitting(false);
-          setTimeout(() => setFormState(''), 5000);
-        })
-        .catch((err) => {
+    axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: encode(values),
+      url: '/',
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setFormState('success');
+          actions.resetForm();
+        } else {
           setFormState('fail');
-          actions.setSubmitting(false);
-          setTimeout(() => setFormState(''), 5000);
-        });
-    }, 3000);
+        }
+        actions.setSubmitting(false);
+        setTimeout(() => setFormState(''), 5000);
+      })
+      .catch((err) => {
+        setFormState('fail');
+        actions.setSubmitting(false);
+        setTimeout(() => setFormState(''), 5000);
+      });
   };
 
   const renderForm: React.FC<FormikProps<FormValues>> = ({

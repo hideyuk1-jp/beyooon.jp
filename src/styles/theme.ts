@@ -8,11 +8,11 @@ export const baseTheme = {
     secondary: '#C779D0',
     tertiary: '#FEAC5E',
     background: '#fff',
-    backgroundAccent: '#f8fafc',
+    backgroundAccent: '#e2ebf3',
     backgroundHeader: 'rgba(255, 255, 255, 0.8)',
     backgroundPostCard: 'transparent',
     link: '#0070f3',
-    border: '#d3e4ee',
+    border: '#b6d2e2',
     gradient:
       'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
   },

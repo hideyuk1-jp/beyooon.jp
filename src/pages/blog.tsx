@@ -70,7 +70,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fields: { draft: { eq: false } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___update], order: DESC }
     ) {
       nodes {
         excerpt

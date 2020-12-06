@@ -7,6 +7,7 @@ import 'moment-timezone';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import ShareButtons from '../components/shareButtons';
 
 import styled from '../components/styled';
 import SyntaxHighlightStyle from '../styles/syntaxHighlight';
@@ -48,12 +49,12 @@ const PostContent = styled.section`
   h3,
   h4,
   h5 {
+    position: relative;
     margin-top: 48px;
     margin-bottom: 24px;
   }
 
   h2 {
-    position: relative;
     padding-bottom: 16px;
     z-index: 0;
 
@@ -84,6 +85,28 @@ const PostContent = styled.section`
       z-index: -2;
       width: 100%;
       background: ${(props) => props.theme.colors.border};
+    }
+  }
+
+  h3 {
+    padding: 2px 8px 2px 14px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.colors.primary} 0%,
+        ${(props) => props.theme.colors.secondary} 50%,
+        ${(props) => props.theme.colors.tertiary} 100%
+      );
+      transition: ${(props) =>
+        props.theme.colorModeTransition};
     }
   }
 
@@ -167,6 +190,8 @@ const PostContent = styled.section`
     padding: 8px 16px;
     border-left: 4px solid
       ${(props) => props.theme.colors.border};
+    transition: border 0.25s var(--ease-in-out-quad);
+
     p {
       white-space: pre-wrap;
       margin: 4px 0;
@@ -203,12 +228,12 @@ const PostContent = styled.section`
     td {
     }
 
-    tbody tr:last-child {
-      td:first-child {
+    tbody tr:last-of-type {
+      td:first-of-type {
         border-radius: 0px 0px 0px 8px;
       }
 
-      td:last-child {
+      td:last-of-type {
         border-radius: 0px 0px 8px 0px;
       }
     }
@@ -324,6 +349,67 @@ const BlogPostTemplate: React.FC<PageProps<
     data.site?.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
+  const HeadDate = () => (
+    <div className="head-date">
+      <IconWrapper>
+        <svg
+          className="date-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        </svg>
+      </IconWrapper>
+      <time
+        dateTime={moment(post?.frontmatter?.date)
+          .tz('Asia/Tokyo')
+          .format()}
+      >
+        {moment(post?.frontmatter?.date)
+          .local()
+          .format('YYYY.MM.DD')}
+      </time>
+    </div>
+  );
+
+  const HeadUpdate = () => (
+    <div className="head-date tooltip-container">
+      <IconWrapper>
+        <svg
+          className="update-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
+        </svg>
+      </IconWrapper>
+      <time
+        dateTime={moment(post?.frontmatter?.update)
+          .tz('Asia/Tokyo')
+          .format()}
+      >
+        {moment(post?.frontmatter?.update)
+          .local()
+          .format('YYYY.MM.DD')}
+      </time>
+      <span className="tooltip-text tooltip-bottom">
+        {`投稿日: ${moment(post?.frontmatter?.date)
+          .local()
+          .format('YYYY.MM.DD')}`}
+        <br />
+        {`更新日: ${moment(post?.frontmatter?.update)
+          .local()
+          .format('YYYY.MM.DD')}`}
+      </span>
+    </div>
+  );
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -359,60 +445,12 @@ const BlogPostTemplate: React.FC<PageProps<
               {post?.frontmatter?.title}
             </h1>
             <PostHeadFooter>
-              <div className="head-date">
-                <IconWrapper>
-                  {post?.frontmatter?.date ===
-                  post?.frontmatter?.update ? (
-                    <svg
-                      className="date-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      width="24"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="update-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      width="24"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
-                    </svg>
-                  )}
-                </IconWrapper>
-                {post?.frontmatter?.date ===
-                post?.frontmatter?.update ? (
-                  <time
-                    dateTime={moment(
-                      post?.frontmatter?.date,
-                    )
-                      .tz('Asia/Tokyo')
-                      .format()}
-                  >
-                    {moment(post?.frontmatter?.date)
-                      .local()
-                      .format('YYYY.MM.DD')}
-                  </time>
-                ) : (
-                  <time
-                    dateTime={moment(
-                      post?.frontmatter?.update,
-                    )
-                      .tz('Asia/Tokyo')
-                      .format()}
-                  >
-                    {moment(post?.frontmatter?.update)
-                      .local()
-                      .format('YYYY.MM.DD')}
-                  </time>
-                )}
-              </div>
+              {post?.frontmatter?.date ===
+              post?.frontmatter?.update ? (
+                <HeadDate />
+              ) : (
+                <HeadUpdate />
+              )}
               <div className="head-timetoread">
                 <IconWrapper>
                   <svg
@@ -449,33 +487,42 @@ const BlogPostTemplate: React.FC<PageProps<
           }}
           itemProp="articleBody"
         />
+        <div className="by-container-small flex-right">
+          <ShareButtons
+            title={`${post?.frontmatter?.title} | ${siteTitle}`}
+            postUrl={`${data.site?.siteMetadata?.siteUrl}${post?.fields?.slug}`}
+          />
+        </div>
+        <nav className="blog-post-nav by-container-small">
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous?.fields?.slug && (
+                <Link
+                  to={previous?.fields?.slug}
+                  rel="prev"
+                >
+                  ← {previous?.frontmatter?.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next?.fields?.slug && (
+                <Link to={next?.fields?.slug} rel="next">
+                  {next?.frontmatter?.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
       </PostWrapper>
-      <nav className="blog-post-nav by-container">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous?.fields?.slug && (
-              <Link to={previous?.fields?.slug} rel="prev">
-                ← {previous?.frontmatter?.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next?.fields?.slug && (
-              <Link to={next?.fields?.slug} rel="next">
-                {next?.frontmatter?.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   );
 };
@@ -491,6 +538,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -498,6 +546,9 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       timeToRead
+      fields {
+        slug
+      }
       frontmatter {
         title
         date

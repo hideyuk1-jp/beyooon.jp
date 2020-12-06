@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `beyooon`,
-    longTitle: `beyooon | Webサイト制作・アプリ開発`,
+    longTitle: `beyooon | Web制作・アプリ開発`,
     author: {
       name: `Hideyuki Hashimoto`,
       summary: `Web Developer`,
@@ -79,7 +79,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `beyooon | Webサイト制作/アプリ開発`,
+        name: `beyooon | Web制作/アプリ開発`,
         short_name: `beyooon`,
         start_url: `/`,
         // TODO: 背景色やテーマカラー、アイコンは変更する

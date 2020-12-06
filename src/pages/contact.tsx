@@ -217,14 +217,21 @@ const ContactIndex: React.FC<PageProps<
 
   const validationScheme = Yup.object().shape({
     email: Yup.string()
-      .email('メールアドレスの形式に誤りがあります')
-      .required('メールアドレスは必須です'),
-    name: Yup.string().required('お名前は必須です'),
+      .email('おや？メールアドレスの形式に誤りがありますよ')
+      .required('おっと！メールアドレスは必須です'),
+    name: Yup.string().required('おっと！お名前は必須です'),
     company: Yup.string(),
     category: Yup.string()
-      .oneOf(CONTACT_CATEGORIES, '選択してください')
-      .required('選択してください'),
-    message: Yup.string().required('内容は必須です'),
+      .oneOf(
+        CONTACT_CATEGORIES,
+        'おっと！お問い合わせの種類は必ず選択してください',
+      )
+      .required(
+        'おっと！お問い合わせの種類は必ず選択してください',
+      ),
+    message: Yup.string().required(
+      'おっと！お問い合わせの内容は必須です',
+    ),
   });
 
   const handleSubmit: (

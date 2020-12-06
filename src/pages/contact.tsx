@@ -270,7 +270,12 @@ const ContactIndex: React.FC<PageProps<
   const renderForm: React.FC<FormikProps<FormValues>> = ({
     isSubmitting,
   }) => (
-    <Form noValidate>
+    <Form
+      noValidate
+      name="contact"
+      method="POST"
+      data-netlify="true"
+    >
       <Field type="hidden" name="bot-field" />
       <Field
         type="hidden"

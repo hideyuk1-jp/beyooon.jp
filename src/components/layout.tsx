@@ -127,7 +127,8 @@ const GlobalWrapper = styled.div`
     justify-content: center;
     flex-direction: row;
     cursor: pointer;
-    padding: 8px 16px;
+    line-height: 1;
+    padding: 10px 16px;
     font-weight: 400;
     white-space: nowrap;
     border: 0;

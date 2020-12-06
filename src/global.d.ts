@@ -4,3 +4,7 @@ declare module '*.svg' {
   const content: any;
   export default content;
 }
+
+interface ObjectConstructor {
+  keys<T>(obj: T): (keyof T)[];
+}

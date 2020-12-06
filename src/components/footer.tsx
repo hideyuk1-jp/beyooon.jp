@@ -52,7 +52,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
           <span className="tooltip-container">
             {`🚀`}
             <span className="tooltip-text tooltip-top">{`Last build: ${moment(
-              site.buildTime,
+              site?.buildTime,
             )
               .tz('Asia/Tokyo')
               .format()}`}</span>

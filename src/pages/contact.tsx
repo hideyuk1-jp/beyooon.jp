@@ -426,9 +426,10 @@ const ContactIndex: React.FC<PageProps<
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            render={renderForm}
             validationSchema={validationScheme}
-          />
+          >
+            {renderForm}
+          </Formik>
         </FormWrapper>
       </section>
     </Layout>

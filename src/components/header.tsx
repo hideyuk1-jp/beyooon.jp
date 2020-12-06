@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
-import { useTheme } from 'emotion-theming';
 import { throttle } from 'lodash';
 
 import styled from '../components/styled';
 import DarkModeToggle from '../components/darkModeToggle';
 import Hamburger from '../components/hamburger';
-import { Theme } from '../types';
 
 const MENU_ITEMS = [
   { title: 'ブログ', name: 'Blog' },
@@ -17,16 +15,16 @@ const MENU_ITEMS = [
   { title: 'お問い合わせ', name: 'Contact' },
 ];
 
-const HeaderTag = styled.header`
+const HeaderTag = styled.header<{ isScrolled: boolean }>`
   position: fixed;
   top: 0;
   z-index: 1000;
   width: 100%;
   height: 64px;
   background: ${(props) =>
-    props.theme.colors.backgroundHeader};
-  border-bottom: 1px solid
-    ${(props) => props.theme.colors.border};
+    props.isScrolled
+      ? props.theme.colors.backgroundHeaderNavbar
+      : props.theme.colors.backgroundHeader};
   backdrop-filter: saturate(180%) blur(5px);
   overflow: hidden;
   transform: translateY(0);
@@ -36,6 +34,10 @@ const HeaderTag = styled.header`
 
   &.hidden {
     transform: translateY(-200%);
+  }
+
+  svg.logo {
+    fill: ${(props) => props.theme.colors.header};
   }
 
   display: none;
@@ -73,25 +75,30 @@ const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   height: 64px;
+
   svg {
     transition: ${(props) =>
       props.theme.colorModeTransition};
   }
+
   .navbar-item {
     padding: 10px 15px;
   }
+
   .main-heading {
     margin-left: -15px;
   }
+
   .logo-link {
     display: block;
   }
+
   .logo {
     display: block;
   }
   .menu-link {
     display: block;
-    color: ${(props) => props.theme.colors.base};
+    color: ${(props) => props.theme.colors.header};
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.25s ease;
@@ -127,7 +134,7 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   padding: 0 8vw;
   max-height: calc(100vh - 64px);
   border-top: 1px solid
-    ${(props) => props.theme.colors.border};
+    ${(props) => props.theme.colors.borderHeader};
   overflow-y: scroll;
   transition: border 0.25s var(--ease-in-out-quad);
 
@@ -165,10 +172,10 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
 
     a.menu-link {
       display: block;
-      padding: 10px 0;
-      color: ${(props) => props.theme.colors.base};
+      padding: 16px 0;
+      color: ${(props) => props.theme.colors.header};
       border-bottom: 1px solid
-        ${(props) => props.theme.colors.border};
+        ${(props) => props.theme.colors.borderHeader};
       transition: ${(props) =>
           props.theme.colorModeTransition},
         border 0.25s var(--ease-in-out-quad);
@@ -179,7 +186,6 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
 const Header: React.FC<{
   location: WindowLocation<unknown>;
 }> = ({ location }) => {
-  const theme: Theme = useTheme();
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
@@ -226,7 +232,6 @@ const Header: React.FC<{
         width="86px"
         height="25px"
         className="logo"
-        fill={theme.colors.base}
       >
         <path d="M73.655,5.878h3.593V8.1a4.1,4.1,0,0,1,4-2.514C84.232,5.589,86,7.583,86,11.34v8.18H82.407V11.543c0-1.908-.725-2.89-2.406-2.89-1.71,0-2.753,1.387-2.753,3.93V19.52H73.655Z" />
         <path d="M71.656,12.729a6.765,6.765,0,0,1-6.173,7A10.637,10.637,0,0,0,68,12.817a.975.975,0,0,0,0-.108,10.794,10.794,0,0,0-2.491-7.04A6.739,6.739,0,0,1,71.656,12.729Z" />
@@ -247,7 +252,6 @@ const Header: React.FC<{
         width="23px"
         height="25px"
         className="logo"
-        fill={theme.colors.base}
       >
         <path d="M23,12.574C23,19.307,18.587,24.28,12.2,25A19.053,19.053,0,0,0,16.61,12.731a1.788,1.788,0,0,0,.007-.193A19.337,19.337,0,0,0,12.26.041C18.644.725,23,5.719,23,12.574Z" />
         <path d="M10.8,12.533C10.8,19.266,6.383,24.24,0,24.959A19.045,19.045,0,0,0,4.406,12.69a1.769,1.769,0,0,0,.007-.193A19.337,19.337,0,0,0,.056,0C6.44.684,10.8,5.679,10.8,12.533Z" />
@@ -289,7 +293,10 @@ const Header: React.FC<{
 
   return (
     <>
-      <HeaderTag className={hidden ? 'hidden' : ''}>
+      <HeaderTag
+        className={hidden ? 'hidden' : ''}
+        isScrolled={lastScrollTop > headerHeight * 2}
+      >
         <Navbar>
           <NavbarLeft>
             {isRootPath ? (

@@ -6,35 +6,34 @@ import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostList from '../components/postList';
+import WavesDivider from '../components/wavesDivider';
 
 const Hero = styled.header`
   text-align: center;
+  padding: 0px ${(props) => props.theme.sideSpace.base};
 
   h2 {
     position: relative;
     display: block;
     font-size: 4rem;
     font-weight: 700;
-    padding-bottom: 26px;
     line-height: 1.15;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-40px);
-      width: 80px;
-      height: 4px;
-      border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
-    }
   }
 
   p {
     padding-top: 24px;
-    color: ${(props) => props.theme.colors.light};
+    color: ${(props) => props.theme.colors.headerLight};
   }
+`;
+
+const TopHeaderWrapper = styled.div`
+  position: relative;
+  background: ${(props) =>
+    props.theme.colors.backgroundHeader};
+  color: ${(props) => props.theme.colors.header};
+  padding: 64px 0px 60px;
+  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
+  transition: ${(props) => props.theme.colorModeTransition};
 `;
 
 const Index: React.FC<PageProps<
@@ -47,15 +46,20 @@ const Index: React.FC<PageProps<
   return (
     <Layout location={location} title={siteTitle}>
       <SEO />
-      <Hero className="by-hero by-spacer">
-        <div className="by-container">
-          <h2>{`Develop & Design`}</h2>
-          <p>
-            {`Web制作 /
+      <TopHeaderWrapper>
+        <Hero className="by-hero">
+          <div className="by-spacer">
+            <div className="by-container">
+              <h2>{`Develop & Design`}</h2>
+              <p>
+                {`Web制作 /
             アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`}
-          </p>
-        </div>
-      </Hero>
+              </p>
+            </div>
+          </div>
+        </Hero>
+        <WavesDivider />
+      </TopHeaderWrapper>
       <section className="by-spacer">
         <header className="by-section-head by-container">
           <h2>{`ブログ`}</h2>

@@ -8,7 +8,7 @@ const IconWrapper = styled.button`
   background: none;
   border: 0;
   padding: 0;
-  color: ${(props) => props.theme.colors.base};
+  color: ${(props) => props.theme.colors.header};
   outline: none;
   width: 20px;
   height: 17px;
@@ -19,7 +19,9 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
   display: block;
   transform: translateY(-50%);
   background: ${(props) =>
-    props.isOpen ? 'transparent' : props.theme.colors.base};
+    props.isOpen
+      ? 'transparent'
+      : props.theme.colors.header};
   transition: background 0.25s var(--ease-in-out-quad);
 
   &,
@@ -35,7 +37,7 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
   &::after {
     content: '';
     display: block;
-    background: ${(props) => props.theme.colors.base};
+    background: ${(props) => props.theme.colors.header};
     transition: top 0.25s var(--ease-in-out-quad),
       background 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);

@@ -1,7 +1,7 @@
 ---
 title: Markdownチートシート
-date: 2015-05-28T22:40:32+09:00
-update: 2015-05-29T22:40:32+09:00
+date: 2020-12-06T17:40:32+09:00
+update: 2020-12-06T17:40:32+09:00
 description: 自分用のMarkdownチートシート。
 category: Dev
 tags: [Markdown]

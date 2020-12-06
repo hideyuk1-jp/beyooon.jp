@@ -2,40 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
-import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostList from '../components/postList';
-
-const Hero = styled.header`
-  text-align: center;
-
-  h2 {
-    position: relative;
-    display: block;
-    font-size: 3.2rem;
-    font-weight: 700;
-    padding-bottom: 26px;
-    line-height: 1.15;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-40px);
-      width: 80px;
-      height: 4px;
-      border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
-    }
-  }
-
-  p {
-    padding-top: 24px;
-    color: ${(props) => props.theme.colors.light};
-  }
-`;
+import PageHero from '../components/pageHero';
 
 const BlogIndex: React.FC<PageProps<
   GatsbyTypes.BlogIndexQuery
@@ -47,11 +17,7 @@ const BlogIndex: React.FC<PageProps<
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={`Blog`} />
-      <Hero className="by-hero by-spacer">
-        <div className="by-container">
-          <h2>{`beyooon Blog`}</h2>
-        </div>
-      </Hero>
+      <PageHero title="beyooon Blog" />
       <section className="by-spacer">
         <PostList posts={posts} />
       </section>

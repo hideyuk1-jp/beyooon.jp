@@ -324,6 +324,7 @@ const Header: React.FC<{
             ? 'hidden'
             : ''
         }`}
+        isScrolled={lastScrollTop > headerHeight * 2}
       >
         <Navbar>
           <NavbarLeft>

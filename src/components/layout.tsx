@@ -53,6 +53,9 @@ const GlobalWrapper = styled.div`
   .by-spacer {
     padding: 64px 0;
   }
+  .by-spacer-large {
+    padding: 128px 0;
+  }
   .by-container {
     margin: 0 auto;
     max-width: ${(props) => props.theme.sizes.maxWidth};

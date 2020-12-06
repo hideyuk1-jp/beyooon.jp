@@ -17,7 +17,20 @@ const Hero = styled.header`
     display: block;
     font-size: 4rem;
     font-weight: 700;
+    padding-bottom: 26px;
     line-height: 1.15;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-40px);
+      width: 80px;
+      height: 4px;
+      border-radius: 2px;
+      background: ${(props) => props.theme.colors.gradient};
+    }
   }
 
   p {
@@ -48,7 +61,7 @@ const Index: React.FC<PageProps<
       <SEO />
       <TopHeaderWrapper>
         <Hero className="by-hero">
-          <div className="by-spacer">
+          <div className="by-spacer-large">
             <div className="by-container">
               <h2>{`Develop & Design`}</h2>
               <p>

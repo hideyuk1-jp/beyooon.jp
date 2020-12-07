@@ -7,8 +7,8 @@ export const baseTheme = {
     primary: '#4BC0C8',
     secondary: '#C779D0',
     tertiary: '#FEAC5E',
-    background: '#fff',
-    backgroundAccent: '#e2ebf3',
+    background: '#fafafa',
+    backgroundAccent: '#fff',
 
     header: '#fff',
     headerLight: '#92a3ab',
@@ -16,7 +16,7 @@ export const baseTheme = {
     backgroundHeaderNavbar: 'rgba(0, 0, 0, 0.8)',
     borderHeader: '#353946',
 
-    backgroundPostCard: 'transparent',
+    backgroundPostCard: '#fff',
     link: '#0070f3',
     border: '#b6d2e2',
     gradient:
@@ -42,9 +42,9 @@ export const darkTheme = {
   colors: {
     base: '#fff',
     light: '#92a3ab',
-    background: '#000',
-    backgroundAccent: '#1e1f26',
-    backgroundPostCard: '#1e1f26',
+    background: '#1e1f26',
+    backgroundAccent: '#000',
+    backgroundPostCard: '#000',
     border: '#353946',
   },
 };

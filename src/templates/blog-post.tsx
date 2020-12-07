@@ -37,6 +37,7 @@ const PostWrapper = styled.article`
     .head-image {
       border-radius: 8px;
       max-height: 480px;
+      box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
     }
   }
 `;

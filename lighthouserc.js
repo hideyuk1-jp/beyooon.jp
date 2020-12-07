@@ -2,8 +2,12 @@ module.exports = {
   ci: {
     collect: {
       numberOfRuns: 3,
-      startServerCommand: 'npm run start',
-      url: ['http://localhost:8000/'],
+      staticDistDir: './public',
+      isSinglePageApplication: true,
+      url: [
+        'http://localhost/',
+        'http://localhost/blog/hello-world/',
+      ],
     },
     upload: {
       target: 'temporary-public-storage',

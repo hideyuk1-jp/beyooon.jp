@@ -1,24 +1,26 @@
-name: CI
-on: [push]
+name: lighthouse audit
+
+on:
+  pull_request:
+    branches:
+      - master
+
 jobs:
-  lhci:
-    name: Lighthouse
+  audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - name: npm install, build
-        run: |
-          npm install
-          npm run build
-      - name: run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.6.x
-          lhci autorun
+          ref: ${{github.event.pull_request.head.sha}}
+      - uses: actions/setup-node@v1
+
+      - name: npm install
+        run: npm install && npm install -g @lhci/cli
+
+      - name: build
+        run: npm run build
+
+      - name: Lighthouse audit CI
+        run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

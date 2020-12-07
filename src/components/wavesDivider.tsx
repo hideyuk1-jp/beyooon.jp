@@ -1,5 +1,5 @@
 /*
-2020 Thanks for CMDW
+2020 Thanks to CMDW
 Released under the MIT license
 https://codepen.io/cmdw/pen/vQqzyB
 */

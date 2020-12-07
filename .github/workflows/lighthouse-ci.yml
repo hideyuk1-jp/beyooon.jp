@@ -26,7 +26,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Set COMMIT_MESSAGE
-        run: echo ::set-env name=COMMIT_MESSAGE::$(echo "${{ github.event.head_commit.message }}" | tr '\n' ' ')
+        run: echo "COMMIT_MESSAGE="$(echo "${{ github.event.head_commit.message }}" | tr '\n' ' ') >> $GITHUB_ENV
 
       - name: Slack Notification on SUCCESS
         if: success()

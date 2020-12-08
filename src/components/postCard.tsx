@@ -9,10 +9,6 @@ const PostCardWrapper = styled.article`
   padding-top: 16px;
 
   .postcard-link {
-    .postcard-image {
-      transition: transform 0.25s var(--ease-in-out-quad);
-    }
-
     &:hover .postcard-image {
       transform: scale(1.1);
     }
@@ -33,13 +29,17 @@ const PostCardContent = styled.div`
 
 const PostCardImage = styled.div`
   position: relative;
-  max-height: 200px;
   border-radius: 8px;
   margin-top: -24px;
   overflow: hidden;
   box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
     0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.25s var(--ease-in-out-quad);
+
+  .postcard-image,
+  .postcard-image img {
+    max-height: 200px;
+    transition: transform 0.25s var(--ease-in-out-quad);
+  }
 `;
 
 const PostCardCategory = styled.div`

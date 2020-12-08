@@ -188,14 +188,14 @@ const ContactIndex: React.FC<PageProps<
 
   const validationScheme = Yup.object().shape({
     email: Yup.string()
-      .email('おや？メールアドレスの形式に誤りがありますよ')
+      .email('おや？メールアドレスの形式に誤りがあります')
       .required('おっと！メールアドレスは必須です'),
     name: Yup.string().required('おっと！お名前は必須です'),
     company: Yup.string(),
     category: Yup.string()
       .oneOf(
         CONTACT_CATEGORIES,
-        'おっと！お問い合わせの種類は必ず選択してください',
+        'おや？お問い合わせの種類の形式に誤りがあります',
       )
       .required(
         'おっと！お問い合わせの種類は必ず選択してください',
@@ -204,16 +204,6 @@ const ContactIndex: React.FC<PageProps<
       'おっと！お問い合わせの内容は必須です',
     ),
   });
-
-  const encode: (data: FormValues) => string = (data) =>
-    Object.keys(data)
-      .map(
-        (key) =>
-          encodeURIComponent(key) +
-          '=' +
-          encodeURIComponent(data[key]),
-      )
-      .join('&');
 
   const handleSubmit: (
     values: FormValues,
@@ -227,7 +217,7 @@ const ContactIndex: React.FC<PageProps<
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      data: encode(values),
+      data: new URLSearchParams(values).toString(),
       url: '/',
     })
       .then((res) => {

@@ -40,6 +40,26 @@ const PostWrapper = styled.article`
       box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
     }
   }
+
+  .share-section {
+    h2 {
+      margin-top: 96px;
+      margin-bottom: 16px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-2px);
+        width: 4px;
+        height: 80px;
+        border-radius: 2px;
+        background: ${(props) => props.theme.colors.border};
+      }
+    }
+  }
 `;
 
 const PostContent = styled.section`
@@ -74,12 +94,7 @@ const PostContent = styled.section`
     &::before {
       z-index: -1;
       width: 20%;
-      background: linear-gradient(
-        90deg,
-        ${(props) => props.theme.colors.primary} 0%,
-        ${(props) => props.theme.colors.secondary} 50%,
-        ${(props) => props.theme.colors.tertiary} 100%
-      );
+      background: ${(props) => props.theme.colors.gradient};
     }
 
     &::after {
@@ -100,12 +115,7 @@ const PostContent = styled.section`
       width: 4px;
       height: 100%;
       border-radius: 2px;
-      background: linear-gradient(
-        0deg,
-        ${(props) => props.theme.colors.primary} 0%,
-        ${(props) => props.theme.colors.secondary} 50%,
-        ${(props) => props.theme.colors.tertiary} 100%
-      );
+      background: ${(props) => props.theme.colors.border};
       transition: ${(props) =>
         props.theme.colorModeTransition};
     }
@@ -488,12 +498,17 @@ const BlogPostTemplate: React.FC<PageProps<
           }}
           itemProp="articleBody"
         />
-        <div className="by-container-small flex-right">
-          <ShareButtons
-            title={`${post?.frontmatter?.title} | ${siteTitle}`}
-            postUrl={`${data.site?.siteMetadata?.siteUrl}${post?.fields?.slug}`}
-          />
-        </div>
+        <section className="share-section by-spacer-small">
+          <div className="flex-center by-container-small">
+            <h2>{`ぜひこの記事のシェアをお願いします`}</h2>
+          </div>
+          <div className="flex-center by-container-small">
+            <ShareButtons
+              title={`${post?.frontmatter?.title} | ${siteTitle}`}
+              postUrl={`${data.site?.siteMetadata?.siteUrl}${post?.fields?.slug}`}
+            />
+          </div>
+        </section>
         <nav className="blog-post-nav by-container-small">
           <ul
             style={{

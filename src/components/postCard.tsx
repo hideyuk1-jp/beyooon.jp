@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import moment from 'moment';
 
 import styled from '../components/styled';
 import { Post } from '../types';
@@ -191,8 +192,12 @@ const PostCard: React.FC<{
               <time>
                 {node.frontmatter?.date ===
                 node.frontmatter?.update
-                  ? node.frontmatter?.date
-                  : node.frontmatter?.update}
+                  ? moment(node.frontmatter?.date)
+                      .local()
+                      .format('YYYY.MM.DD')
+                  : moment(node.frontmatter?.update)
+                      .local()
+                      .format('YYYY.MM.DD')}
               </time>
             </div>
             <div className="foot-timetoread">

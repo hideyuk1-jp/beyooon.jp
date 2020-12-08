@@ -142,8 +142,8 @@ export const pageQuery = graphql`
         }
         timeToRead
         frontmatter {
-          date(formatString: "YYYY.MM.DD")
-          update(formatString: "YYYY.MM.DD")
+          date
+          update
           title
           description
           category

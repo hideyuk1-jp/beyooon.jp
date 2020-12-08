@@ -2,7 +2,7 @@
 title: 個人事業主になったので事業用のWebサイト作った
 date: 2020-12-08T21:00:00+09:00
 update: 2020-12-08T21:17:00+09:00
-description: フリーランスとして活動していくにあたり、事業用のWebサイトを作りました。
+description: フリーランス（個人事業主）として活動していくにあたり、事業用のWebサイトを作りました。
 category: News
 tags: []
 image: ./beyooon.png

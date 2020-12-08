@@ -49,9 +49,9 @@ const TopHeaderWrapper = styled.div`
   transition: ${(props) => props.theme.colorModeTransition};
 `;
 
-const Index: React.FC<PageProps<
-  GatsbyTypes.IndexQuery
->> = ({ data, location }) => {
+const Index: React.FC<
+  PageProps<GatsbyTypes.IndexQuery>
+> = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;

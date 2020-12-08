@@ -352,9 +352,9 @@ const IconWrapper = styled.div`
   }
 `;
 
-const BlogPostTemplate: React.FC<PageProps<
-  GatsbyTypes.BlogPostBySlugQuery
->> = ({ data, location }) => {
+const BlogPostTemplate: React.FC<
+  PageProps<GatsbyTypes.BlogPostBySlugQuery>
+> = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;

@@ -83,7 +83,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
         </Copyright>
         <div className="foot-icons">
           <a
-            href={`https://twitter.com/${site?.siteMetadata.social.twitter}`}
+            href={`https://twitter.com/${site?.siteMetadata?.social?.twitter}`}
             aria-label="twitter"
           >
             <svg
@@ -97,7 +97,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
             </svg>
           </a>
           <a
-            href={`https://github.com/${site?.siteMetadata.social.github}`}
+            href={`https://github.com/${site?.siteMetadata?.social?.github}`}
             aria-label="GitHub"
           >
             <svg

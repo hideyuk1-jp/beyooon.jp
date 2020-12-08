@@ -167,14 +167,15 @@ type FormValues = {
 
 type FormStateValues = '' | 'loading' | 'success' | 'fail';
 
-const ContactIndex: React.FC<PageProps<
-  GatsbyTypes.ContactIndexQuery
->> = ({ data, location }) => {
+const ContactIndex: React.FC<
+  PageProps<GatsbyTypes.ContactIndexQuery>
+> = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
-  const [formState, setFormState] = useState<
-    FormStateValues
-  >('');
+  const [
+    formState,
+    setFormState,
+  ] = useState<FormStateValues>('');
 
   const initialValues = {
     'bot-field': '',

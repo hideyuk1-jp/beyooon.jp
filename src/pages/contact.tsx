@@ -205,16 +205,6 @@ const ContactIndex: React.FC<PageProps<
     ),
   });
 
-  const encode: (data: FormValues) => string = (data) =>
-    Object.keys(data)
-      .map(
-        (key) =>
-          encodeURIComponent(key) +
-          '=' +
-          encodeURIComponent(data[key]),
-      )
-      .join('&');
-
   const handleSubmit: (
     values: FormValues,
     actions: FormikHelpers<FormValues>,
@@ -227,7 +217,7 @@ const ContactIndex: React.FC<PageProps<
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      data: encode(values),
+      data: new URLSearchParams(values).toString(),
       url: '/',
     })
       .then((res) => {

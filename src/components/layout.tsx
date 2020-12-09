@@ -73,7 +73,7 @@ const GlobalWrapper = styled.div`
       props.theme.sizes.maxWidthSmall};
     width: 100%;
   }
-  .flex-right {
+  .flex-center {
     display: flex;
     justify-content: center;
   }

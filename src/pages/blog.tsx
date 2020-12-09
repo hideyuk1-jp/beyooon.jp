@@ -7,9 +7,9 @@ import SEO from '../components/seo';
 import PostList from '../components/postList';
 import PageHero from '../components/pageHero';
 
-const BlogIndex: React.FC<PageProps<
-  GatsbyTypes.BlogIndexQuery
->> = ({ data, location }) => {
+const BlogIndex: React.FC<
+  PageProps<GatsbyTypes.BlogIndexQuery>
+> = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;

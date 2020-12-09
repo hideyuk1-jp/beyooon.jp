@@ -50,9 +50,7 @@ const ShareButtons: React.FC<{
   title: string;
   postUrl: string;
 }> = ({ title, postUrl }) => {
-  const data = useStaticQuery<
-    GatsbyTypes.ShareButtonsQuery
-  >(graphql`
+  const data = useStaticQuery<GatsbyTypes.ShareButtonsQuery>(graphql`
     query ShareButtons {
       site {
         siteMetadata {
@@ -69,7 +67,7 @@ const ShareButtons: React.FC<{
       <TwitterShareButton
         className="share-btn-items"
         title={title}
-        via={data.site.siteMetadata.social.twitter}
+        via={data.site?.siteMetadata?.social?.twitter}
         url={postUrl}
       >
         <TwitterIcon round />

@@ -93,9 +93,9 @@ const AboutContentWrapper = styled.div`
   }
 `;
 
-const AboutIndex: React.FC<PageProps<
-  GatsbyTypes.AboutIndexQuery
->> = ({ data, location }) => {
+const AboutIndex: React.FC<
+  PageProps<GatsbyTypes.AboutIndexQuery>
+> = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
 

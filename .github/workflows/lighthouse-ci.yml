@@ -24,6 +24,9 @@ jobs:
           npm install -g @lhci/cli@0.6.x
           lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
+      - name: set GitHub Actions URL
+        run: "GHA_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> $GITHUB_ENV
+
       - name: Slack Notification on Success
         if: success()
         uses: tokorom/action-slack-incoming-webhook@master
@@ -44,7 +47,7 @@ jobs:
                   },
                   {
                     "title": "GitHub Actions URL",
-                    "value": "${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}/actions/runs/${{ GITHUB_RUN_ID }}"
+                    "value": "${{ env.GHA_URL }}"
                   }
                 ]
               }
@@ -66,7 +69,7 @@ jobs:
                 "fields": [
                   {
                     "title": "GitHub Actions URL",
-                    "value": ”${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}/actions/runs/${{ GITHUB_RUN_ID }}"
+                    "value": "${{ env.GHA_URL }}"
                   }
                 ]
               }

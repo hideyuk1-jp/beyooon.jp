@@ -1,4 +1,4 @@
-name: lighthouse audit
+name: lighthouse CI
 
 on:
   pull_request:
@@ -6,35 +6,33 @@ on:
       - master
 
 jobs:
-  audit:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set GitHub Actions URL
+        run: echo "GHA_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> $GITHUB_ENV
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
         with:
-          ref: ${{github.event.pull_request.head.sha}}
-      - uses: actions/setup-node@v1
+          node-version: 10.x
+      - name: npm install, build
+        run: |
+          npm install
+          npm run build
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
-      - name: npm install
-        run: npm install && npm install -g @lhci/cli
-
-      - name: build
-        run: npm run build
-
-      - name: Lighthouse audit CI
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
-      - name: Set COMMIT_MESSAGE
-        run: echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
-
-      - name: Slack Notification on SUCCESS
+      - name: Slack Notification on Success
         if: success()
         uses: tokorom/action-slack-incoming-webhook@master
         env:
           INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          text: Successfully automated deployment.
+          text: 😁 Successfully automated deployment.
           attachments: |
             [
               {
@@ -43,16 +41,34 @@ jobs:
                 "author_icon": "${{ github.event.sender.avatar_url }}",
                 "fields": [
                   {
-                    "title": "コミットメッセージ",
-                    "value": "${{ env.COMMIT_MESSAGE }}"
+                    "title": "View Loghthouse diff at",
+                    "value": "${{ env.LHCI_DIFF_URL }}"
                   },
                   {
                     "title": "GitHub Actions URL",
-                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
-                  },
+                    "value": "${{ env.GHA_URL }}"
+                  }
+                ]
+              }
+            ]
+
+      - name: Slack Notification on Failure
+        if: failure()
+        uses: tokorom/action-slack-incoming-webhook@master
+        env:
+          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          text: 😭 Unsuccessfully automated deployment.
+          attachments: |
+            [
+              {
+                "color": "danger",
+                "author_name": "${{ github.actor }}",
+                "author_icon": "${{ github.event.sender.avatar_url }}",
+                "fields": [
                   {
-                    "title": "差分表示 URL",
-                    "value": "${{ github.event.compare }}"
+                    "title": "GitHub Actions URL",
+                    "value": "${{ env.GHA_URL }}"
                   }
                 ]
               }

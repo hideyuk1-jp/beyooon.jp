@@ -10,7 +10,10 @@ module.exports = {
       ],
     },
     upload: {
-      target: 'temporary-public-storage',
+      target: 'lhci',
+      serverBaseUrl:
+        'https://agile-garden-69796.herokuapp.com/',
+      token: 'a72be09d-e54c-41e1-bb1f-d4b165ed0782',
     },
   },
 };

@@ -1,4 +1,4 @@
-name: lighthouse audit
+name: lighthouse CI
 
 on:
   pull_request:
@@ -6,29 +6,25 @@ on:
       - master
 
 jobs:
-  audit:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
         with:
-          ref: ${{github.event.pull_request.head.sha}}
-      - uses: actions/setup-node@v1
+          node-version: 10.x
+      - name: npm install, build
+        run: |
+          npm install
+          npm run build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun
 
-      - name: npm install
-        run: npm install && npm install -g @lhci/cli
-
-      - name: build
-        run: npm run build
-
-      - name: Lighthouse audit CI
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
-      - name: Set COMMIT_MESSAGE
-        run: echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
-
-      - name: Slack Notification on SUCCESS
+          - name: Slack Notification on SUCCESS
         if: success()
         uses: tokorom/action-slack-incoming-webhook@master
         env:
@@ -43,17 +39,9 @@ jobs:
                 "author_icon": "${{ github.event.sender.avatar_url }}",
                 "fields": [
                   {
-                    "title": "コミットメッセージ",
-                    "value": "${{ env.COMMIT_MESSAGE }}"
-                  },
-                  {
                     "title": "GitHub Actions URL",
-                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                    "value": "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
                   },
-                  {
-                    "title": "差分表示 URL",
-                    "value": "${{ github.event.compare }}"
-                  }
                 ]
               }
             ]

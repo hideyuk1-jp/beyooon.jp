@@ -49,19 +49,15 @@ const SEO: React.FC<Props> = ({
 
   const metaDescription =
     description || site?.siteMetadata?.description;
-  const defaultTitle = title
-    ? site?.siteMetadata?.title
-    : site?.siteMetadata?.longTitle;
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title || defaultTitle || ''}
-      titleTemplate={
-        title && defaultTitle ? `%s | ${defaultTitle}` : ''
-      }
+      title={title}
+      titleTemplate={`%s | ${site?.siteMetadata?.title}`}
+      defaultTitle={site?.siteMetadata?.longTitle}
       meta={[
         {
           name: `description`,

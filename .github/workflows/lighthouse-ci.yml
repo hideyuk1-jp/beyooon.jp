@@ -25,7 +25,7 @@ jobs:
           lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
       - name: set GitHub Actions URL
-        run: "GHA_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> $GITHUB_ENV
+        run: echo "GHA_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> $GITHUB_ENV
 
       - name: Slack Notification on Success
         if: success()

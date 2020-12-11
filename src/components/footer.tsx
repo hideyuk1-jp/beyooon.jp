@@ -6,12 +6,11 @@ import 'moment-timezone';
 import styled from '../components/styled';
 
 const FooterTag = styled.footer<{}>`
-  background: ${(props) => props.theme.colors.background};
-  border-top: 1px solid
-    ${(props) => props.theme.colors.border};
-  padding: 0 ${(props) => props.theme.sideSpace.base};
-  color: ${(props) => props.theme.colors.base};
-  transition: ${(props) => props.theme.colorModeTransition};
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
+  padding: 0 var(--size-sidespace-medium);
+  color: var(--color-text-primary);
+  transition: var(--colormode-transition);
 `;
 
 const FooterContent = styled.div<{}>`
@@ -29,9 +28,8 @@ const FooterContent = styled.div<{}>`
       .foot-icon-item {
         width: 20px;
         height: 20px;
-        fill: ${(props) => props.theme.colors.base};
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
+        fill: var(--color-text-primary);
+        transition: var(--colormode-transition);
       }
     }
   }
@@ -41,7 +39,7 @@ const Copyright = styled.div<{}>`
   display: inline-block;
 
   a.by-foot-title {
-    color: ${(props) => props.theme.colors.base};
+    color: var(--color-text-primary);
   }
 `;
 

@@ -19,17 +19,17 @@ const PostWrapper = styled.article`
       margin-bottom: 16px;
 
       @media screen and (min-width: ${(props) =>
-          props.theme.responsive.small}) {
+          props.theme.breakpoints.small}) {
         font-size: 2.4rem;
       }
 
       @media screen and (min-width: ${(props) =>
-          props.theme.responsive.medium}) {
+          props.theme.breakpoints.medium}) {
         font-size: 2.8rem;
       }
 
       @media screen and (min-width: ${(props) =>
-          props.theme.responsive.large}) {
+          props.theme.breakpoints.large}) {
         font-size: 3.2rem;
       }
     }
@@ -56,7 +56,7 @@ const PostWrapper = styled.article`
         width: 4px;
         height: 80px;
         border-radius: 2px;
-        background: ${(props) => props.theme.colors.border};
+        background: var(--color-border);
       }
     }
   }
@@ -87,20 +87,19 @@ const PostContent = styled.section`
       left: 0;
       height: 4px;
       border-radius: 2px;
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: var(--colormode-transition);
     }
 
     &::before {
       z-index: -1;
       width: 20%;
-      background: ${(props) => props.theme.colors.gradient};
+      background: var(--color-theme-gradient);
     }
 
     &::after {
       z-index: -2;
       width: 100%;
-      background: ${(props) => props.theme.colors.border};
+      background: var(--color-border);
     }
   }
 
@@ -115,9 +114,8 @@ const PostContent = styled.section`
       width: 4px;
       height: 100%;
       border-radius: 2px;
-      background: ${(props) => props.theme.colors.border};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      background: var(--color-border);
+      transition: var(--colormode-transition);
     }
   }
 
@@ -130,10 +128,9 @@ const PostContent = styled.section`
   hr {
     display: block;
     height: 1px;
-    background: ${(props) => props.theme.colors.border};
+    background: var(--color-border);
     border: 0;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
 
   ul,
@@ -150,7 +147,7 @@ const PostContent = styled.section`
       display: inline-block;
       position: absolute;
       margin-left: -16px;
-      color: ${(props) => props.theme.colors.light};
+      color: var(--color-text-light);
     }
 
     p {
@@ -188,8 +185,7 @@ const PostContent = styled.section`
     margin: 0px 0.2em;
     border-radius: 4px;
     color: #d4d4d4 !important;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
 
   a:hover {
@@ -199,8 +195,7 @@ const PostContent = styled.section`
   blockquote {
     margin: 0 0 24px 0;
     padding: 8px 16px;
-    border-left: 4px solid
-      ${(props) => props.theme.colors.border};
+    border-left: 4px solid var(--color-border);
     transition: border 0.25s var(--ease-in-out-quad);
 
     p {
@@ -223,17 +218,14 @@ const PostContent = styled.section`
 
     th,
     td {
-      border-top: 1px solid
-        ${(props) => props.theme.colors.border};
-      border-bottom: 1px solid
-        ${(props) => props.theme.colors.border};
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
       padding: 8px 16px;
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: var(--colormode-transition);
     }
 
     th {
-      background: ${(props) => props.theme.colors.border};
+      background: var(--color-border);
     }
 
     td {
@@ -297,19 +289,18 @@ const PostHeadHeader = styled.div`
     margin: 0px 8px 16px 0px;
     padding: 2px 8px;
     border-radius: 8px;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
 
   .head-category {
-    color: ${(props) => props.theme.colors.background};
-    background: ${(props) => props.theme.colors.base};
-    border: 1px solid ${(props) => props.theme.colors.base};
+    color: var(--color-bg-primary);
+    background: var(--color-text-primary);
+    border: 1px solid var(--color-text-primary);
   }
 
   .head-tag {
-    color: ${(props) => props.theme.colors.base};
-    border: 1px solid ${(props) => props.theme.colors.base};
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-text-primary);
   }
 `;
 
@@ -319,11 +310,10 @@ const PostHeadFooter = styled.footer`
   align-items: center;
   flex-direction: row;
   line-height: 22px;
-  border-top: 1px solid
-    ${(props) => props.theme.colors.border};
+  border-top: 1px solid var(--color-border);
   padding-top: 8px;
-  color: ${(props) => props.theme.colors.light};
-  transition: ${(props) => props.theme.colorModeTransition};
+  color: var(--color-text-light);
+  transition: var(--colormode-transition);
 
   .head-date,
   .head-update,
@@ -344,7 +334,7 @@ const IconWrapper = styled.div`
   .timetoread-icon {
     width: 16px;
     height: 16px;
-    fill: ${(props) => props.theme.colors.light};
+    fill: var(--color-text-light);
   }
 
   .update-icon {

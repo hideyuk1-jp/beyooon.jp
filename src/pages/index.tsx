@@ -10,7 +10,7 @@ import WavesDivider from '../components/wavesDivider';
 
 const Hero = styled.header`
   text-align: center;
-  padding: 0px ${(props) => props.theme.sideSpace.base};
+  padding: 0px var(--size-sidespace-medium);
 
   h2 {
     position: relative;
@@ -29,24 +29,23 @@ const Hero = styled.header`
       width: 80px;
       height: 4px;
       border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
+      background: var(--color-theme-gradient);
     }
   }
 
   p {
     padding-top: 24px;
-    color: ${(props) => props.theme.colors.headerLight};
+    color: var(--color-header-text-light);
   }
 `;
 
 const TopHeaderWrapper = styled.div`
   position: relative;
-  background: ${(props) =>
-    props.theme.colors.backgroundHeader};
-  color: ${(props) => props.theme.colors.header};
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
   padding: 64px 0px 60px;
-  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
-  transition: ${(props) => props.theme.colorModeTransition};
+  margin: -64px calc(var(--size-sidespace-medium) * -1) 0px;
+  transition: var(--colormode-transition);
 `;
 
 const Index: React.FC<

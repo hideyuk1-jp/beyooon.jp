@@ -14,17 +14,17 @@ const Hero = styled.header`
     line-height: 1.15;
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.small}) {
+        props.theme.breakpoints.small}) {
       font-size: 2.4rem;
     }
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.medium}) {
+        props.theme.breakpoints.medium}) {
       font-size: 2.8rem;
     }
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.large}) {
+        props.theme.breakpoints.large}) {
       font-size: 3.2rem;
     }
 
@@ -37,13 +37,13 @@ const Hero = styled.header`
       width: 80px;
       height: 4px;
       border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
+      background: var(--color-theme-gradient);
     }
   }
 
   p {
     padding-top: 24px;
-    color: ${(props) => props.theme.colors.light};
+    color: var(--color-text-light);
   }
 `;
 

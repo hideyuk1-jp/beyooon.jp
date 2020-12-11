@@ -23,33 +23,32 @@ const WavesDividerWrapper = styled.div`
   }
 
   use {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
 
   .parallax1 > use {
-    fill: ${(props) => props.theme.colors.primary};
+    fill: var(--color-theme-primary);
     animation: move-forever1 10s linear infinite;
     &:nth-of-type(1) {
       animation-delay: -2s;
     }
   }
   .parallax2 > use {
-    fill: ${(props) => props.theme.colors.secondary};
+    fill: var(--color-theme-secondary);
     animation: move-forever2 8s linear infinite;
     &:nth-of-type(1) {
       animation-delay: -2s;
     }
   }
   .parallax3 > use {
-    fill: ${(props) => props.theme.colors.tertiary};
+    fill: var(--color-theme-tertiary);
     animation: move-forever3 6s linear infinite;
     &:nth-of-type(1) {
       animation-delay: -2s;
     }
   }
   .parallax4 > use {
-    fill: ${(props) => props.theme.colors.background};
+    fill: var(--color-bg-primary);
     animation: move-forever4 4s linear infinite;
     &:nth-of-type(1) {
       animation-delay: -2s;

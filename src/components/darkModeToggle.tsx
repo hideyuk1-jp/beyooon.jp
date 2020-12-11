@@ -17,7 +17,7 @@ const IconWrapper = styled.button<{
   outline: none;
   padding: 0;
   text-align: left;
-  transition: ${(props) => props.theme.colorModeTransition};
+  transition: var(--colormode-transition);
 
   .u-a11y {
     border: 0;

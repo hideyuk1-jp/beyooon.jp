@@ -15,12 +15,12 @@ const PostListWrapper = styled.div`
     width: 100%;
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.medium}) {
+        props.theme.breakpoints.medium}) {
       width: 50%;
     }
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.large}) {
+        props.theme.breakpoints.large}) {
       width: 33.33333%;
     }
   }

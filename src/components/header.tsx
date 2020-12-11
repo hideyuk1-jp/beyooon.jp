@@ -23,21 +23,21 @@ const HeaderTag = styled.header<{ isScrolled: boolean }>`
   height: 64px;
   background: ${(props) =>
     props.isScrolled
-      ? props.theme.colors.backgroundHeaderNavbar
-      : props.theme.colors.backgroundHeader};
+      ? 'var(--color-header-navbar-bg)'
+      : 'var(--color-header-bg)'};
   backdrop-filter: saturate(180%) blur(5px);
   overflow: hidden;
   transform: translateY(0);
   transition: height 0.25s var(--ease-in-out-quad),
     transform 0.25s var(--ease-in-out-quad),
-    ${(props) => props.theme.colorModeTransition};
+    var(--colormode-transition);
 
   &.hidden {
     transform: translateY(-200%);
   }
 
   svg.logo {
-    fill: ${(props) => props.theme.colors.header};
+    fill: var(--color-header-text);
   }
 
   display: none;
@@ -59,7 +59,7 @@ const HeaderTag = styled.header<{ isScrolled: boolean }>`
   }
 
   @media screen and (min-width: ${(props) =>
-      props.theme.responsive.medium}) {
+      props.theme.breakpoints.medium}) {
     display: block;
 
     &.mobile {
@@ -71,14 +71,13 @@ const HeaderTag = styled.header<{ isScrolled: boolean }>`
 const Navbar = styled.nav`
   position: relative;
   display: flex;
-  padding: 0 ${(props) => props.theme.sideSpace.base};
+  padding: 0 var(--size-sidespace-medium);
   align-items: center;
   justify-content: space-between;
   height: 64px;
 
   svg {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
 
   .navbar-item {
@@ -98,12 +97,11 @@ const Navbar = styled.nav`
   }
   .menu-link {
     display: block;
-    color: ${(props) => props.theme.colors.header};
+    color: var(--color-header-text);
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.25s ease;
-    transition: ${(props) =>
-        props.theme.colorModeTransition},
+    transition: var(--colormode-transition),
       opacity 0.25s var(--ease-in-out-quad);
 
     &:hover {
@@ -133,8 +131,7 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   flex-direction: column;
   padding: 0 8vw;
   max-height: calc(100vh - 64px);
-  border-top: 1px solid
-    ${(props) => props.theme.colors.borderHeader};
+  border-top: 1px solid var(--color-header-border);
   overflow-y: scroll;
   transition: border 0.25s var(--ease-in-out-quad);
 
@@ -173,11 +170,9 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
     a.menu-link {
       display: block;
       padding: 16px 0;
-      color: ${(props) => props.theme.colors.header};
-      border-bottom: 1px solid
-        ${(props) => props.theme.colors.borderHeader};
-      transition: ${(props) =>
-          props.theme.colorModeTransition},
+      color: var(--color-header-text);
+      border-bottom: 1px solid var(--color-header-border);
+      transition: var(--colormode-transition),
         border 0.25s var(--ease-in-out-quad);
     }
   }

@@ -19,13 +19,12 @@ const PostCardWrapper = styled.article`
 const PostCardContent = styled.div`
   display: flex;
   flex-direction: column;
-  background: ${(props) =>
-    props.theme.colors.backgroundPostCard};
+  background: var(--color-bg-accent);
   height: 100%;
   padding: 8px 16px;
   border-radius: 8px;
   box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
-  transition: ${(props) => props.theme.colorModeTransition};
+  transition: var(--colormode-transition);
 `;
 
 const PostCardImage = styled.div`
@@ -51,24 +50,24 @@ const PostCardCategory = styled.div`
   padding: 2px 8px;
   border-top-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  color: ${(props) => props.theme.colors.background};
-  background: ${(props) => props.theme.colors.base};
-  border: 1px solid ${(props) => props.theme.colors.base};
-  transition: ${(props) => props.theme.colorModeTransition};
+  color: var(--color-bg-primary);
+  background: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  transition: var(--colormode-transition);
 `;
 
 const PostCardTitle = styled.h3`
   margin-top: 16px;
   margin-bottom: 8px;
-  color: ${(props) => props.theme.colors.base};
-  transition: ${(props) => props.theme.colorModeTransition};
+  color: var(--color-text-primary);
+  transition: var(--colormode-transition);
 `;
 
 const PostCardDescription = styled.p`
   flex: 1 1 auto;
   margin: 0 0 8px;
   padding: 0;
-  color: ${(props) => props.theme.colors.light};
+  color: var(--color-text-light);
 `;
 
 const PostCardFooter = styled.footer`
@@ -78,11 +77,10 @@ const PostCardFooter = styled.footer`
   align-items: center;
   flex-direction: row;
   line-height: 22px;
-  border-top: 1px solid
-    ${(props) => props.theme.colors.border};
+  border-top: 1px solid var(--color-border);
   padding-top: 8px;
-  color: ${(props) => props.theme.colors.light};
-  transition: ${(props) => props.theme.colorModeTransition};
+  color: var(--color-text-light);
+  transition: var(--colormode-transition);
 
   .foot-date,
   .foot-timetoread {
@@ -102,7 +100,7 @@ const IconWrapper = styled.div`
   .timetoread-icon {
     width: 16px;
     height: 16px;
-    fill: ${(props) => props.theme.colors.light};
+    fill: var(--color-text-light);
   }
 
   .update-icon {

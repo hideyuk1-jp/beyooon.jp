@@ -27,19 +27,18 @@ const ShareBtnWrapper = styled.div`
 
       circle,
       path {
-        transition: ${(props) =>
-            props.theme.colorModeTransition},
+        transition: var(--colormode-transition),
           opacity 0.25s var(--ease-in-out-quad);
       }
 
       &:not(:hover) {
         circle {
-          fill: ${(props) => props.theme.colors.base};
+          fill: var(--color-text-primary);
           opacity: 0.5;
         }
 
         path {
-          fill: ${(props) => props.theme.colors.background};
+          fill: var(--color-bg-primary);
         }
       }
     }

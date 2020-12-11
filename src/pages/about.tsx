@@ -34,7 +34,7 @@ const AboutContentWrapper = styled.div`
       display: inline-block;
       position: absolute;
       margin-left: -16px;
-      color: ${(props) => props.theme.colors.light};
+      color: var(--color-text-light);
     }
 
     p {
@@ -79,8 +79,7 @@ const AboutContentWrapper = styled.div`
       td {
         text-align: left;
         padding: 16px;
-        border-top: 1px solid
-          ${(props) => props.theme.colors.border};
+        border-top: 1px solid var(--color-border);
       }
 
       &:first-of-type {

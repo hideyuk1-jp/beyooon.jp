@@ -27,7 +27,7 @@ const FormWrapper = styled.div`
       margin-bottom: -8px;
 
       &.option {
-        color: ${(props) => props.theme.colors.light};
+        color: var(--color-text-light);
       }
     }
 
@@ -43,7 +43,7 @@ const FormWrapper = styled.div`
     }
 
     @media screen and (min-width: ${(props) =>
-        props.theme.responsive.medium}) {
+        props.theme.breakpoints.medium}) {
       label {
         grid-column: 1 / 2;
         padding: 8px 0px;
@@ -62,20 +62,16 @@ const FormWrapper = styled.div`
       display: block;
       width: 100%;
       appearance: none;
-      border: 1px solid
-        ${(props) => props.theme.colors.border};
+      border: 1px solid var(--color-border);
       border-radius: 8px;
       padding: 8px 16px;
-      color: ${(props) => props.theme.colors.base};
-      background: ${(props) =>
-        props.theme.colors.backgroundAccent};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      color: var(--color-text-primary);
+      background: var(--color-bg-accent);
+      transition: var(--colormode-transition);
 
       &:focus {
         outline: none;
-        border: 1px solid
-          ${(props) => props.theme.colors.base};
+        border: 1px solid var(--color-text-primary);
       }
     }
 
@@ -90,10 +86,8 @@ const FormWrapper = styled.div`
         right: 16px;
         width: 6px;
         height: 6px;
-        border-bottom: solid 2px
-          ${(props) => props.theme.colors.light};
-        border-right: solid 2px
-          ${(props) => props.theme.colors.light};
+        border-bottom: solid 2px var(--color-text-light);
+        border-right: solid 2px var(--color-text-light);
         transform: translateY(-50%) rotate(45deg);
       }
     }
@@ -109,7 +103,7 @@ const FormWrapper = styled.div`
 
       svg.send-icon,
       svg.load-icon {
-        fill: ${(props) => props.theme.colors.background};
+        fill: var(--color-bg-primary);
       }
 
       svg.load-icon {
@@ -136,7 +130,7 @@ const FormWrapper = styled.div`
       &:hover {
         svg.send-icon,
         svg.load-icon {
-          fill: ${(props) => props.theme.colors.base};
+          fill: var(--color-text-primary);
         }
       }
     }

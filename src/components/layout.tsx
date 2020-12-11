@@ -1,57 +1,34 @@
 import React from 'react';
 import { WindowLocation } from '@reach/router';
 import { Global } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
 
-import globalStyles from '../styles/global';
+import globalStyles, { theme } from '../styles/global';
 import styled from '../components/styled';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
-const Layout: React.FC<{
-  location: WindowLocation<unknown>;
-  title: string;
-}> = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const isRootPath = location.pathname === rootPath;
-
-  return (
-    <GlobalWrapper
-      className="global-wrapper"
-      data-is-root-path={isRootPath}
-    >
-      <Global styles={globalStyles} />
-      <Header location={location} />
-      <Main>{children}</Main>
-      <Footer title={title} />
-    </GlobalWrapper>
-  );
-};
-
-export default Layout;
-
 const GlobalWrapper = styled.div`
   min-height: 100vh;
   min-width: 100vw;
-  background: ${(props) => props.theme.colors.background};
+  background: var(--color-bg-primary);
   font-size: 0.875rem;
-  color: ${(props) => props.theme.colors.base};
+  color: var(--color-text-primary);
   font-family: 'Helvetica Neue', Arial,
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
     sans-serif;
-  transition: ${(props) => props.theme.colorModeTransition};
+  transition: var(--colormode-transition);
   a {
-    color: ${(props) => props.theme.colors.link};
+    color: var(--color-text-link);
     text-decoration: none;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
   button {
     text-decoration: none;
     cursor: pointer;
   }
   svg {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: var(--colormode-transition);
   }
   .by-spacer {
     padding: 64px 0;
@@ -64,7 +41,7 @@ const GlobalWrapper = styled.div`
   }
   .by-container {
     margin: 0 auto;
-    max-width: ${(props) => props.theme.sizes.maxWidth};
+    max-width: var(--size-maxwidth-medium);
     width: 100%;
   }
   .by-center {
@@ -72,8 +49,7 @@ const GlobalWrapper = styled.div`
   }
   .by-container-small {
     margin: 0 auto;
-    max-width: ${(props) =>
-      props.theme.sizes.maxWidthSmall};
+    max-width: var(--size-maxwidth-small);
     width: 100%;
   }
   .flex-center {
@@ -93,8 +69,7 @@ const GlobalWrapper = styled.div`
         content: '';
         position: absolute;
         border-radius: 2px;
-        background: ${(props) =>
-          props.theme.colors.gradient};
+        background: var(--color-theme-gradient);
         bottom: 0;
         left: 0;
         width: 80px;
@@ -102,7 +77,7 @@ const GlobalWrapper = styled.div`
       }
 
       @media screen and (min-width: ${(props) =>
-          props.theme.responsive.medium}) {
+          props.theme.breakpoints.medium}) {
         padding-bottom: 0px;
 
         &::after {
@@ -118,7 +93,7 @@ const GlobalWrapper = styled.div`
     }
 
     p {
-      color: ${(props) => props.theme.colors.light};
+      color: var(--color-text-light);
     }
 
     &.by-section-head-center {
@@ -157,39 +132,35 @@ const GlobalWrapper = styled.div`
     white-space: nowrap;
     border: 0;
     border-radius: 8px;
-    color: ${(props) => props.theme.colors.background};
-    border: 1px solid ${(props) => props.theme.colors.base};
-    background: ${(props) => props.theme.colors.base};
-    transition: ${(props) =>
-        props.theme.colorModeTransition},
+    color: var(--color-bg-primary);
+    border: 1px solid var(--color-text-primary);
+    background: var(--color-text-primary);
+    transition: var(--colormode-transition),
       box-shadow 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);
 
     &:hover {
-      color: ${(props) => props.theme.colors.base};
-      border: 1px solid
-        ${(props) => props.theme.colors.base};
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-text-primary);
       background: transparent;
     }
 
     svg {
-      fill: ${(props) => props.theme.colors.light};
+      fill: var(--color-text-light);
       margin-left: 4px;
     }
 
     &.by-btn-outline {
-      color: ${(props) => props.theme.colors.light};
-      border: 1px solid
-        ${(props) => props.theme.colors.light};
+      color: var(--color-text-light);
+      border: 1px solid var(--color-text-light);
       background: transparent;
 
       &:hover {
-        color: ${(props) => props.theme.colors.base};
-        border: 1px solid
-          ${(props) => props.theme.colors.base};
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-text-primary);
 
         svg {
-          fill: ${(props) => props.theme.colors.base};
+          fill: var(--color-text-primary);
         }
       }
     }
@@ -204,8 +175,8 @@ const GlobalWrapper = styled.div`
       font-size: 0.75rem;
       padding: 4px 8px;
       border-radius: 4px;
-      color: ${(props) => props.theme.colors.background};
-      background: ${(props) => props.theme.colors.base};
+      color: var(--color-bg-primary);
+      background: var(--color-text-primary);
       white-space: nowrap;
       opacity: 0;
       visibility: hidden;
@@ -217,8 +188,8 @@ const GlobalWrapper = styled.div`
         position: absolute;
         border-width: 5px;
         border-style: solid;
-        border-color: ${(props) => props.theme.colors.base}
-          transparent transparent transparent;
+        border-color: var(--color-text-primary) transparent
+          transparent transparent;
       }
     }
 
@@ -280,6 +251,30 @@ const GlobalWrapper = styled.div`
 `;
 
 const Main = styled.main`
-  padding: 64px ${(props) => props.theme.sideSpace.base} 0
-    ${(props) => props.theme.sideSpace.base};
+  padding: 64px var(--size-sidespace-medium) 0
+    var(--size-sidespace-medium);
 `;
+
+const Layout: React.FC<{
+  location: WindowLocation<unknown>;
+  title: string;
+}> = ({ location, title, children }) => {
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const isRootPath = location.pathname === rootPath;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalWrapper
+        className="global-wrapper"
+        data-is-root-path={isRootPath}
+      >
+        <Global styles={globalStyles} />
+        <Header location={location} />
+        <Main>{children}</Main>
+        <Footer title={title} />
+      </GlobalWrapper>
+    </ThemeProvider>
+  );
+};
+
+export default Layout;

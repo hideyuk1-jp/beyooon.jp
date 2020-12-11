@@ -102,6 +102,10 @@ const DarkModeToggle: React.FC<{}> = () => {
     event: React.MouseEvent<HTMLElement>,
   ) => {
     event.preventDefault();
+    localStorage.setItem(
+      'colorMode',
+      isDark ? 'light' : 'dark',
+    );
     setIsDark(!isDark);
   };
 

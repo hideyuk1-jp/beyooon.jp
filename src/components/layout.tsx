@@ -1,6 +1,8 @@
 import React from 'react';
 import { WindowLocation } from '@reach/router';
+import { Global } from '@emotion/core';
 
+import globalStyles from '../styles/global';
 import styled from '../components/styled';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -17,6 +19,7 @@ const Layout: React.FC<{
       className="global-wrapper"
       data-is-root-path={isRootPath}
     >
+      <Global styles={globalStyles} />
       <Header location={location} />
       <Main>{children}</Main>
       <Footer title={title} />

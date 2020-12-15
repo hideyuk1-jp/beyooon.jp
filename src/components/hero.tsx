@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from '../components/styled';
+import styled from './styled';
 
 const Hero = styled.header`
   text-align: center;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styled from '../components/styled';
-import { useColorMode } from '../store/themeProvider';
+import styled from './styled';
+import { useColorMode } from '../store/theme-provider';
 
 const IconWrapper = styled.button<{
   isDark: boolean;

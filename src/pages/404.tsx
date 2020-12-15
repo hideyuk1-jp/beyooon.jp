@@ -4,7 +4,7 @@ import { PageProps } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PageHero from '../components/pageHero';
+import PageHero from '../components/hero';
 
 const NotFoundPage: React.FC<
   PageProps<GatsbyTypes.Page404Query>

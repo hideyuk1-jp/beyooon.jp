@@ -5,8 +5,8 @@ import { PageProps } from 'gatsby';
 import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PostList from '../components/postList';
-import WavesDivider from '../components/wavesDivider';
+import PostList from '../components/post-list';
+import WavesDivider from '../components/waves-divider';
 
 const Hero = styled.header`
   text-align: center;

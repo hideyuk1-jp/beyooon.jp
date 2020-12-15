@@ -14,7 +14,7 @@ import axios from 'axios';
 import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PageHero from '../components/pageHero';
+import PageHero from '../components/hero';
 
 const FormWrapper = styled.div`
   form {

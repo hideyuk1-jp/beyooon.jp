@@ -4,8 +4,8 @@ import { PageProps } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PostList from '../components/postList';
-import PageHero from '../components/pageHero';
+import PostList from '../components/post-list';
+import PageHero from '../components/hero';
 
 const BlogIndex: React.FC<
   PageProps<GatsbyTypes.BlogIndexQuery>

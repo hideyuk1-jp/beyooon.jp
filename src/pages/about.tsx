@@ -4,7 +4,7 @@ import { graphql, Link, PageProps } from 'gatsby';
 import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PageHero from '../components/pageHero';
+import PageHero from '../components/hero';
 
 const AboutContentWrapper = styled.div`
   .about-section-item {

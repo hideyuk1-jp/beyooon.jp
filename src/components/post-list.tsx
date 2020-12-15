@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styled from '../components/styled';
-import PostCard from '../components/postCard';
+import styled from './styled';
+import PostCard from './post-card';
 import { Posts } from '../types';
 
 const PostListWrapper = styled.div`

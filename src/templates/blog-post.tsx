@@ -7,10 +7,10 @@ import 'moment-timezone';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ShareButtons from '../components/shareButtons';
+import ShareButtons from '../components/share-buttons';
 
 import styled from '../components/styled';
-import SyntaxHighlightStyle from '../styles/syntaxHighlight';
+import SyntaxHighlightStyle from '../styles/syntax-highlight';
 
 const PostWrapper = styled.article`
   header {

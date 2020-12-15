@@ -4,7 +4,7 @@ import { WindowLocation } from '@reach/router';
 import { throttle } from 'lodash';
 
 import styled from '../components/styled';
-import DarkModeToggle from '../components/darkModeToggle';
+import DarkModeToggle from './darkmode-toggle';
 import Hamburger from '../components/hamburger';
 
 const MENU_ITEMS = [

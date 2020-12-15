@@ -1,11 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import { ThemeProvider as EmotionProvider } from 'emotion-theming';
 
-import { ThemeContext } from '../themeContext';
 import { getTheme } from '../styles/theme';
-import { ColorMode } from '../types';
+import { ThemeContextType, ColorMode } from '../types';
 
-const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeContext = createContext<ThemeContextType>(
+  {
+    colorMode: 'light',
+    setColorMode: () => {},
+  },
+);
+
+export const useColorMode = () => useContext(ThemeContext);
+
+export const ThemeProvider: React.FC = ({ children }) => {
   const [colorMode, setColorMode] = useState<ColorMode>(
     'light',
   );
@@ -42,5 +55,3 @@ const ThemeProvider: React.FC = ({ children }) => {
     </EmotionProvider>
   );
 };
-
-export default ThemeProvider;

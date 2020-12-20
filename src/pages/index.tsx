@@ -5,39 +5,9 @@ import { PageProps } from 'gatsby';
 import styled from '../components/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Hero from '../components/hero';
 import PostList from '../components/post-list';
 import WavesDivider from '../components/waves-divider';
-
-const Hero = styled.header`
-  text-align: center;
-  padding: 0px ${(props) => props.theme.sideSpace.base};
-
-  h2 {
-    position: relative;
-    display: block;
-    font-size: 4rem;
-    font-weight: 700;
-    padding-bottom: 26px;
-    line-height: 1.15;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-40px);
-      width: 80px;
-      height: 4px;
-      border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
-    }
-  }
-
-  p {
-    padding-top: 24px;
-    color: ${(props) => props.theme.colors.headerLight};
-  }
-`;
 
 const TopHeaderWrapper = styled.div`
   position: relative;
@@ -60,17 +30,12 @@ const Index: React.FC<
     <Layout location={location} title={siteTitle}>
       <SEO />
       <TopHeaderWrapper>
-        <Hero className="by-hero">
-          <div className="by-spacer-large">
-            <div className="by-container">
-              <h2>{`Develop & Design`}</h2>
-              <p>
-                {`Web制作 /
-            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`}
-              </p>
-            </div>
-          </div>
-        </Hero>
+        <Hero
+          title="Develop & Design"
+          description="Web制作 /
+            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス"
+          top
+        />
         <WavesDivider />
       </TopHeaderWrapper>
       <section className="by-spacer">

@@ -2,16 +2,32 @@ import React from 'react';
 
 import styled from './styled';
 
-const Hero = styled.header`
+const Hero: React.FC<{
+  title: string;
+  description?: string;
+  top?: boolean;
+}> = ({ title, description, top }) => (
+  <Wrapper>
+    <div className="by-spacer">
+      <div className={`by-container ${top ? 'top' : ''}`}>
+        <h2>{title}</h2>
+        {description && <p>{description}</p>}
+      </div>
+    </div>
+  </Wrapper>
+);
+
+const Wrapper = styled.header`
   text-align: center;
+  padding: 0px ${(props) => props.theme.sideSpace.base};
 
   h2 {
     position: relative;
     display: block;
-    font-size: 2rem;
     font-weight: 700;
     padding-bottom: 26px;
     line-height: 1.15;
+    font-size: 2rem;
 
     @media screen and (min-width: ${(props) =>
         props.theme.responsive.small}) {
@@ -41,22 +57,18 @@ const Hero = styled.header`
     }
   }
 
+  .top > h2 {
+    font-size: 4rem;
+  }
+
   p {
     padding-top: 24px;
     color: ${(props) => props.theme.colors.light};
   }
+
+  .top > p {
+    color: ${(props) => props.theme.colors.headerLight};
+  }
 `;
 
-const PageHero: React.FC<{
-  title: string;
-  description?: string;
-}> = ({ title, description }) => (
-  <Hero className="by-hero by-spacer">
-    <div className="by-container">
-      <h2>{title}</h2>
-      {description && <p>{description}</p>}
-    </div>
-  </Hero>
-);
-
-export default PageHero;
+export default Hero;

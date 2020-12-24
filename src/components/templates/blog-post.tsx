@@ -5,12 +5,12 @@ import Img from 'gatsby-image';
 import moment from 'moment';
 import 'moment-timezone';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import ShareButtons from '../components/share-buttons';
+import Layout from './layout';
+import SEO from '../organisms/seo';
+import ShareButtons from '../organisms/share-buttons';
 
-import styled from '../components/styled';
-import SyntaxHighlightStyle from '../styles/syntax-highlight';
+import styled from '../atoms/styled';
+import SyntaxHighlightStyle from '../../styles/syntax-highlight';
 
 const PostWrapper = styled.article`
   header {

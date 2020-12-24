@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from '../components/styled';
+import styled from '../../atoms/styled';
 
 const IconWrapper = styled.button`
   position: relative;

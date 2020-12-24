@@ -3,8 +3,8 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import moment from 'moment';
 
-import styled from './styled';
-import { Post } from '../types';
+import styled from '../atoms/styled';
+import { Post } from '../../types';
 
 const PostCardWrapper = styled.article`
   padding-top: 16px;

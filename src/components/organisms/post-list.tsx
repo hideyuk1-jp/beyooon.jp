@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styled from './styled';
-import PostCard from './post-card';
-import { Posts } from '../types';
+import styled from '../atoms/styled';
+import PostCard from '../molecules/post-card';
+import { Posts } from '../../types';
 
 const PostListWrapper = styled.div`
   display: flex;

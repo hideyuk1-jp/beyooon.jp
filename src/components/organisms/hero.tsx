@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from './styled';
+import styled from '../atoms/styled';
 
 const Hero: React.FC<{
   title: string;

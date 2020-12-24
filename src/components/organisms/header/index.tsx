@@ -3,9 +3,9 @@ import { Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import { throttle } from 'lodash';
 
-import styled from '../components/styled';
+import styled from '../../atoms/styled';
 import DarkModeToggle from './darkmode-toggle';
-import Hamburger from '../components/hamburger';
+import Hamburger from './hamburger';
 
 const MENU_ITEMS = [
   { title: 'ブログ', name: 'Blog' },

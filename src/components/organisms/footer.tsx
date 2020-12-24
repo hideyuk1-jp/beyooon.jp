@@ -3,7 +3,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import moment from 'moment';
 import 'moment-timezone';
 
-import styled from '../components/styled';
+import styled from '../atoms/styled';
 
 const FooterTag = styled.footer<{}>`
   background: ${(props) => props.theme.colors.background};

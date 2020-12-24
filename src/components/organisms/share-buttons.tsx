@@ -8,7 +8,7 @@ import {
   HatenaShareButton,
   HatenaIcon,
 } from 'react-share';
-import styled from './styled';
+import styled from '../atoms/styled';
 
 const ShareBtnWrapper = styled.div`
   button {

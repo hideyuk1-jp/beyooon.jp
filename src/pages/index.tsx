@@ -2,12 +2,12 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { PageProps } from 'gatsby';
 
-import styled from '../components/styled';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import Hero from '../components/hero';
-import PostList from '../components/post-list';
-import WavesDivider from '../components/waves-divider';
+import styled from '../components/atoms/styled';
+import Layout from '../components/templates/layout';
+import SEO from '../components/organisms/seo';
+import Hero from '../components/organisms/hero';
+import PostList from '../components/organisms/post-list';
+import WavesDivider from '../components/organisms/waves-divider';
 
 const TopHeaderWrapper = styled.div`
   position: relative;

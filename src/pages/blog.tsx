@@ -2,10 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PostList from '../components/post-list';
-import PageHero from '../components/hero';
+import Layout from '../components/templates/layout';
+import SEO from '../components/organisms/seo';
+import PostList from '../components/organisms/post-list';
+import PageHero from '../components/organisms/hero';
 
 const BlogIndex: React.FC<
   PageProps<GatsbyTypes.BlogIndexQuery>

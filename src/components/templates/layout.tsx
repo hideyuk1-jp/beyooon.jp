@@ -1,9 +1,9 @@
 import React from 'react';
 import { WindowLocation } from '@reach/router';
 
-import styled from '../components/styled';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import styled from '../atoms/styled';
+import Header from '../organisms/header';
+import Footer from '../organisms/footer';
 
 const Layout: React.FC<{
   location: WindowLocation<unknown>;

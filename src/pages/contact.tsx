@@ -11,10 +11,10 @@ import {
 import * as Yup from 'yup';
 import axios from 'axios';
 
-import styled from '../components/styled';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PageHero from '../components/hero';
+import styled from '../components/atoms/styled';
+import Layout from '../components/templates/layout';
+import SEO from '../components/organisms/seo';
+import PageHero from '../components/organisms/hero';
 
 const FormWrapper = styled.div`
   form {

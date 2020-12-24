@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styled from './styled';
-import { useColorMode } from '../store/theme-provider';
+import styled from '../../atoms/styled';
+import { useColorMode } from '../../../store/theme-provider';
 
 const DarkModeToggle: React.FC<{}> = () => {
   const { colorMode, setColorMode } = useColorMode();

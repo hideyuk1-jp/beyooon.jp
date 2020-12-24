@@ -6,7 +6,7 @@ https://codepen.io/cmdw/pen/vQqzyB
 
 import React from 'react';
 
-import styled from './styled';
+import styled from '../atoms/styled';
 
 const WavesDividerWrapper = styled.div`
   .editorial {

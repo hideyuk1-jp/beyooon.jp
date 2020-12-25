@@ -1,53 +1,14 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
-import styled from '../components/styled';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PostList from '../components/postList';
-import WavesDivider from '../components/wavesDivider';
-
-const Hero = styled.header`
-  text-align: center;
-  padding: 0px ${(props) => props.theme.sideSpace.base};
-
-  h2 {
-    position: relative;
-    display: block;
-    font-size: 4rem;
-    font-weight: 700;
-    padding-bottom: 26px;
-    line-height: 1.15;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-40px);
-      width: 80px;
-      height: 4px;
-      border-radius: 2px;
-      background: ${(props) => props.theme.colors.gradient};
-    }
-  }
-
-  p {
-    padding-top: 24px;
-    color: ${(props) => props.theme.colors.headerLight};
-  }
-`;
-
-const TopHeaderWrapper = styled.div`
-  position: relative;
-  background: ${(props) =>
-    props.theme.colors.backgroundHeader};
-  color: ${(props) => props.theme.colors.header};
-  padding: 64px 0px 60px;
-  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
-  transition: ${(props) => props.theme.colorModeTransition};
-`;
+import styled from '../components/atoms/styled';
+import Layout from '../components/templates/layout';
+import SEO from '../components/organisms/seo';
+import Hero from '../components/organisms/hero';
+import PostList from '../components/organisms/blog-post-list';
+import WavesDivider from '../components/organisms/waves-divider';
+import Button from '../components/atoms/button';
 
 const Index: React.FC<
   PageProps<GatsbyTypes.IndexQuery>
@@ -60,17 +21,12 @@ const Index: React.FC<
     <Layout location={location} title={siteTitle}>
       <SEO />
       <TopHeaderWrapper>
-        <Hero className="by-hero">
-          <div className="by-spacer-large">
-            <div className="by-container">
-              <h2>{`Develop & Design`}</h2>
-              <p>
-                {`Web制作 /
-            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`}
-              </p>
-            </div>
-          </div>
-        </Hero>
+        <Hero
+          title="Develop & Design"
+          description="Web制作 /
+            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス"
+          top
+        />
         <WavesDivider />
       </TopHeaderWrapper>
       <section className="by-spacer">
@@ -82,21 +38,21 @@ const Index: React.FC<
         </header>
         <PostList posts={posts} />
         <footer className="by-section-foot by-container">
-          <Link
-            to="/blog"
-            className="by-btn by-btn-outline"
-          >
-            {`ブログをもっと見る`}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              width="14"
-              viewBox="0 0 24 24"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-          </Link>
+          <Button
+            href="/blog"
+            variant="outlined"
+            endIcon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="14"
+                width="14"
+                viewBox="0 0 24 24"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+              </svg>
+            }
+          >{`ブログをもっと見る`}</Button>
         </footer>
       </section>
       <section className="by-spacer">
@@ -109,12 +65,10 @@ const Index: React.FC<
           </p>
         </header>
         <footer className="by-container by-section-foot by-center">
-          <Link
-            to={`/contact`}
-            className="by-btn by-btn-primary"
-          >
-            {`お問い合わせ`}
-          </Link>
+          <Button
+            href="/contact"
+            variant="contained"
+          >{`お問い合わせ`}</Button>
         </footer>
       </section>
     </Layout>
@@ -159,4 +113,14 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const TopHeaderWrapper = styled.div`
+  position: relative;
+  background: ${(props) =>
+    props.theme.colors.backgroundHeader};
+  color: ${(props) => props.theme.colors.header};
+  padding: 64px 0px 60px;
+  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
+  transition: ${(props) => props.theme.colorModeTransition};
 `;

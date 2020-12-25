@@ -1,97 +1,10 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 
-import styled from '../components/styled';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PageHero from '../components/pageHero';
-
-const AboutContentWrapper = styled.div`
-  .about-section-item {
-    padding: 64px 0px 32px;
-  }
-
-  h3 {
-    padding-bottom: 16px;
-  }
-
-  p {
-    padding-bottom: 24px;
-    line-height: 2em;
-  }
-
-  ul,
-  ol {
-    list-style: none;
-    margin: 0 16px 24px 24px;
-    padding: 0px;
-  }
-
-  li {
-    margin-bottom: 8px;
-
-    &::before {
-      display: inline-block;
-      position: absolute;
-      margin-left: -16px;
-      color: ${(props) => props.theme.colors.light};
-    }
-
-    p {
-      margin: 0px;
-    }
-
-    & > ul {
-      margin-top: 8px;
-      margin-bottom: 0px;
-    }
-  }
-
-  ul li {
-    &::before {
-      content: '–';
-    }
-  }
-
-  ol {
-    counter-reset: number 0;
-
-    li {
-      &::before {
-        content: counter(number);
-        counter-increment: number 1;
-      }
-    }
-  }
-
-  table {
-    width: 100%;
-    overflow: auto;
-    max-width: 100%;
-    margin-bottom: 0;
-    border-spacing: 0;
-    border-collapse: collapse;
-
-    tr {
-      vertical-align: middle;
-
-      th,
-      td {
-        text-align: left;
-        padding: 16px;
-        border-top: 1px solid
-          ${(props) => props.theme.colors.border};
-      }
-
-      &:first-of-type {
-        th,
-        td {
-          border: none;
-        }
-      }
-    }
-  }
-`;
+import styled from '../components/atoms/styled';
+import Layout from '../components/templates/layout';
+import SEO from '../components/organisms/seo';
+import PageHero from '../components/organisms/hero';
 
 const AboutIndex: React.FC<
   PageProps<GatsbyTypes.AboutIndexQuery>
@@ -103,7 +16,7 @@ const AboutIndex: React.FC<
     <Layout location={location} title={siteTitle}>
       <SEO title={`About`} />
       <PageHero title="beyooonとは" />
-      <AboutContentWrapper>
+      <Wrapper>
         <section className="about-section-item">
           <header className="by-section-head by-container-small">
             <h2>{`デジタルなモノづくりが好きなフリーランス`}</h2>
@@ -228,7 +141,7 @@ const AboutIndex: React.FC<
             </ul>
           </div>
         </section>
-      </AboutContentWrapper>
+      </Wrapper>
     </Layout>
   );
 };
@@ -240,6 +153,93 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+  }
+`;
+
+const Wrapper = styled.div`
+  .about-section-item {
+    padding: 64px 0px 32px;
+  }
+
+  h3 {
+    padding-bottom: 16px;
+  }
+
+  p {
+    padding-bottom: 24px;
+    line-height: 2em;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0 16px 24px 24px;
+    padding: 0px;
+  }
+
+  li {
+    margin-bottom: 8px;
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      margin-left: -16px;
+      color: ${(props) => props.theme.colors.light};
+    }
+
+    p {
+      margin: 0px;
+    }
+
+    & > ul {
+      margin-top: 8px;
+      margin-bottom: 0px;
+    }
+  }
+
+  ul li {
+    &::before {
+      content: '–';
+    }
+  }
+
+  ol {
+    counter-reset: number 0;
+
+    li {
+      &::before {
+        content: counter(number);
+        counter-increment: number 1;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    overflow: auto;
+    max-width: 100%;
+    margin-bottom: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    tr {
+      vertical-align: middle;
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+        border-top: 1px solid
+          ${(props) => props.theme.colors.border};
+      }
+
+      &:first-of-type {
+        th,
+        td {
+          border: none;
+        }
       }
     }
   }

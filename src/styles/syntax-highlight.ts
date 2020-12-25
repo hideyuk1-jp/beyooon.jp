@@ -46,7 +46,7 @@ const SytaxHighlightStyle = css`
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
-    background: #1e1e1e;
+    background: #2d2f39;
   }
 
   :not(pre) > code[class*='language-'] {

@@ -8,7 +8,7 @@
 import React from 'react';
 import { Global } from '@emotion/core';
 
-import { ThemeProvider } from './src/store/themeProvider';
+import { ThemeProvider } from './src/store/theme-provider';
 import globalStyles from './src/styles/global';
 
 export const wrapRootElement = ({ element }) => {

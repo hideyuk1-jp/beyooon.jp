@@ -3,47 +3,8 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import moment from 'moment';
 import 'moment-timezone';
 
-import styled from '../components/styled';
-
-const FooterTag = styled.footer<{}>`
-  background: ${(props) => props.theme.colors.background};
-  border-top: 1px solid
-    ${(props) => props.theme.colors.border};
-  padding: 0 ${(props) => props.theme.sideSpace.base};
-  color: ${(props) => props.theme.colors.base};
-  transition: ${(props) => props.theme.colorModeTransition};
-`;
-
-const FooterContent = styled.div<{}>`
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 0;
-
-  .foot-icons {
-    display: flex;
-
-    a {
-      margin-left: 16px;
-      line-height: 1;
-
-      .foot-icon-item {
-        width: 20px;
-        height: 20px;
-        fill: ${(props) => props.theme.colors.base};
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
-      }
-    }
-  }
-`;
-
-const Copyright = styled.div<{}>`
-  display: inline-block;
-
-  a.by-foot-title {
-    color: ${(props) => props.theme.colors.base};
-  }
-`;
+import styled from '../atoms/styled';
+import Tooltip from '../atoms/tooltip';
 
 const Footer: React.FC<{ title: string }> = ({ title }) => {
   const { site } = useStaticQuery<GatsbyTypes.FooterQuery>(
@@ -63,31 +24,33 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
   );
 
   return (
-    <FooterTag>
-      <FooterContent className="by-container">
-        <Copyright>
+    <Wrapper>
+      <div className="by-container footer-inner">
+        <div className="footer-copyright">
           © {new Date().getFullYear()}
           {` `}
-          <Link to={`/`} className="by-foot-title">
+          <Link to={`/`} className="footer-title">
             {title}
           </Link>
           {` `}
-          <span className="tooltip-container">
-            {`🚀`}
-            <span className="tooltip-text tooltip-top">{`Last build: ${moment(
+          <Tooltip
+            tooltipContent={`Last build: ${moment(
               site?.buildTime,
             )
               .tz('Asia/Tokyo')
-              .format()}`}</span>
-          </span>
-        </Copyright>
-        <div className="foot-icons">
+              .format()}`}
+            position="top"
+          >
+            {`🚀`}
+          </Tooltip>
+        </div>
+        <div className="footer-icons">
           <a
             href={`https://twitter.com/${site?.siteMetadata?.social?.twitter}`}
             aria-label="twitter"
           >
             <svg
-              className="twitter-icon foot-icon-item"
+              className="twitter-icon footer-icon-item"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -101,7 +64,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
             aria-label="GitHub"
           >
             <svg
-              className="github-icon foot-icon-item"
+              className="github-icon footer-icon-item"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -112,7 +75,7 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
           </a>
           <a href={`/rss.xml`} aria-label="RSS">
             <svg
-              className="rss-icon foot-icon-item"
+              className="rss-icon footer-icon-item"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -122,9 +85,49 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
             </svg>{' '}
           </a>
         </div>
-      </FooterContent>
-    </FooterTag>
+      </div>
+    </Wrapper>
   );
 };
 
 export default Footer;
+
+const Wrapper = styled.footer`
+  background: ${(props) => props.theme.colors.background};
+  border-top: 1px solid
+    ${(props) => props.theme.colors.border};
+  padding: 0 ${(props) => props.theme.sideSpace.base};
+  color: ${(props) => props.theme.colors.base};
+  transition: ${(props) => props.theme.colorModeTransition};
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+
+    .footer-copyright {
+      display: inline-block;
+
+      a.footer-title {
+        color: ${(props) => props.theme.colors.base};
+      }
+    }
+
+    .footer-icons {
+      display: flex;
+
+      a {
+        margin-left: 16px;
+        line-height: 1;
+
+        .footer-icon-item {
+          width: 20px;
+          height: 20px;
+          fill: ${(props) => props.theme.colors.base};
+          transition: ${(props) =>
+            props.theme.colorModeTransition};
+        }
+      }
+    }
+  }
+`;

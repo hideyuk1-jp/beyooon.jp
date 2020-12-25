@@ -14,175 +14,6 @@ const MENU_ITEMS = [
   { title: 'beyooonとは', name: 'About' },
   { title: 'お問い合わせ', name: 'Contact' },
 ];
-
-const HeaderTag = styled.header<{ isScrolled: boolean }>`
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 64px;
-  background: ${(props) =>
-    props.isScrolled
-      ? props.theme.colors.backgroundHeaderNavbar
-      : props.theme.colors.backgroundHeader};
-  backdrop-filter: saturate(180%) blur(5px);
-  overflow: hidden;
-  transform: translateY(0);
-  transition: height 0.25s var(--ease-in-out-quad),
-    transform 0.25s var(--ease-in-out-quad),
-    ${(props) => props.theme.colorModeTransition};
-
-  &.hidden {
-    transform: translateY(-200%);
-  }
-
-  svg.logo {
-    fill: ${(props) => props.theme.colors.header};
-  }
-
-  display: none;
-
-  &.mobile {
-    display: block;
-
-    .main-heading {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-left: 0px;
-    }
-
-    &.mobile-menu-open {
-      position: fixed;
-      height: 100%;
-    }
-  }
-
-  @media screen and (min-width: ${(props) =>
-      props.theme.responsive.medium}) {
-    display: block;
-
-    &.mobile {
-      display: none;
-    }
-  }
-`;
-
-const Navbar = styled.nav`
-  position: relative;
-  display: flex;
-  padding: 0 ${(props) => props.theme.sideSpace.base};
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-
-  svg {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
-  }
-
-  .navbar-item {
-    padding: 10px 15px;
-  }
-
-  .main-heading {
-    margin-left: -15px;
-  }
-
-  .logo-link {
-    display: block;
-  }
-
-  .logo {
-    display: block;
-  }
-  .menu-link {
-    display: block;
-    color: ${(props) => props.theme.colors.header};
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.25s ease;
-    transition: ${(props) =>
-        props.theme.colorModeTransition},
-      opacity 0.25s var(--ease-in-out-quad);
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-`;
-
-const NavbarLeft = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const NavbarCenter = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const NavbarRight = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-/* MobileMenu */
-const MobileMenu = styled.div<{ isOpen: boolean }>`
-  display: flex;
-  flex-direction: column;
-  padding: 0 8vw;
-  max-height: calc(100vh - 64px);
-  border-top: 1px solid
-    ${(props) => props.theme.colors.borderHeader};
-  overflow-y: scroll;
-  transition: border 0.25s var(--ease-in-out-quad);
-
-  .menu-link-wrapper {
-    transform: scale(
-        ${(props) => (props.isOpen ? '1' : '1.1')}
-      )
-      translateY(
-        ${(props) => (props.isOpen ? '0px' : '-25px')}
-      );
-    opacity: ${(props) => (props.isOpen ? '1' : '0')};
-    transition: opacity 0.25s var(--ease-in-out-quad),
-      transform 0.25s var(--ease-in-out-quad);
-
-    &:nth-of-type(1) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0' : '0.15'}s;
-      transition-property: opacity, transform;
-    }
-    &:nth-of-type(2) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.05' : '0.1'}s;
-      transition-property: opacity, transform;
-    }
-    &:nth-of-type(3) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.1' : '0.05'}s;
-      transition-property: opacity, transform;
-    }
-    &:nth-of-type(4) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.15' : '0'}s;
-      transition-property: opacity, transform;
-    }
-
-    a.menu-link {
-      display: block;
-      padding: 16px 0;
-      color: ${(props) => props.theme.colors.header};
-      border-bottom: 1px solid
-        ${(props) => props.theme.colors.borderHeader};
-      transition: ${(props) =>
-          props.theme.colorModeTransition},
-        border 0.25s var(--ease-in-out-quad);
-    }
-  }
-`;
-
 const Header: React.FC<{
   location: WindowLocation<unknown>;
 }> = ({ location }) => {
@@ -358,3 +189,171 @@ const Header: React.FC<{
 };
 
 export default Header;
+
+const HeaderTag = styled.header<{ isScrolled: boolean }>`
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 64px;
+  background: ${(props) =>
+    props.isScrolled
+      ? props.theme.colors.backgroundHeaderNavbar
+      : props.theme.colors.backgroundHeader};
+  backdrop-filter: saturate(180%) blur(5px);
+  overflow: hidden;
+  transform: translateY(0);
+  transition: height 0.25s var(--ease-in-out-quad),
+    transform 0.25s var(--ease-in-out-quad),
+    ${(props) => props.theme.colorModeTransition};
+
+  &.hidden {
+    transform: translateY(-200%);
+  }
+
+  svg.logo {
+    fill: ${(props) => props.theme.colors.header};
+  }
+
+  display: none;
+
+  &.mobile {
+    display: block;
+
+    .main-heading {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 0px;
+    }
+
+    &.mobile-menu-open {
+      position: fixed;
+      height: 100%;
+    }
+  }
+
+  @media screen and (min-width: ${(props) =>
+      props.theme.responsive.medium}) {
+    display: block;
+
+    &.mobile {
+      display: none;
+    }
+  }
+`;
+
+const Navbar = styled.nav`
+  position: relative;
+  display: flex;
+  padding: 0 ${(props) => props.theme.sideSpace.base};
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+
+  svg {
+    transition: ${(props) =>
+      props.theme.colorModeTransition};
+  }
+
+  .navbar-item {
+    padding: 10px 15px;
+  }
+
+  .main-heading {
+    margin-left: -15px;
+  }
+
+  .logo-link {
+    display: block;
+  }
+
+  .logo {
+    display: block;
+  }
+  .menu-link {
+    display: block;
+    color: ${(props) => props.theme.colors.header};
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.25s ease;
+    transition: ${(props) =>
+        props.theme.colorModeTransition},
+      opacity 0.25s var(--ease-in-out-quad);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;
+
+const NavbarLeft = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NavbarCenter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NavbarRight = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+/* MobileMenu */
+const MobileMenu = styled.div<{ isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
+  padding: 0 8vw;
+  max-height: calc(100vh - 64px);
+  border-top: 1px solid
+    ${(props) => props.theme.colors.borderHeader};
+  overflow-y: scroll;
+  transition: border 0.25s var(--ease-in-out-quad);
+
+  .menu-link-wrapper {
+    transform: scale(
+        ${(props) => (props.isOpen ? '1' : '1.1')}
+      )
+      translateY(
+        ${(props) => (props.isOpen ? '0px' : '-25px')}
+      );
+    opacity: ${(props) => (props.isOpen ? '1' : '0')};
+    transition: opacity 0.25s var(--ease-in-out-quad),
+      transform 0.25s var(--ease-in-out-quad);
+
+    &:nth-of-type(1) {
+      transition-delay: ${(props) =>
+        props.isOpen ? '0' : '0.15'}s;
+      transition-property: opacity, transform;
+    }
+    &:nth-of-type(2) {
+      transition-delay: ${(props) =>
+        props.isOpen ? '0.05' : '0.1'}s;
+      transition-property: opacity, transform;
+    }
+    &:nth-of-type(3) {
+      transition-delay: ${(props) =>
+        props.isOpen ? '0.1' : '0.05'}s;
+      transition-property: opacity, transform;
+    }
+    &:nth-of-type(4) {
+      transition-delay: ${(props) =>
+        props.isOpen ? '0.15' : '0'}s;
+      transition-property: opacity, transform;
+    }
+
+    a.menu-link {
+      display: block;
+      padding: 16px 0;
+      color: ${(props) => props.theme.colors.header};
+      border-bottom: 1px solid
+        ${(props) => props.theme.colors.borderHeader};
+      transition: ${(props) =>
+          props.theme.colorModeTransition},
+        border 0.25s var(--ease-in-out-quad);
+    }
+  }
+`;

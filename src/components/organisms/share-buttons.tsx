@@ -10,42 +10,6 @@ import {
 } from 'react-share';
 import styled from '../atoms/styled';
 
-const ShareBtnWrapper = styled.div`
-  button {
-    outline: none;
-  }
-
-  .share-btn-items {
-    margin-right: 16px;
-    &:last-child {
-      margin-right: 0px;
-    }
-
-    svg {
-      width: 32px;
-      height: 32px;
-
-      circle,
-      path {
-        transition: ${(props) =>
-            props.theme.colorModeTransition},
-          opacity 0.25s var(--ease-in-out-quad);
-      }
-
-      &:not(:hover) {
-        circle {
-          fill: ${(props) => props.theme.colors.base};
-          opacity: 0.5;
-        }
-
-        path {
-          fill: ${(props) => props.theme.colors.background};
-        }
-      }
-    }
-  }
-`;
-
 const ShareButtons: React.FC<{
   title: string;
   postUrl: string;
@@ -89,3 +53,39 @@ const ShareButtons: React.FC<{
 };
 
 export default ShareButtons;
+
+const ShareBtnWrapper = styled.div`
+  button {
+    outline: none;
+  }
+
+  .share-btn-items {
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+
+      circle,
+      path {
+        transition: ${(props) =>
+            props.theme.colorModeTransition},
+          opacity 0.25s var(--ease-in-out-quad);
+      }
+
+      &:not(:hover) {
+        circle {
+          fill: ${(props) => props.theme.colors.base};
+          opacity: 0.5;
+        }
+
+        path {
+          fill: ${(props) => props.theme.colors.background};
+        }
+      }
+    }
+  }
+`;

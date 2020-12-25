@@ -17,6 +17,8 @@ const Hero: React.FC<{
   </Wrapper>
 );
 
+export default Hero;
+
 const Wrapper = styled.header`
   text-align: center;
   padding: 0px ${(props) => props.theme.sideSpace.base};
@@ -57,18 +59,18 @@ const Wrapper = styled.header`
     }
   }
 
-  .top > h2 {
-    font-size: 4rem;
-  }
-
   p {
     padding-top: 24px;
     color: ${(props) => props.theme.colors.light};
   }
 
-  .top > p {
-    color: ${(props) => props.theme.colors.headerLight};
+  .top {
+    & > h2 {
+      font-size: 4rem;
+    }
+
+    & > p {
+      color: ${(props) => props.theme.colors.headerLight};
+    }
   }
 `;
-
-export default Hero;

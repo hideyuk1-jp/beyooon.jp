@@ -2,6 +2,19 @@ import React from 'react';
 
 import styled from '../../atoms/styled';
 
+const Hamburger: React.FC<{
+  isOpen: boolean;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
+}> = ({ isOpen, onClick }) => {
+  return (
+    <IconWrapper onClick={onClick} aria-label="menu">
+      <HumbergerInner isOpen={isOpen} />
+    </IconWrapper>
+  );
+};
+
+export default Hamburger;
+
 const IconWrapper = styled.button`
   position: relative;
   display: block;
@@ -55,16 +68,3 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
       props.isOpen ? 'rotate(-315deg)' : 'rotate(0)'};
   }
 `;
-
-const Hamburger: React.FC<{
-  isOpen: boolean;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
-}> = ({ isOpen, onClick }) => {
-  return (
-    <IconWrapper onClick={onClick} aria-label="menu">
-      <HumbergerInner isOpen={isOpen} />
-    </IconWrapper>
-  );
-};
-
-export default Hamburger;

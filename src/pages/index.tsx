@@ -1,23 +1,14 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
 import styled from '../components/atoms/styled';
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import Hero from '../components/organisms/hero';
-import PostList from '../components/organisms/post-list';
+import PostList from '../components/organisms/blog-post-list';
 import WavesDivider from '../components/organisms/waves-divider';
-
-const TopHeaderWrapper = styled.div`
-  position: relative;
-  background: ${(props) =>
-    props.theme.colors.backgroundHeader};
-  color: ${(props) => props.theme.colors.header};
-  padding: 64px 0px 60px;
-  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
-  transition: ${(props) => props.theme.colorModeTransition};
-`;
+import Button from '../components/atoms/button';
 
 const Index: React.FC<
   PageProps<GatsbyTypes.IndexQuery>
@@ -47,21 +38,21 @@ const Index: React.FC<
         </header>
         <PostList posts={posts} />
         <footer className="by-section-foot by-container">
-          <Link
-            to="/blog"
-            className="by-btn by-btn-outline"
-          >
-            {`ブログをもっと見る`}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              width="14"
-              viewBox="0 0 24 24"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-          </Link>
+          <Button
+            href="/blog"
+            variant="outlined"
+            endIcon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="14"
+                width="14"
+                viewBox="0 0 24 24"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+              </svg>
+            }
+          >{`ブログをもっと見る`}</Button>
         </footer>
       </section>
       <section className="by-spacer">
@@ -74,12 +65,10 @@ const Index: React.FC<
           </p>
         </header>
         <footer className="by-container by-section-foot by-center">
-          <Link
-            to={`/contact`}
-            className="by-btn by-btn-primary"
-          >
-            {`お問い合わせ`}
-          </Link>
+          <Button
+            href="/contact"
+            variant="contained"
+          >{`お問い合わせ`}</Button>
         </footer>
       </section>
     </Layout>
@@ -124,4 +113,14 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const TopHeaderWrapper = styled.div`
+  position: relative;
+  background: ${(props) =>
+    props.theme.colors.backgroundHeader};
+  color: ${(props) => props.theme.colors.header};
+  padding: 64px 0px 60px;
+  margin: -64px -${(props) => props.theme.sideSpace.base} 0px;
+  transition: ${(props) => props.theme.colorModeTransition};
 `;

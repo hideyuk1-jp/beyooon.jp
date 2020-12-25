@@ -4,7 +4,7 @@ import { PageProps } from 'gatsby';
 
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
-import PostList from '../components/organisms/post-list';
+import PostList from '../components/organisms/blog-post-list';
 import PageHero from '../components/organisms/hero';
 
 const BlogIndex: React.FC<

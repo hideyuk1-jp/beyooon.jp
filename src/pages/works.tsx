@@ -4,11 +4,11 @@ import { PageProps } from 'gatsby';
 
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
-import PostList from '../components/organisms/blog-post-list';
-import Hero from '../components/organisms/hero';
+import PostList from '../components/organisms/works-post-list';
+import PageHero from '../components/organisms/hero';
 
-const BlogIndex: React.FC<
-  PageProps<GatsbyTypes.BlogIndexQuery>
+const WorksIndex: React.FC<
+  PageProps<GatsbyTypes.WorksIndexQuery>
 > = ({ data, location }) => {
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
@@ -16,8 +16,8 @@ const BlogIndex: React.FC<
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={`Blog`} />
-      <Hero title="beyooon Blog" />
+      <SEO title={`Works`} />
+      <PageHero title="Works" />
       <section className="by-spacer">
         <PostList posts={posts} />
       </section>
@@ -25,10 +25,10 @@ const BlogIndex: React.FC<
   );
 };
 
-export default BlogIndex;
+export default WorksIndex;
 
 export const pageQuery = graphql`
-  query BlogIndex {
+  query WorksIndex {
     site {
       siteMetadata {
         title
@@ -38,10 +38,13 @@ export const pageQuery = graphql`
       filter: {
         fields: {
           draft: { eq: false }
-          collection: { eq: "blog" }
+          collection: { eq: "works" }
         }
       }
-      sort: { fields: [frontmatter___update], order: DESC }
+      sort: {
+        fields: [frontmatter___startDate]
+        order: DESC
+      }
     ) {
       nodes {
         excerpt
@@ -50,12 +53,13 @@ export const pageQuery = graphql`
         }
         timeToRead
         frontmatter {
-          date
-          update
+          startDate
+          endDate
           title
-          description
           category
-          tags
+          skills
+          description
+          link
           image {
             childImageSharp {
               fluid(maxWidth: 600) {

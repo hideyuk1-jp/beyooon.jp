@@ -3,12 +3,11 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 import styled from '../atoms/styled';
-import { BlogPost } from '../../types';
-import TimeToRead from '../atoms/time-to-read';
-import PostDate from '../atoms/post-date';
+import { WorksPost } from '../../types';
+import PostDate from '../atoms/works-date';
 
 const PostCard: React.FC<{
-  node: BlogPost;
+  node: WorksPost;
 }> = ({ node }) => (
   <Wrapper itemScope itemType="http://schema.org/Article">
     {node.fields?.slug && (
@@ -57,16 +56,10 @@ const PostCard: React.FC<{
               />
             ))}
           <footer className="postcard-footer">
-            {node.frontmatter?.date && (
+            {node.frontmatter?.startDate && (
               <PostDate
-                publish={node.frontmatter?.date}
-                update={node.frontmatter?.update}
-                size="small"
-              />
-            )}
-            {node.timeToRead && (
-              <TimeToRead
-                time={node.timeToRead}
+                startDate={node.frontmatter?.startDate}
+                endDate={node.frontmatter?.endDate}
                 size="small"
               />
             )}

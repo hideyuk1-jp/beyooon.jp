@@ -144,6 +144,7 @@ const Style = (theme: Theme) => css`
     }
 
     &.by-btn-small {
+      font-size: 0.75rem;
       padding: 4px 8px;
     }
 

@@ -9,18 +9,18 @@ export interface ThemeContextType {
   setColorMode: () => void;
 }
 
-export type Posts = ReadonlyArray<Post>;
+export type BlogPosts = ReadonlyArray<BlogPost>;
 
-export type Post = Pick<
+export type BlogPost = Pick<
   GatsbyTypes.MarkdownRemark,
   'excerpt' | 'timeToRead'
 > & {
   readonly fields: GatsbyTypes.Maybe<
-    Pick<GatsbyTypes.Fields, 'slug'>
+    Pick<GatsbyTypes.MarkdownRemarkFields, 'slug'>
   >;
   readonly frontmatter: GatsbyTypes.Maybe<
     Pick<
-      GatsbyTypes.Frontmatter,
+      GatsbyTypes.MarkdownRemarkFrontmatter,
       | 'date'
       | 'update'
       | 'title'
@@ -30,9 +30,36 @@ export type Post = Pick<
     > & {
       readonly image: GatsbyTypes.Maybe<{
         readonly childImageSharp: GatsbyTypes.Maybe<{
-          readonly fluid: GatsbyTypes.Maybe<
-            GatsbyTypes.GatsbyImageSharpFluidFragment
-          >;
+          readonly fluid: GatsbyTypes.Maybe<GatsbyTypes.GatsbyImageSharpFluidFragment>;
+        }>;
+      }>;
+    }
+  >;
+};
+
+export type WorksPosts = ReadonlyArray<WorksPost>;
+
+export type WorksPost = Pick<
+  GatsbyTypes.MarkdownRemark,
+  'excerpt'
+> & {
+  readonly fields: GatsbyTypes.Maybe<
+    Pick<GatsbyTypes.MarkdownRemarkFields, 'slug'>
+  >;
+  readonly frontmatter: GatsbyTypes.Maybe<
+    Pick<
+      GatsbyTypes.MarkdownRemarkFrontmatter,
+      | 'startDate'
+      | 'endDate'
+      | 'description'
+      | 'title'
+      | 'category'
+      | 'skills'
+      | 'link'
+    > & {
+      readonly image: GatsbyTypes.Maybe<{
+        readonly childImageSharp: GatsbyTypes.Maybe<{
+          readonly fluid: GatsbyTypes.Maybe<GatsbyTypes.GatsbyImageSharpFluidFragment>;
         }>;
       }>;
     }

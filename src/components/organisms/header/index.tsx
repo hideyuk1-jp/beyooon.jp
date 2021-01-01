@@ -9,8 +9,7 @@ import Hamburger from './hamburger';
 
 const MENU_ITEMS = [
   { title: 'ブログ', name: 'Blog' },
-  /* TODO: 制作実績ページを作る
-  { title: '制作実績', name: 'Works' },*/
+  { title: 'つくったもの', name: 'Works' },
   { title: 'beyooonとは', name: 'About' },
   { title: 'お問い合わせ', name: 'Contact' },
 ];

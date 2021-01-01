@@ -1,10 +1,10 @@
 import React from 'react';
 
 import styled from '../atoms/styled';
-import PostCard from '../molecules/blog-post-card';
-import { BlogPosts } from '../../types';
+import PostCard from '../molecules/works-post-card';
+import { WorksPosts } from '../../types';
 
-const PostList: React.FC<{ posts: BlogPosts }> = ({
+const PostList: React.FC<{ posts: WorksPosts }> = ({
   posts,
 }) => (
   <Wrapper className="by-container">

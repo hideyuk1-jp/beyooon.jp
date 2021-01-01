@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import moment from 'moment';
 
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
@@ -10,18 +9,15 @@ import ShareButtons from '../components/organisms/share-buttons';
 
 import styled from '../components/atoms/styled';
 import SyntaxHighlightStyle from '../styles/syntax-highlight';
-import TimeToRead from '../components/atoms/time-to-read';
-import PostDate from '../components/atoms/post-date';
-import Tooltip from '../components/atoms/tooltip';
+import PostDate from '../components/atoms/works-date';
 import Button from '../components/atoms/button';
 
-const BlogPostTemplate: React.FC<
-  PageProps<GatsbyTypes.BlogPostBySlugQuery>
+const WorksPostTemplate: React.FC<
+  PageProps<GatsbyTypes.WorksPostBySlugQuery>
 > = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle =
     data.site?.siteMetadata?.title || `Title`;
-  const { previous, next } = data;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -48,17 +44,17 @@ const BlogPostTemplate: React.FC<
                   {post?.frontmatter?.category}
                 </Button>
               </div>
-              {post?.frontmatter?.tags &&
-                post?.frontmatter?.tags.length > 0 &&
-                post?.frontmatter?.tags.map((tag) => (
-                  <div key={tag} className="head-tag">
+              {post?.frontmatter?.skills &&
+                post?.frontmatter?.skills.length > 0 &&
+                post?.frontmatter?.skills.map((skill) => (
+                  <div key={skill} className="head-tag">
                     <Button
                       href="#"
                       variant="outlined"
                       size="small"
                       startIcon={`#`}
                     >
-                      {`${tag}`}
+                      {`${skill}`}
                     </Button>
                   </div>
                 ))}
@@ -67,33 +63,11 @@ const BlogPostTemplate: React.FC<
               {post?.frontmatter?.title}
             </h1>
             <footer className="post-header-footer">
-              <Tooltip
-                tooltipContent={
-                  <>
-                    {`投稿日: ${moment(
-                      post?.frontmatter?.date,
-                    )
-                      .local()
-                      .format('YYYY.MM.DD')}`}
-                    <br />
-                    {`更新日: ${moment(
-                      post?.frontmatter?.update,
-                    )
-                      .local()
-                      .format('YYYY.MM.DD')}`}
-                  </>
-                }
-                position="bottom"
-              >
-                {post?.frontmatter?.date && (
-                  <PostDate
-                    publish={post?.frontmatter?.date}
-                    update={post?.frontmatter?.update}
-                  />
-                )}
-              </Tooltip>
-              {post?.timeToRead && (
-                <TimeToRead time={post?.timeToRead} />
+              {post?.frontmatter?.startDate && (
+                <PostDate
+                  startDate={post?.frontmatter?.startDate}
+                  endDate={post?.frontmatter?.endDate}
+                />
               )}
             </footer>
           </div>
@@ -108,6 +82,13 @@ const BlogPostTemplate: React.FC<
             />
           )}
         </header>
+        {post?.frontmatter?.link && (
+          <section className="by-container-small by-spacer-small by-center">
+            <Button href={post?.frontmatter?.link}>
+              {`制作物をみる`}
+            </Button>
+          </section>
+        )}
         <main
           className="by-container-small by-spacer"
           dangerouslySetInnerHTML={{
@@ -117,7 +98,7 @@ const BlogPostTemplate: React.FC<
         />
         <section className="share-section by-spacer-small">
           <div className="flex-center by-container-small">
-            <h2>{`ぜひこの記事のシェアをお願いします`}</h2>
+            <h2>{`ぜひこの制作物のシェアをお願いします`}</h2>
           </div>
           <div className="flex-center by-container-small">
             <ShareButtons
@@ -126,48 +107,15 @@ const BlogPostTemplate: React.FC<
             />
           </div>
         </section>
-        <nav className="blog-post-nav by-container-small">
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous?.fields?.slug && (
-                <Link
-                  to={previous?.fields?.slug}
-                  rel="prev"
-                >
-                  ← {previous?.frontmatter?.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next?.fields?.slug && (
-                <Link to={next?.fields?.slug} rel="next">
-                  {next?.frontmatter?.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
       </Wrapper>
     </Layout>
   );
 };
 
-export default BlogPostTemplate;
+export default WorksPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query WorksPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -178,50 +126,20 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
-      timeToRead
       fields {
         slug
       }
       frontmatter {
         title
-        date
-        update
-        description
+        startDate
+        endDate
         category
-        tags
+        skills
+        description
+        link
         image {
           childImageSharp {
             fluid(maxWidth: 1024) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 600) {
               ...GatsbyImageSharpFluid
             }
           }

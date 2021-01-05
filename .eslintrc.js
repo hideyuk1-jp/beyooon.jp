@@ -80,6 +80,19 @@ module.exports = {
     'jsx-a11y/role-supports-aria-props': `warn`,
     'jsx-a11y/scope': `warn`,
     'jsx-a11y/tabindex-no-positive': `warn`,
+
+    // for graphql
+    'graphql/template-strings': [
+      'error',
+      {
+        env: 'relay',
+        tagName: 'graphql',
+        schemaJsonFilepath: path.resolve(
+          __dirname,
+          'src/__generated__gatsby-introspection.json',
+        ),
+      },
+    ],
   },
   overrides: [
     {

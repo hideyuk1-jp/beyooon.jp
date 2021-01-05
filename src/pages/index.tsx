@@ -169,6 +169,7 @@ export const pageQuery = graphql`
           title
           category
           skills
+          link
           image {
             childImageSharp {
               fluid(maxWidth: 600) {

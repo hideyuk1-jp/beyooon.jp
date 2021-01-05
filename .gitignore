@@ -81,8 +81,5 @@ yarn-error.log
 .history
 .ionide
 
-# gatsby-plugin-typegen
-src/__generated__
-
 # lighthouse ci
 .lighthouseci

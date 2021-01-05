@@ -139,6 +139,7 @@ module.exports = {
       resolve: `gatsby-plugin-typegen`,
       options: {
         emitSchema: {
+          'src/__generated__/gatsby-schema.graphql': true,
           'src/__generated__/gatsby-introspection.json': true,
         },
         emitPluginDocuments: {

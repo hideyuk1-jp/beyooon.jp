@@ -10,6 +10,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import styled from '../components/atoms/styled';
 import Layout from '../components/templates/layout';
@@ -94,8 +95,22 @@ const ContactIndex: React.FC<
         if (res.status === 200) {
           setFormState('success');
           actions.resetForm();
+
+          // Google Analyticsへイベント送信
+          trackCustomEvent({
+            category: 'Contact',
+            action: 'Submit',
+            label: `Success: ${values.category}`,
+          });
         } else {
           setFormState('fail');
+
+          // Google Analyticsへイベント送信
+          trackCustomEvent({
+            category: 'Contact',
+            action: 'Submit',
+            label: `Fail(${res.status}): ${values.category}`,
+          });
         }
         actions.setSubmitting(false);
         setTimeout(() => setFormState(''), 5000);
@@ -103,6 +118,14 @@ const ContactIndex: React.FC<
       .catch((err) => {
         setFormState('fail');
         actions.setSubmitting(false);
+
+        // Google Analyticsへイベント送信
+        trackCustomEvent({
+          category: 'Contact',
+          action: 'Submit',
+          label: `Fail(unknown): ${values.category}`,
+        });
+
         setTimeout(() => setFormState(''), 5000);
       });
   };

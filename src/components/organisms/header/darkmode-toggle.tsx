@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import styled from '../../atoms/styled';
 import { useColorMode } from '../../../store/theme-provider';
@@ -12,6 +13,13 @@ const DarkModeToggle: React.FC<{}> = () => {
   ) {
     event.preventDefault();
     setColorMode();
+
+    // Google Analyticsへイベント送信
+    trackCustomEvent({
+      category: 'DarkModeToggle',
+      action: 'Click',
+      label: `To ${colorMode}`,
+    });
   }
 
   return (

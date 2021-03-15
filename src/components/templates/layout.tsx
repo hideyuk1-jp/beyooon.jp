@@ -28,7 +28,7 @@ export default Layout;
 
 const GlobalWrapper = styled.div`
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
   background: ${(props) => props.theme.colors.background};
   font-size: 0.875rem;
   color: ${(props) => props.theme.colors.base};

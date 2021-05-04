@@ -1,7 +1,7 @@
 import React from 'react';
 import { WindowLocation } from '@reach/router';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
 

@@ -8,7 +8,7 @@ import {
   HatenaShareButton,
   HatenaIcon,
 } from 'react-share';
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 
 const ShareButtons: React.FC<{
   title: string;

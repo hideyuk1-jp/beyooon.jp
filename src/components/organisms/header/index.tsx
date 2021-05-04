@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import { throttle } from 'lodash';
 
-import styled from '../../atoms/styled';
+import styled from '@emotion/styled';
 import DarkModeToggle from './darkmode-toggle';
 import Hamburger from './hamburger';
 

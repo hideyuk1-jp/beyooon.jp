@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
-import styled from '../components/atoms/styled';
+import styled from '@emotion/styled';
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import PageHero from '../components/organisms/hero';

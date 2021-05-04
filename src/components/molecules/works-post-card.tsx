@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import PostDate from '../atoms/works-date';
 
 const PostCard: React.FC<{

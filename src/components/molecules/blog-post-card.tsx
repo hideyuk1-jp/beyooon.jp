@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import TimeToRead from '../atoms/time-to-read';
 import PostDate from '../atoms/post-date';
 

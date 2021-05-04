@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'moment-timezone';
 import { Twemoji } from 'react-emoji-render';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import Tooltip from '../atoms/tooltip';
 
 const Footer: React.FC<{ title: string }> = ({ title }) => {

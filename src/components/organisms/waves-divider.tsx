@@ -6,7 +6,7 @@ https://codepen.io/cmdw/pen/vQqzyB
 
 import React from 'react';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 
 const WavesDivider = () => (
   <WavesDividerWrapper>

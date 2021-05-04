@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 
 type Position = 'top' | 'right' | 'bottom' | 'left';
 

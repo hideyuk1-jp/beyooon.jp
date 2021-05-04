@@ -7,7 +7,7 @@ import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import ShareButtons from '../components/organisms/share-buttons';
 
-import styled from '../components/atoms/styled';
+import styled from '@emotion/styled';
 import SyntaxHighlightStyle from '../styles/syntax-highlight';
 import PostDate from '../components/atoms/works-date';
 import Button from '../components/atoms/button';

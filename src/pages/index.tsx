@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
 
-import styled from '../components/atoms/styled';
+import styled from '@emotion/styled';
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import Hero from '../components/organisms/hero';
@@ -136,9 +136,10 @@ export const pageQuery = graphql`
           tags
           image {
             childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                width: 600
+                layout: CONSTRAINED
+              )
             }
           }
         }
@@ -172,9 +173,10 @@ export const pageQuery = graphql`
           link
           image {
             childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                width: 600
+                layout: CONSTRAINED
+              )
             }
           }
         }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
-import Img from 'gatsby-image';
+import { getSrc, GatsbyImage } from 'gatsby-plugin-image';
 import moment from 'moment';
 
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import ShareButtons from '../components/organisms/share-buttons';
 
-import styled from '../components/atoms/styled';
+import styled from '@emotion/styled';
 import SyntaxHighlightStyle from '../styles/syntax-highlight';
 import TimeToRead from '../components/atoms/time-to-read';
 import PostDate from '../components/atoms/post-date';
@@ -30,10 +30,9 @@ const BlogPostTemplate: React.FC<
         description={
           post?.frontmatter?.description || post?.excerpt
         }
-        image={
-          post?.frontmatter?.image?.childImageSharp?.fluid
-            ?.src
-        }
+        // TODO: gatsby-plugin-typegen が gatsby v3 に対応したら修正
+        // @ts-ignore
+        image={getSrc(post?.frontmatter?.image)}
       />
       <Wrapper
         className="blog-post"
@@ -98,13 +97,14 @@ const BlogPostTemplate: React.FC<
             </footer>
           </div>
           {post?.frontmatter?.image?.childImageSharp
-            ?.fluid && (
-            <Img
-              className="by-container head-image"
-              fluid={
+            ?.gatsbyImageData && (
+            <GatsbyImage
+              image={
                 post?.frontmatter?.image?.childImageSharp
-                  ?.fluid
+                  ?.gatsbyImageData
               }
+              className="by-container head-image"
+              alt={post?.frontmatter?.title ?? 'Thumbnail'}
             />
           )}
         </header>
@@ -191,9 +191,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 1024) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
@@ -206,9 +204,7 @@ export const pageQuery = graphql`
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
       }
@@ -221,9 +217,7 @@ export const pageQuery = graphql`
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
       }

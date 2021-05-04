@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import { Theme } from '../../types';
 
 type Props = {

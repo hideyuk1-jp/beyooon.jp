@@ -4,7 +4,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-import { ThemeProvider as EmotionProvider } from 'emotion-theming';
+import { ThemeProvider as EmotionProvider } from '@emotion/react';
 
 import { getTheme } from '../styles/theme';
 import { ThemeContextType, ColorMode } from '../types';

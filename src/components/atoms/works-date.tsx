@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 
-import styled from './styled';
+import styled from '@emotion/styled';
 
 type Size = 'small' | 'medium';
 

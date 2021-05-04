@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 import PostCard from '../molecules/works-post-card';
 
 const PostList: React.FC<{

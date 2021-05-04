@@ -1,7 +1,7 @@
 import React from 'react';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
-import styled from '../../atoms/styled';
+import styled from '@emotion/styled';
 import { useColorMode } from '../../../store/theme-provider';
 
 const DarkModeToggle: React.FC<{}> = () => {

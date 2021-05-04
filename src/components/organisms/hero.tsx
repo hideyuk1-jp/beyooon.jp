@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from '../atoms/styled';
+import styled from '@emotion/styled';
 
 const Hero: React.FC<{
   title: string;
@@ -8,7 +8,7 @@ const Hero: React.FC<{
   top?: boolean;
 }> = ({ title, description, top }) => (
   <Wrapper>
-    <div className="by-spacer">
+    <div className="by-spacer-large">
       <div className={`by-container ${top ? 'top' : ''}`}>
         <h2>{title}</h2>
         {description && <p>{description}</p>}

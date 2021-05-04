@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 import React from 'react';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 
 import { ThemeProvider } from './src/store/theme-provider';
 import globalStyles from './src/styles/global';

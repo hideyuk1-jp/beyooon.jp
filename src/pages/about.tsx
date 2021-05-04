@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 
-import styled from '../components/atoms/styled';
+import styled from '@emotion/styled';
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import PageHero from '../components/organisms/hero';

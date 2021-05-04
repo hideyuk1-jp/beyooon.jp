@@ -101,6 +101,7 @@ const AboutIndex: React.FC<
           <div className="by-container-small">
             <h3>{`資格`}</h3>
             <ul>
+              <li>{`LPIC level1`}</li>
               <li>{`AWS認定SysOpsアドミニストレーター -
                 アソシエイト`}</li>
               <li>{`AWS認定デベロッパー - アソシエイト`}</li>

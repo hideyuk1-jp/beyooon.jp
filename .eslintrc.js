@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   env: {
     browser: true,
@@ -38,7 +40,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'import/no-webpack-loader-syntax': [0],
-    'graphql/template-strings': `off`,
     '@typescript-eslint/no-unused-expressions': 'off',
 
     // note you must disable the base rule as it can report incorrect errors
@@ -89,7 +90,7 @@ module.exports = {
         tagName: 'graphql',
         schemaJsonFilepath: path.resolve(
           __dirname,
-          'src/__generated__gatsby-introspection.json',
+          'src/__generated__/gatsby-introspection.json',
         ),
       },
     ],

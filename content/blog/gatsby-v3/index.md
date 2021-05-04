@@ -143,11 +143,11 @@ CSS in JS ライブラリですね
 
 ### @emotion/core が @emotion/react に統合
 
-というわけでまずはパッケージの加除
+まずはパッケージの加除
 
 ```shell
-$ yarn remove @emotion/core emotion-theming
-$ yarn add @emotion-theming
+$ yarn remove @emotion/core
+$ yarn add @emotion/react
 ```
 
 コードの修正

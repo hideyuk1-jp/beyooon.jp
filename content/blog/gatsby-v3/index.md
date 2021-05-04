@@ -9,7 +9,7 @@ image: ./gatsby-v3.png
 ---
 
 このサイトは Gatsby という静的サイトジェネレータで作っています。
-Gatsbyは2021年3月に v3.0 がリリースされているので、遅ればせながらこのサイトを Gatsby v3 に移行しました。
+Gatsby は2021年3月に v3.0 がリリースされているので、遅ればせながらこのサイトを Gatsby v3 に移行しました。
 
 基本的に公式の移行ガイドを参考に行います。
 [Migrating from v2 to v3 \| Gatsby](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#yarn)

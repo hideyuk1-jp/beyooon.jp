@@ -92,7 +92,6 @@ const Wrapper = styled.article`
     box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
     transition: ${(props) =>
       props.theme.colorModeTransition};
-    z-index: 1;
 
     .postcard-image-wrapper {
       position: relative;
@@ -102,6 +101,7 @@ const Wrapper = styled.article`
       height: 200px;
       box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
         0 8px 10px -5px rgba(0, 0, 0, 0.2);
+      z-index: 1;
 
       .postcard-category {
         position: absolute;

@@ -2519,10 +2519,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___pluginFilepath
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___name
-  pluginCreator___pluginOptions___sourceMap
-  pluginCreator___pluginOptions___autoLabel
-  pluginCreator___pluginOptions___labelFormat
-  pluginCreator___pluginOptions___cssPropOptimization
   pluginCreator___pluginOptions___maxWidth
   pluginCreator___pluginOptions___linkImagesToOriginal
   pluginCreator___pluginOptions___showCaptions
@@ -2543,7 +2539,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
   pluginCreator___pluginOptions___failOnError
-  pluginCreator___pluginOptions___publishDraft
   pluginCreator___pluginOptions___trackingId
   pluginCreator___pluginOptions___head
   pluginCreator___pluginOptions___anonymize
@@ -2575,7 +2570,13 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___stages
   pluginCreator___pluginOptions___options___emitWarning
   pluginCreator___pluginOptions___options___failOnError
+  pluginCreator___pluginOptions___publisherId
   pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___sourceMap
+  pluginCreator___pluginOptions___autoLabel
+  pluginCreator___pluginOptions___labelFormat
+  pluginCreator___pluginOptions___cssPropOptimization
+  pluginCreator___pluginOptions___publishDraft
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
   pluginCreator___ssrAPIs
@@ -2777,10 +2778,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___plugins___pluginFilepath
   pluginOptions___path
   pluginOptions___name
-  pluginOptions___sourceMap
-  pluginOptions___autoLabel
-  pluginOptions___labelFormat
-  pluginOptions___cssPropOptimization
   pluginOptions___maxWidth
   pluginOptions___linkImagesToOriginal
   pluginOptions___showCaptions
@@ -2801,7 +2798,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality
   pluginOptions___failOnError
-  pluginOptions___publishDraft
   pluginOptions___trackingId
   pluginOptions___head
   pluginOptions___anonymize
@@ -2833,7 +2829,13 @@ enum SitePluginFieldsEnum {
   pluginOptions___stages
   pluginOptions___options___emitWarning
   pluginOptions___options___failOnError
+  pluginOptions___publisherId
   pluginOptions___pathCheck
+  pluginOptions___sourceMap
+  pluginOptions___autoLabel
+  pluginOptions___labelFormat
+  pluginOptions___cssPropOptimization
+  pluginOptions___publishDraft
   nodeAPIs
   browserAPIs
   ssrAPIs
@@ -2950,10 +2952,6 @@ type SitePluginPluginOptions {
   plugins: [SitePluginPluginOptionsPlugins]
   path: String
   name: String
-  sourceMap: Boolean
-  autoLabel: Boolean
-  labelFormat: String
-  cssPropOptimization: Boolean
   maxWidth: Int
   linkImagesToOriginal: Boolean
   showCaptions: Boolean
@@ -2974,7 +2972,6 @@ type SitePluginPluginOptions {
   stripMetadata: Boolean
   defaultQuality: Int
   failOnError: Boolean
-  publishDraft: Boolean
   trackingId: String
   head: Boolean
   anonymize: Boolean
@@ -3002,7 +2999,13 @@ type SitePluginPluginOptions {
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocuments
   stages: [String]
   options: SitePluginPluginOptionsOptions
+  publisherId: String
   pathCheck: Boolean
+  sourceMap: Boolean
+  autoLabel: Boolean
+  labelFormat: String
+  cssPropOptimization: Boolean
+  publishDraft: Boolean
 }
 
 type SitePluginPluginOptionsEmitPluginDocuments {
@@ -3041,10 +3044,6 @@ input SitePluginPluginOptionsFilterInput {
   plugins: SitePluginPluginOptionsPluginsFilterListInput
   path: StringQueryOperatorInput
   name: StringQueryOperatorInput
-  sourceMap: BooleanQueryOperatorInput
-  autoLabel: BooleanQueryOperatorInput
-  labelFormat: StringQueryOperatorInput
-  cssPropOptimization: BooleanQueryOperatorInput
   maxWidth: IntQueryOperatorInput
   linkImagesToOriginal: BooleanQueryOperatorInput
   showCaptions: BooleanQueryOperatorInput
@@ -3065,7 +3064,6 @@ input SitePluginPluginOptionsFilterInput {
   stripMetadata: BooleanQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
   failOnError: BooleanQueryOperatorInput
-  publishDraft: BooleanQueryOperatorInput
   trackingId: StringQueryOperatorInput
   head: BooleanQueryOperatorInput
   anonymize: BooleanQueryOperatorInput
@@ -3093,7 +3091,13 @@ input SitePluginPluginOptionsFilterInput {
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocumentsFilterInput
   stages: StringQueryOperatorInput
   options: SitePluginPluginOptionsOptionsFilterInput
+  publisherId: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
+  sourceMap: BooleanQueryOperatorInput
+  autoLabel: BooleanQueryOperatorInput
+  labelFormat: StringQueryOperatorInput
+  cssPropOptimization: BooleanQueryOperatorInput
+  publishDraft: BooleanQueryOperatorInput
 }
 
 type SitePluginPluginOptionsOptions {

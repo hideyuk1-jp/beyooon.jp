@@ -2,11 +2,10 @@ import React from 'react';
 
 import styled from '../atoms/styled';
 import PostCard from '../molecules/works-post-card';
-import { WorksPosts } from '../../types';
 
-const PostList: React.FC<{ posts: WorksPosts }> = ({
-  posts,
-}) => (
+const PostList: React.FC<{
+  posts: GatsbyTypes.IndexQuery['allWorksPosts']['nodes'];
+}> = ({ posts }) => (
   <Wrapper className="by-container">
     <div className="post-list">
       {posts.map((node) => {

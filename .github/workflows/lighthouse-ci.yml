@@ -23,7 +23,7 @@ jobs:
           npm run build
       - name: Run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.6.x
+          npm install -g @lhci/cli@0.7.x
           lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
       - name: Slack Notification on Success

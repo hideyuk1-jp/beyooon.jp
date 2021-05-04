@@ -4,7 +4,7 @@ date: 2021-05-04T21:00:00+09:00
 update: 2021-05-04T21:00:00+09:00
 description: 遅ればせながらこのサイトをGatsby v3に移行しました。
 category: Dev
-tags: []
+tags: [Gatsby, TypeScript]
 image: ./gatsby-v3.png
 ---
 

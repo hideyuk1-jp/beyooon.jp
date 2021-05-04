@@ -3,11 +3,10 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 import styled from '../atoms/styled';
-import { WorksPost } from '../../types';
 import PostDate from '../atoms/works-date';
 
 const PostCard: React.FC<{
-  node: WorksPost;
+  node: GatsbyTypes.IndexQuery['allWorksPosts']['nodes'][number];
 }> = ({ node }) => (
   <Wrapper itemScope itemType="http://schema.org/Article">
     {node.fields?.slug && (

@@ -108,6 +108,7 @@ const Wrapper = styled.article`
       height: 200px;
       box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
         0 8px 10px -5px rgba(0, 0, 0, 0.2);
+      z-index: 1;
 
       .postcard-category {
         position: absolute;

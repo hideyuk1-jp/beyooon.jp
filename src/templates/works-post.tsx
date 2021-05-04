@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { PageProps } from 'gatsby';
-import Img from 'gatsby-image';
+import { getSrc, GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
@@ -26,10 +26,9 @@ const WorksPostTemplate: React.FC<
         description={
           post?.frontmatter?.description || post?.excerpt
         }
-        image={
-          post?.frontmatter?.image?.childImageSharp?.fluid
-            ?.src
-        }
+        // TODO: gatsby-plugin-typegen が gatsby v3 に対応したら修正
+        // @ts-ignore
+        image={getSrc(post?.frontmatter?.image)}
       />
       <Wrapper
         className="blog-post"
@@ -72,13 +71,14 @@ const WorksPostTemplate: React.FC<
             </footer>
           </div>
           {post?.frontmatter?.image?.childImageSharp
-            ?.fluid && (
-            <Img
-              className="by-container head-image"
-              fluid={
+            ?.gatsbyImageData && (
+            <GatsbyImage
+              image={
                 post?.frontmatter?.image?.childImageSharp
-                  ?.fluid
+                  ?.gatsbyImageData
               }
+              className="by-container head-image"
+              alt={post?.frontmatter?.title ?? ''}
             />
           )}
         </header>
@@ -139,9 +139,7 @@ export const pageQuery = graphql`
         link
         image {
           childImageSharp {
-            fluid(maxWidth: 1024) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

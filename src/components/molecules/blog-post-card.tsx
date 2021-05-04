@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import styled from '@emotion/styled';
 import TimeToRead from '../atoms/time-to-read';
@@ -18,17 +18,18 @@ const PostCard: React.FC<{
       >
         <div className="postcard-inner">
           {node.frontmatter?.image?.childImageSharp
-            ?.fluid && (
+            ?.gatsbyImageData && (
             <div className="postcard-image-wrapper">
               <div className="postcard-category">
                 {node.frontmatter?.category}
               </div>
-              <Img
-                className="postcard-image"
-                fluid={
+              <GatsbyImage
+                image={
                   node.frontmatter?.image?.childImageSharp
-                    ?.fluid
+                    ?.gatsbyImageData
                 }
+                className="postcard-image"
+                alt={node.frontmatter?.title ?? 'Thumbnail'}
               />
             </div>
           )}
@@ -104,6 +105,7 @@ const Wrapper = styled.article`
       border-radius: 8px;
       margin-top: -24px;
       overflow: hidden;
+      height: 200px;
       box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
         0 8px 10px -5px rgba(0, 0, 0, 0.2);
 
@@ -124,7 +126,8 @@ const Wrapper = styled.article`
       }
       .postcard-image,
       .postcard-image img {
-        max-height: 200px;
+        height: 200px;
+        width: 100%;
         transition: transform 0.25s var(--ease-in-out-quad);
       }
     }

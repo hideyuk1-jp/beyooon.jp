@@ -6971,18 +6971,6 @@
             "deprecationReason": null
           },
           {
-            "name": "publishDraft",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "trackingId",
             "description": null,
             "args": [],
@@ -7352,6 +7340,18 @@
           },
           {
             "name": "pathCheck",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "publishDraft",
             "description": null,
             "args": [],
             "type": {
@@ -21364,18 +21364,6 @@
             "deprecationReason": null
           },
           {
-            "name": "publishDraft",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "BooleanQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "trackingId",
             "description": null,
             "type": {
@@ -21737,6 +21725,18 @@
           },
           {
             "name": "pathCheck",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BooleanQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "publishDraft",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -23935,12 +23935,6 @@
             "deprecationReason": null
           },
           {
-            "name": "pluginCreator___pluginOptions___publishDraft",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "pluginCreator___pluginOptions___trackingId",
             "description": null,
             "isDeprecated": false,
@@ -24158,6 +24152,12 @@
           },
           {
             "name": "pluginCreator___pluginOptions___pathCheck",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pluginCreator___pluginOptions___publishDraft",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -29809,12 +29809,6 @@
             "deprecationReason": null
           },
           {
-            "name": "pluginOptions___publishDraft",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "pluginOptions___trackingId",
             "description": null,
             "isDeprecated": false,
@@ -30032,6 +30026,12 @@
           },
           {
             "name": "pluginOptions___pathCheck",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pluginOptions___publishDraft",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

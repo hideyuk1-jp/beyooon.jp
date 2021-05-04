@@ -843,7 +843,6 @@ type SitePluginPluginOptions {
   stripMetadata: Boolean
   defaultQuality: Int
   failOnError: Boolean
-  publishDraft: Boolean
   trackingId: String
   head: Boolean
   anonymize: Boolean
@@ -875,6 +874,7 @@ type SitePluginPluginOptions {
   options: SitePluginPluginOptionsOptions
   publisherId: String
   pathCheck: Boolean
+  publishDraft: Boolean
 }
 
 type SitePluginPluginOptionsPlugins {
@@ -2287,7 +2287,6 @@ input SitePluginPluginOptionsFilterInput {
   stripMetadata: BooleanQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
   failOnError: BooleanQueryOperatorInput
-  publishDraft: BooleanQueryOperatorInput
   trackingId: StringQueryOperatorInput
   head: BooleanQueryOperatorInput
   anonymize: BooleanQueryOperatorInput
@@ -2319,6 +2318,7 @@ input SitePluginPluginOptionsFilterInput {
   options: SitePluginPluginOptionsOptionsFilterInput
   publisherId: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
+  publishDraft: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPluginsFilterListInput {
@@ -2608,7 +2608,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
   pluginCreator___pluginOptions___failOnError
-  pluginCreator___pluginOptions___publishDraft
   pluginCreator___pluginOptions___trackingId
   pluginCreator___pluginOptions___head
   pluginCreator___pluginOptions___anonymize
@@ -2646,6 +2645,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___options___exclude
   pluginCreator___pluginOptions___publisherId
   pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___publishDraft
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
   pluginCreator___ssrAPIs
@@ -3368,7 +3368,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality
   pluginOptions___failOnError
-  pluginOptions___publishDraft
   pluginOptions___trackingId
   pluginOptions___head
   pluginOptions___anonymize
@@ -3406,6 +3405,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___options___exclude
   pluginOptions___publisherId
   pluginOptions___pathCheck
+  pluginOptions___publishDraft
   nodeAPIs
   browserAPIs
   ssrAPIs

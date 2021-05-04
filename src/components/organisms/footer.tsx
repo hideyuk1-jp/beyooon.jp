@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import moment from 'moment';
 import 'moment-timezone';
+import { Twemoji } from 'react-emoji-render';
 
 import styled from '../atoms/styled';
 import Tooltip from '../atoms/tooltip';
@@ -41,7 +43,11 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
               .format()}`}
             position="top"
           >
-            {`🚀`}
+            <Twemoji
+              onlyEmojiClassName="emoji"
+              svg
+              text="🚀"
+            />
           </Tooltip>
         </div>
         <div className="footer-icons">
@@ -110,6 +116,10 @@ const Wrapper = styled.footer`
 
       a.footer-title {
         color: ${(props) => props.theme.colors.base};
+      }
+
+      .emoji img {
+        display: inline;
       }
     }
 

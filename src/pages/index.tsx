@@ -26,7 +26,7 @@ const Index: React.FC<
         <Hero
           title="Develop & Design"
           description="Web制作 /
-            アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス"
+            アプリ開発を中心に活動するデジタルなモノづくりが好きなエンジニア"
           top
         />
         <WavesDivider />

@@ -19,10 +19,10 @@ const AboutIndex: React.FC<
       <Wrapper>
         <section className="about-section-item">
           <header className="by-section-head by-container-small">
-            <h2>{`デジタルなモノづくりが好きなフリーランス`}</h2>
+            <h2>{`デジタルなモノづくりが好きなエンジニア`}</h2>
           </header>
           <div className="by-container-small">
-            <p>{`兵庫県姫路市を拠点にWeb制作 / アプリ開発などを中心にお客さまのビジネスをお手伝いしたり、オリジナルアプリを作ったりしています。`}</p>
+            <p>{`Web制作 / アプリ開発などを中心にお客さまのビジネスをお手伝いしたり、オリジナルアプリを作ったりしています。`}</p>
             <p>{`技術自体も好きですが、技術の先にあるプロダクトの成功に重きを置いて活動しています。`}</p>
           </div>
         </section>
@@ -31,7 +31,7 @@ const AboutIndex: React.FC<
             <h2>{`beyooonの意味`}</h2>
           </header>
           <div className="by-container-small">
-            <p>{`デジタルなプロダクト作りを通してお客さまも自分自身もバネのように跳躍していく。そんな思いを込めて「beyooon（ビヨーン）」と付けました。`}</p>
+            <p>{`デジタルなモノづくりを通して関わる人たちがビヨーンと伸びていくという思いを込めて「beyooon（ビヨーン）」と付けました。`}</p>
             <p>{`「～を越えて」といった意味で英単語のbeyondともかけています。`}</p>
           </div>
         </section>
@@ -86,16 +86,17 @@ const AboutIndex: React.FC<
           </header>
           <div className="by-container-small">
             <h3>{`橋本 英之 / Hideyuki Hashimoto`}</h3>
-            <p>{`1986年生まれ。男`}</p>
+            <p>{`1986年生まれ / 男 / 兵庫県出身`}</p>
           </div>
           <div className="by-container-small">
             <h3>{`略歴`}</h3>
             <p>
               {`高校生の時に初めて趣味のWebサイトを制作し、Webの世界に触れる。（当時はガラケーでポチポチHTMLを直書きしていました）`}
               {`大阪大学では情報システムを専攻し、コンピュータサイエンスの基礎を学ぶ。`}
-              {`その後、会計事務所へ就職。プログラミングの知識を活用して業務効率化を行う。`}
-              {`Webシステム開発会社へ転職後はバックエンドエンジニアとして従事。`}
-              {`2020年、フリーランスのWeb開発者として独立。`}
+              {`大学中退後、長期間フラフラしていたが、会計事務所へ就職。プログラミングの知識を活用して業務効率化を行う。`}
+              {`2019年、Webシステム開発会社へ転職後はバックエンドエンジニアとして従事。`}
+              {`2020年、個人事業主としてWeb制作やアプリ開発の仕事を開始。`}
+              {`現在は、EdTech企業でフロントエンドエンジニアとして従事しつつ、副業として個人事業の仕事を受けている。`}
             </p>
           </div>
           <div className="by-container-small">
@@ -118,11 +119,11 @@ const AboutIndex: React.FC<
           </div>
           <div className="by-container-small">
             <h3>{`スキル`}</h3>
+            <p>{`開発を楽にしてくれる技術が好き`}</p>
             <ul>
+              <li>{`TypeScript / React / Next.js / Gatsby`}</li>
               <li>{`PHP / Laravel`}</li>
-              <li>{`React / Next.js / Gatsby`}</li>
-              <li>{`Flutter`}</li>
-              <li>{`WordPress`}</li>
+              <li>{`Firebase`}</li>
             </ul>
           </div>
           <div className="by-container-small">

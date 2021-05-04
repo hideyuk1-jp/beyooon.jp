@@ -7,7 +7,7 @@ module.exports = {
       summary: `Web Developer`,
     },
     description: `Web制作 /
-    アプリ開発を中心に活動するデジタルなモノづくりが好きなフリーランス`,
+    アプリ開発を中心に活動するデジタルなモノづくりが好きなエンジニア`,
     siteUrl: `https://beyooon.jp`,
     social: {
       twitter: `hideyuk1_jp`,

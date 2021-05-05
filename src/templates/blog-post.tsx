@@ -406,7 +406,9 @@ const Wrapper = styled.article`
     }
 
     p > code,
-    li > code {
+    li > code,
+    th > code,
+    td > code {
       display: inline-block;
       background: #3f4150;
       padding: 0.1em 0.3em;

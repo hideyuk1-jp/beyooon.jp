@@ -1,6 +1,8 @@
 {
-    "default": true,
-    "MD033": {
-      "allowed_elements": [ "div", "pre", "code" ]
-    }
+  "default": true,
+  "MD013": false,
+  "MD014": false,
+  "MD033": {
+    "allowed_elements": ["div", "pre", "code"]
   }
+}

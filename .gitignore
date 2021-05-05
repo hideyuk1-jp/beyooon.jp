@@ -83,3 +83,6 @@ yarn-error.log
 
 # lighthouse ci
 .lighthouseci
+
+# gatsby-plugin-typegen
+src/__generated__/

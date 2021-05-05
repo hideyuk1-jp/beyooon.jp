@@ -3963,15 +3963,15 @@ type FooterQuery = { readonly site: Maybe<(
     & { readonly siteMetadata: Maybe<{ readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitter' | 'github'>> }> }
   )> };
 
-type BioQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BioQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name' | 'summary'>>, readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }> }> };
-
 type ShareButtonsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type ShareButtonsQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }> }> };
+
+type BioQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BioQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name' | 'summary'>>, readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }> }> };
 
 type SEOQueryVariables = Exact<{ [key: string]: never; }>;
 

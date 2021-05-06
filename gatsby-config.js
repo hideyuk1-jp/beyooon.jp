@@ -209,5 +209,14 @@ module.exports = {
         publisherId: `ca-pub-8419048600354024`,
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `tomato`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
   ],
 };

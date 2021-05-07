@@ -23,8 +23,13 @@ const IconWrapper = styled.button`
   padding: 0;
   color: ${(props) => props.theme.colors.header};
   outline: none;
-  width: 20px;
-  height: 17px;
+  width: 24px;
+  height: 24px;
+
+  &:hover > *::before,
+  &:hover > *::after {
+    width: 24px;
+  }
 `;
 
 const HumbergerInner = styled.div<{ isOpen: boolean }>`
@@ -41,7 +46,7 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
   &::before,
   &::after {
     position: absolute;
-    width: 20px;
+    width: 24px;
     height: 2px;
     border-radius: 1px;
   }
@@ -53,17 +58,20 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
     background: ${(props) => props.theme.colors.header};
     transition: top 0.25s var(--ease-in-out-quad),
       background 0.25s var(--ease-in-out-quad),
+      width 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);
   }
 
   &::before {
-    top: ${(props) => (props.isOpen ? '0px' : '-6px')};
+    width: ${(props) => (props.isOpen ? '24px' : '18px')};
+    top: ${(props) => (props.isOpen ? '0px' : '-8px')};
     transform: ${(props) =>
       props.isOpen ? 'rotate(315deg)' : 'rotate(0deg)'};
   }
 
   &::after {
-    bottom: ${(props) => (props.isOpen ? '0px' : '-6px')};
+    width: ${(props) => (props.isOpen ? '24px' : '20px')};
+    bottom: ${(props) => (props.isOpen ? '0px' : '-8px')};
     transform: ${(props) =>
       props.isOpen ? 'rotate(-315deg)' : 'rotate(0)'};
   }

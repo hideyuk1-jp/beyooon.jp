@@ -309,7 +309,7 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   max-height: calc(100vh - 64px);
   border-top: 1px solid
     ${(props) => props.theme.colors.borderHeader};
-  overflow-y: scroll;
+  overflow-y: auto;
   transition: border 0.25s var(--ease-in-out-quad);
 
   .menu-link-wrapper {

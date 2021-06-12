@@ -5,6 +5,7 @@ update: 2021-06-12T9:00:00+09:00
 description: phpbrew のインストールでエラーになったためメモ書き。
 category: Dev
 tags: [phpbrew]
+image: ./mistake.jpg
 ---
 
 php の複数バージョンを切り替えたいと思い、phpbrew をインストールしようとした。

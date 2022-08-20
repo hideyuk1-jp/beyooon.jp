@@ -203,11 +203,5 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-8419048600354024`,
-      },
-    },
   ],
 };

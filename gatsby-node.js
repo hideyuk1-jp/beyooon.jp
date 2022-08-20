@@ -1,13 +1,7 @@
 const path = require(`path`);
-const {
-  createFilePath,
-} = require(`gatsby-source-filesystem`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   /*
@@ -15,9 +9,7 @@ exports.createPages = async ({
    */
 
   // Define a template for blog post
-  const blogTemplate = path.resolve(
-    `./src/templates/blog-post.tsx`,
-  );
+  const blogTemplate = path.resolve(`./src/templates/blog-post.tsx`);
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -25,15 +17,9 @@ exports.createPages = async ({
       {
         allBlogPosts: allMarkdownRemark(
           filter: {
-            fields: {
-              draft: { eq: false }
-              collection: { eq: "blog" }
-            }
+            fields: { draft: { eq: false }, collection: { eq: "blog" } }
           }
-          sort: {
-            fields: [frontmatter___update]
-            order: ASC
-          }
+          sort: { fields: [frontmatter___update], order: ASC }
         ) {
           nodes {
             id
@@ -44,15 +30,9 @@ exports.createPages = async ({
         }
         allWorksPosts: allMarkdownRemark(
           filter: {
-            fields: {
-              draft: { eq: false }
-              collection: { eq: "works" }
-            }
+            fields: { draft: { eq: false }, collection: { eq: "works" } }
           }
-          sort: {
-            fields: [frontmatter___startDate]
-            order: ASC
-          }
+          sort: { fields: [frontmatter___startDate], order: ASC }
         ) {
           nodes {
             id
@@ -81,12 +61,9 @@ exports.createPages = async ({
 
   if (blogPosts.length > 0) {
     blogPosts.forEach((post, index) => {
-      const previousPostId =
-        index === 0 ? null : blogPosts[index - 1].id;
+      const previousPostId = index === 0 ? null : blogPosts[index - 1].id;
       const nextPostId =
-        index === blogPosts.length - 1
-          ? null
-          : blogPosts[index + 1].id;
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id;
 
       createPage({
         path: post.fields.slug,
@@ -105,9 +82,7 @@ exports.createPages = async ({
    */
 
   // Define a template for work post
-  const worksTemplate = path.resolve(
-    `./src/templates/works-post.tsx`,
-  );
+  const worksTemplate = path.resolve(`./src/templates/works-post.tsx`);
 
   const worksPosts = result.data.allWorksPosts.nodes;
 

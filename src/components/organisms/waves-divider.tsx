@@ -24,36 +24,16 @@ const WavesDivider = () => (
         />
       </defs>
       <g className="parallax1">
-        <use
-          xlinkHref="#gentle-wave"
-          x="50"
-          y="3"
-          fill="#f461c1"
-        />
+        <use xlinkHref="#gentle-wave" x="50" y="3" fill="#f461c1" />
       </g>
       <g className="parallax2">
-        <use
-          xlinkHref="#gentle-wave"
-          x="50"
-          y="0"
-          fill="#4579e2"
-        />
+        <use xlinkHref="#gentle-wave" x="50" y="0" fill="#4579e2" />
       </g>
       <g className="parallax3">
-        <use
-          xlinkHref="#gentle-wave"
-          x="50"
-          y="9"
-          fill="#3461c1"
-        />
+        <use xlinkHref="#gentle-wave" x="50" y="9" fill="#3461c1" />
       </g>
       <g className="parallax4">
-        <use
-          xlinkHref="#gentle-wave"
-          x="50"
-          y="6"
-          fill="#fff"
-        />
+        <use xlinkHref="#gentle-wave" x="50" y="6" fill="#fff" />
       </g>
     </svg>
   </WavesDividerWrapper>
@@ -76,8 +56,7 @@ const WavesDividerWrapper = styled.div`
   }
 
   use {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
   }
 
   .parallax1 > use {

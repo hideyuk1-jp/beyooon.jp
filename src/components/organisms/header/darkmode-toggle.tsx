@@ -8,9 +8,7 @@ const DarkModeToggle: React.FC<{}> = () => {
   const { colorMode, setColorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  function toggleColorMode(
-    event: React.MouseEvent<HTMLElement>,
-  ) {
+  function toggleColorMode(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
     setColorMode();
 
@@ -27,16 +25,8 @@ const DarkModeToggle: React.FC<{}> = () => {
       <button
         onClick={toggleColorMode}
         data-a11y="false"
-        aria-label={
-          isDark
-            ? 'ライトモードに切替'
-            : 'ダークモードに切替'
-        }
-        title={
-          isDark
-            ? 'ライトモードに切替'
-            : 'ダークモードに切替'
-        }
+        aria-label={isDark ? 'ライトモードに切替' : 'ダークモードに切替'}
+        title={isDark ? 'ライトモードに切替' : 'ダークモードに切替'}
       >
         <div className="moon-or-sun">
           <svg
@@ -57,9 +47,7 @@ const DarkModeToggle: React.FC<{}> = () => {
               fill="#FFE4A1"
             />
           </svg>
-          <span className="u-a11y">
-            {isDark ? 'Dark' : 'Light'}
-          </span>
+          <span className="u-a11y">{isDark ? 'Dark' : 'Light'}</span>
         </div>
       </button>
     </Wrapper>
@@ -79,8 +67,7 @@ const Wrapper = styled.div<{
 
   & > button {
     position: relative;
-    background-color: ${(props) =>
-      props.isDark ? '#1e1f26' : '#0984e3'};
+    background-color: ${(props) => (props.isDark ? '#1e1f26' : '#0984e3')};
     border: none;
     box-sizing: border-box;
     height: 24px;
@@ -88,8 +75,7 @@ const Wrapper = styled.div<{
     outline: none;
     padding: 0;
     text-align: left;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
 
     .u-a11y {
       border: 0;
@@ -151,21 +137,15 @@ const Wrapper = styled.div<{
       }
       .moon {
         transform: ${(props) =>
-          props.isDark
-            ? 'translateX(0px)'
-            : 'translateX(8px)'};
+          props.isDark ? 'translateX(0px)' : 'translateX(8px)'};
         opacity: ${(props) => (props.isDark ? '1' : '0')};
-        visibility: ${(props) =>
-          props.isDark ? 'visible' : 'hidden'};
+        visibility: ${(props) => (props.isDark ? 'visible' : 'hidden')};
       }
       .sun {
         transform: ${(props) =>
-          !props.isDark
-            ? 'translateX(24px)'
-            : 'translateX(20px)'};
+          !props.isDark ? 'translateX(24px)' : 'translateX(20px)'};
         opacity: ${(props) => (!props.isDark ? '1' : '0')};
-        visibility: ${(props) =>
-          !props.isDark ? 'visible' : 'hidden'};
+        visibility: ${(props) => (!props.isDark ? 'visible' : 'hidden')};
       }
     }
   }

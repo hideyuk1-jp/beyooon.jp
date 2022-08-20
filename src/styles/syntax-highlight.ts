@@ -10,8 +10,8 @@ const SytaxHighlightStyle = css`
     color: #d4d4d4;
     font-size: 13px;
     text-shadow: none;
-    font-family: Menlo, Monaco, Consolas, 'Andale Mono',
-      'Ubuntu Mono', 'Courier New', monospace;
+    font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono',
+      'Courier New', monospace;
     direction: ltr;
     text-align: left;
     white-space: pre;

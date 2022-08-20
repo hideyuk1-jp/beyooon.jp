@@ -37,15 +37,12 @@ type FormValues = {
 
 type FormStateValues = '' | 'loading' | 'success' | 'fail';
 
-const ContactIndex: React.FC<
-  PageProps<GatsbyTypes.ContactIndexQuery>
-> = ({ data, location }) => {
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
-  const [
-    formState,
-    setFormState,
-  ] = useState<FormStateValues>('');
+const ContactIndex: React.FC<PageProps<GatsbyTypes.ContactIndexQuery>> = ({
+  data,
+  location,
+}) => {
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
+  const [formState, setFormState] = useState<FormStateValues>('');
 
   const initialValues = {
     'bot-field': '',
@@ -68,12 +65,8 @@ const ContactIndex: React.FC<
         CONTACT_CATEGORIES,
         'おや？お問い合わせの種類の形式に誤りがあります',
       )
-      .required(
-        'おっと！お問い合わせの種類は必ず選択してください',
-      ),
-    message: Yup.string().required(
-      'おっと！お問い合わせの内容は必須です',
-    ),
+      .required('おっと！お問い合わせの種類は必ず選択してください'),
+    message: Yup.string().required('おっと！お問い合わせの内容は必須です'),
   });
 
   const handleSubmit: (
@@ -130,21 +123,10 @@ const ContactIndex: React.FC<
       });
   };
 
-  const renderForm: React.FC<FormikProps<FormValues>> = ({
-    isSubmitting,
-  }) => (
-    <Form
-      noValidate
-      name="contact"
-      method="POST"
-      data-netlify="true"
-    >
+  const renderForm: React.FC<FormikProps<FormValues>> = ({ isSubmitting }) => (
+    <Form noValidate name="contact" method="POST" data-netlify="true">
       <Field type="hidden" name="bot-field" />
-      <Field
-        type="hidden"
-        name="form-name"
-        value="contact"
-      />
+      <Field type="hidden" name="form-name" value="contact" />
       <label>{`メールアドレス`}</label>
       <div className="form-field">
         <Field type="email" name="email" id="email" />
@@ -184,12 +166,7 @@ const ContactIndex: React.FC<
       </div>
       <label>{`お問い合わせの内容`}</label>
       <div className="form-field">
-        <Field
-          as="textarea"
-          name="message"
-          id="message"
-          rows={10}
-        />
+        <Field as="textarea" name="message" id="message" rows={10} />
         <div className="error-msg">
           <ErrorMessage name="message" />
         </div>
@@ -265,8 +242,7 @@ const ContactIndex: React.FC<
           <p>
             <a
               href={`https://twitter.com/${
-                data.site?.siteMetadata?.social?.twitter ||
-                ``
+                data.site?.siteMetadata?.social?.twitter || ``
               }`}
             >
               Twitter
@@ -329,8 +305,7 @@ const FormWrapper = styled.div`
       padding: 8px 16px 0px;
     }
 
-    @media screen and (min-width: ${(props) =>
-        props.theme.responsive.medium}) {
+    @media screen and (min-width: ${(props) => props.theme.responsive.medium}) {
       label {
         grid-column: 1 / 2;
         padding: 8px 0px;
@@ -349,20 +324,16 @@ const FormWrapper = styled.div`
       display: block;
       width: 100%;
       appearance: none;
-      border: 1px solid
-        ${(props) => props.theme.colors.border};
+      border: 1px solid ${(props) => props.theme.colors.border};
       border-radius: 8px;
       padding: 8px 16px;
       color: ${(props) => props.theme.colors.base};
-      background: ${(props) =>
-        props.theme.colors.backgroundAccent};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      background: ${(props) => props.theme.colors.backgroundAccent};
+      transition: ${(props) => props.theme.colorModeTransition};
 
       &:focus {
         outline: none;
-        border: 1px solid
-          ${(props) => props.theme.colors.base};
+        border: 1px solid ${(props) => props.theme.colors.base};
       }
     }
 
@@ -377,10 +348,8 @@ const FormWrapper = styled.div`
         right: 16px;
         width: 6px;
         height: 6px;
-        border-bottom: solid 2px
-          ${(props) => props.theme.colors.light};
-        border-right: solid 2px
-          ${(props) => props.theme.colors.light};
+        border-bottom: solid 2px ${(props) => props.theme.colors.light};
+        border-right: solid 2px ${(props) => props.theme.colors.light};
         transform: translateY(-50%) rotate(45deg);
       }
     }

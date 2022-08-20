@@ -47,8 +47,7 @@ const SEO: React.FC<Props> = ({
     `,
   );
 
-  const metaDescription =
-    description || site?.siteMetadata?.description;
+  const metaDescription = description || site?.siteMetadata?.description;
 
   return (
     <Helmet
@@ -87,8 +86,7 @@ const SEO: React.FC<Props> = ({
         },
         {
           name: `twitter:creator`,
-          content:
-            site?.siteMetadata?.social?.twitter || ``,
+          content: site?.siteMetadata?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,

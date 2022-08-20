@@ -11,11 +11,11 @@ import WorksPostList from '../components/organisms/works-post-list';
 import WavesDivider from '../components/organisms/waves-divider';
 import Button from '../components/atoms/button';
 
-const Index: React.FC<
-  PageProps<GatsbyTypes.IndexQuery>
-> = ({ data, location }) => {
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
+const Index: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({
+  data,
+  location,
+}) => {
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
   const blogPosts = data.allBlogPosts.nodes;
   const worksPosts = data.allWorksPosts.nodes;
 
@@ -34,9 +34,7 @@ const Index: React.FC<
       <section className="by-spacer">
         <header className="by-section-head by-container">
           <h2>{`ブログ`}</h2>
-          <p>
-            {`Web制作やアプリ開発に関する知見などを書いています。`}
-          </p>
+          <p>{`Web制作やアプリ開発に関する知見などを書いています。`}</p>
         </header>
         <BlogPostList posts={blogPosts} />
         <footer className="by-section-foot by-container">
@@ -92,10 +90,7 @@ const Index: React.FC<
           </p>
         </header>
         <footer className="by-container by-section-foot by-center">
-          <Button
-            href="/contact"
-            variant="contained"
-          >{`お問い合わせ`}</Button>
+          <Button href="/contact" variant="contained">{`お問い合わせ`}</Button>
         </footer>
       </section>
     </Layout>
@@ -112,12 +107,7 @@ export const pageQuery = graphql`
       }
     }
     allBlogPosts: allMarkdownRemark(
-      filter: {
-        fields: {
-          draft: { eq: false }
-          collection: { eq: "blog" }
-        }
-      }
+      filter: { fields: { draft: { eq: false }, collection: { eq: "blog" } } }
       sort: { fields: [frontmatter___update], order: DESC }
       limit: 6
     ) {
@@ -136,26 +126,15 @@ export const pageQuery = graphql`
           tags
           image {
             childImageSharp {
-              gatsbyImageData(
-                width: 600
-                layout: CONSTRAINED
-              )
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }
       }
     }
     allWorksPosts: allMarkdownRemark(
-      filter: {
-        fields: {
-          draft: { eq: false }
-          collection: { eq: "works" }
-        }
-      }
-      sort: {
-        fields: [frontmatter___startDate]
-        order: DESC
-      }
+      filter: { fields: { draft: { eq: false }, collection: { eq: "works" } } }
+      sort: { fields: [frontmatter___startDate], order: DESC }
       limit: 6
     ) {
       nodes {
@@ -173,10 +152,7 @@ export const pageQuery = graphql`
           link
           image {
             childImageSharp {
-              gatsbyImageData(
-                width: 600
-                layout: CONSTRAINED
-              )
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }
@@ -187,8 +163,7 @@ export const pageQuery = graphql`
 
 const TopHeaderWrapper = styled.div`
   position: relative;
-  background: ${(props) =>
-    props.theme.colors.backgroundHeader};
+  background: ${(props) => props.theme.colors.backgroundHeader};
   color: ${(props) => props.theme.colors.header};
   padding: 64px 0px 60px;
   margin: -64px -${(props) => props.theme.sideSpace.base} 0px;

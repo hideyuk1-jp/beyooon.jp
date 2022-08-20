@@ -30,9 +30,7 @@ const PostDate: React.FC<{
           ? ' - Now'
           : moment(startDate).local().format('YYYY.MM') !==
               moment(endDate).local().format('YYYY.MM') &&
-            ` - ${moment(endDate)
-              .local()
-              .format('YYYY.MM')}`}
+            ` - ${moment(endDate).local().format('YYYY.MM')}`}
       </p>
     </Wrapper>
   );

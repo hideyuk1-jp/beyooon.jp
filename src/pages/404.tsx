@@ -6,9 +6,10 @@ import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import PageHero from '../components/organisms/hero';
 
-const NotFoundPage: React.FC<
-  PageProps<GatsbyTypes.Page404Query>
-> = ({ data, location }) => {
+const NotFoundPage: React.FC<PageProps<GatsbyTypes.Page404Query>> = ({
+  data,
+  location,
+}) => {
   const siteTitle = data.site?.siteMetadata?.title ?? '';
 
   return (

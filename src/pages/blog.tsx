@@ -7,11 +7,11 @@ import SEO from '../components/organisms/seo';
 import PostList from '../components/organisms/blog-post-list';
 import Hero from '../components/organisms/hero';
 
-const BlogIndex: React.FC<
-  PageProps<GatsbyTypes.BlogIndexQuery>
-> = ({ data, location }) => {
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
+const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
+  data,
+  location,
+}) => {
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
 
   return (
@@ -35,12 +35,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {
-        fields: {
-          draft: { eq: false }
-          collection: { eq: "blog" }
-        }
-      }
+      filter: { fields: { draft: { eq: false }, collection: { eq: "blog" } } }
       sort: { fields: [frontmatter___update], order: DESC }
     ) {
       nodes {
@@ -58,10 +53,7 @@ export const pageQuery = graphql`
           tags
           image {
             childImageSharp {
-              gatsbyImageData(
-                width: 600
-                layout: CONSTRAINED
-              )
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }

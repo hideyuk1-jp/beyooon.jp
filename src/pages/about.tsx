@@ -6,11 +6,11 @@ import Layout from '../components/templates/layout';
 import SEO from '../components/organisms/seo';
 import PageHero from '../components/organisms/hero';
 
-const AboutIndex: React.FC<
-  PageProps<GatsbyTypes.AboutIndexQuery>
-> = ({ data, location }) => {
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
+const AboutIndex: React.FC<PageProps<GatsbyTypes.AboutIndexQuery>> = ({
+  data,
+  location,
+}) => {
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -67,10 +67,7 @@ const AboutIndex: React.FC<
                 <tr>
                   <th>{`連絡先`}</th>
                   <td>
-                    <Link
-                      to="/contact"
-                      aria-label="Contact"
-                    >
+                    <Link to="/contact" aria-label="Contact">
                       {`お問い合わせ`}
                     </Link>
                     {`よりお願いします`}
@@ -133,9 +130,7 @@ const AboutIndex: React.FC<
               <li>{`カラオケ`}</li>
               <li>
                 {`競技プログラミング（`}
-                <a href="https://atcoder.jp/users/hideyuk1">
-                  {`AtCoder`}
-                </a>
+                <a href="https://atcoder.jp/users/hideyuk1">{`AtCoder`}</a>
                 {`）`}
               </li>
               <li>{`絵`}</li>
@@ -233,8 +228,7 @@ const Wrapper = styled.div`
       td {
         text-align: left;
         padding: 16px;
-        border-top: 1px solid
-          ${(props) => props.theme.colors.border};
+        border-top: 1px solid ${(props) => props.theme.colors.border};
       }
 
       &:first-of-type {

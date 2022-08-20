@@ -24,19 +24,13 @@ const Header: React.FC<{
   const headerHeight = 64;
   const scrollThreshold = 5;
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(
-    false,
-  );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = throttle(() => {
       const currentScrollTop = window.pageYOffset;
 
-      if (
-        Math.abs(currentScrollTop - lastScrollTop) <=
-        scrollThreshold
-      )
-        return;
+      if (Math.abs(currentScrollTop - lastScrollTop) <= scrollThreshold) return;
 
       if (isMobileMenuOpen) {
         setLastScrollTop(currentScrollTop);
@@ -44,14 +38,12 @@ const Header: React.FC<{
       }
 
       setHidden(
-        currentScrollTop > lastScrollTop &&
-          currentScrollTop > headerHeight,
+        currentScrollTop > lastScrollTop && currentScrollTop > headerHeight,
       );
       setLastScrollTop(currentScrollTop);
     }, 250);
     window.addEventListener('scroll', handleScroll);
-    return () =>
-      window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollTop, isMobileMenuOpen]);
 
   const logoLink = (
@@ -92,10 +84,7 @@ const Header: React.FC<{
   const menuLinks = (
     <>
       {MENU_ITEMS.map((menuItem) => (
-        <div
-          className="menu-link-wrapper"
-          key={menuItem.name}
-        >
+        <div className="menu-link-wrapper" key={menuItem.name}>
           <Link
             to={rootPath + menuItem.name.toLowerCase()}
             className={`navbar-item menu-link ${
@@ -114,9 +103,7 @@ const Header: React.FC<{
     </>
   );
 
-  function toggleMobileMenuOpen(
-    event: React.MouseEvent<HTMLElement>,
-  ) {
+  function toggleMobileMenuOpen(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
     setIsMobileMenuOpen(!isMobileMenuOpen);
   }
@@ -130,13 +117,9 @@ const Header: React.FC<{
         <Navbar>
           <NavbarLeft>
             {isRootPath ? (
-              <h1 className="navbar-item main-heading">
-                {logoLink}
-              </h1>
+              <h1 className="navbar-item main-heading">{logoLink}</h1>
             ) : (
-              <h3 className="navbar-item main-heading">
-                {logoLink}
-              </h3>
+              <h3 className="navbar-item main-heading">{logoLink}</h3>
             )}
           </NavbarLeft>
           <NavbarCenter>{menuLinks}</NavbarCenter>
@@ -148,11 +131,7 @@ const Header: React.FC<{
 
       <HeaderTag
         className={`mobile ${
-          isMobileMenuOpen
-            ? 'mobile-menu-open'
-            : hidden
-            ? 'hidden'
-            : ''
+          isMobileMenuOpen ? 'mobile-menu-open' : hidden ? 'hidden' : ''
         }`}
         isScrolled={lastScrollTop > headerHeight * 2}
       >
@@ -166,22 +145,16 @@ const Header: React.FC<{
           <NavbarCenter>
             {' '}
             {isRootPath ? (
-              <h1 className="navbar-item main-heading">
-                {logoLinkMobile}
-              </h1>
+              <h1 className="navbar-item main-heading">{logoLinkMobile}</h1>
             ) : (
-              <h3 className="navbar-item main-heading">
-                {logoLinkMobile}
-              </h3>
+              <h3 className="navbar-item main-heading">{logoLinkMobile}</h3>
             )}
           </NavbarCenter>
           <NavbarRight>
             <DarkModeToggle />
           </NavbarRight>
         </Navbar>
-        <MobileMenu isOpen={isMobileMenuOpen}>
-          {menuLinks}
-        </MobileMenu>
+        <MobileMenu isOpen={isMobileMenuOpen}>{menuLinks}</MobileMenu>
       </HeaderTag>
     </>
   );
@@ -232,8 +205,7 @@ const HeaderTag = styled.header<{ isScrolled: boolean }>`
     }
   }
 
-  @media screen and (min-width: ${(props) =>
-      props.theme.responsive.medium}) {
+  @media screen and (min-width: ${(props) => props.theme.responsive.medium}) {
     display: block;
 
     &.mobile {
@@ -251,8 +223,7 @@ const Navbar = styled.nav`
   height: 64px;
 
   svg {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
   }
 
   .navbar-item {
@@ -276,8 +247,7 @@ const Navbar = styled.nav`
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.25s ease;
-    transition: ${(props) =>
-        props.theme.colorModeTransition},
+    transition: ${(props) => props.theme.colorModeTransition},
       opacity 0.25s var(--ease-in-out-quad);
 
     &:hover {
@@ -307,40 +277,31 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   flex-direction: column;
   padding: 0 8vw;
   max-height: calc(100vh - 64px);
-  border-top: 1px solid
-    ${(props) => props.theme.colors.borderHeader};
+  border-top: 1px solid ${(props) => props.theme.colors.borderHeader};
   overflow-y: auto;
   transition: border 0.25s var(--ease-in-out-quad);
 
   .menu-link-wrapper {
-    transform: scale(
-        ${(props) => (props.isOpen ? '1' : '1.1')}
-      )
-      translateY(
-        ${(props) => (props.isOpen ? '0px' : '-25px')}
-      );
+    transform: scale(${(props) => (props.isOpen ? '1' : '1.1')})
+      translateY(${(props) => (props.isOpen ? '0px' : '-25px')});
     opacity: ${(props) => (props.isOpen ? '1' : '0')};
     transition: opacity 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);
 
     &:nth-of-type(1) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0' : '0.15'}s;
+      transition-delay: ${(props) => (props.isOpen ? '0' : '0.15')}s;
       transition-property: opacity, transform;
     }
     &:nth-of-type(2) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.05' : '0.1'}s;
+      transition-delay: ${(props) => (props.isOpen ? '0.05' : '0.1')}s;
       transition-property: opacity, transform;
     }
     &:nth-of-type(3) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.1' : '0.05'}s;
+      transition-delay: ${(props) => (props.isOpen ? '0.1' : '0.05')}s;
       transition-property: opacity, transform;
     }
     &:nth-of-type(4) {
-      transition-delay: ${(props) =>
-        props.isOpen ? '0.15' : '0'}s;
+      transition-delay: ${(props) => (props.isOpen ? '0.15' : '0')}s;
       transition-property: opacity, transform;
     }
 
@@ -348,10 +309,8 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
       display: block;
       padding: 16px 0;
       color: ${(props) => props.theme.colors.header};
-      border-bottom: 1px solid
-        ${(props) => props.theme.colors.borderHeader};
-      transition: ${(props) =>
-          props.theme.colorModeTransition},
+      border-bottom: 1px solid ${(props) => props.theme.colors.borderHeader};
+      transition: ${(props) => props.theme.colorModeTransition},
         border 0.25s var(--ease-in-out-quad);
     }
   }

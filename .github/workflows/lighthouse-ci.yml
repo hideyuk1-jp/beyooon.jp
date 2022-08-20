@@ -23,7 +23,7 @@ jobs:
           yarn build
       - name: Run Lighthouse CI
         run: |
-          yarn global add @lhci/cli@0.7.x
+          yarn global add @lhci/cli@0.8.x
           lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
       - name: Slack Notification on Success

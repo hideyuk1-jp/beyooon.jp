@@ -7,6 +7,7 @@ type Position = 'top' | 'right' | 'bottom' | 'left';
 const Tooltip: React.FC<{
   tooltipContent: React.ReactNode;
   position?: Position;
+  children?: React.ReactNode;
 }> = ({ tooltipContent, position = 'top', children }) => (
   <Wrapper>
     {children}

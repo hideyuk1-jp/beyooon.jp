@@ -8,6 +8,7 @@ import Footer from '../organisms/footer';
 const Layout: React.FC<{
   location: WindowLocation<unknown>;
   title: string;
+  children?: React.ReactNode;
 }> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;

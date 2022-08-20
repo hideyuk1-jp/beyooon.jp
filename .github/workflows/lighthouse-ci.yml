@@ -17,13 +17,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install, build
+      - name: yarn build
         run: |
-          npm install
-          npm run build
+          yarn --frozen-lockfile
+          yarn build
       - name: Run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.7.x
+          yarn global add @lhci/cli@0.8.x
           lhci autorun | tee >(echo "LHCI_DIFF_URL=`grep "View build diff at" | sed "s/.*\(https.*\)\$/\1/"`" >> $GITHUB_ENV)
 
       - name: Slack Notification on Success

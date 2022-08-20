@@ -11,9 +11,7 @@ const Tooltip: React.FC<{
 }> = ({ tooltipContent, position = 'top', children }) => (
   <Wrapper>
     {children}
-    <span className={`tooltip-text tooltip-${position}`}>
-      {tooltipContent}
-    </span>
+    <span className={`tooltip-text tooltip-${position}`}>{tooltipContent}</span>
   </Wrapper>
 );
 
@@ -41,8 +39,8 @@ const Wrapper = styled.span`
       position: absolute;
       border-width: 5px;
       border-style: solid;
-      border-color: ${(props) => props.theme.colors.base}
-        transparent transparent transparent;
+      border-color: ${(props) => props.theme.colors.base} transparent
+        transparent transparent;
     }
   }
 

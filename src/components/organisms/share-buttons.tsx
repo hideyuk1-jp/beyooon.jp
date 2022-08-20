@@ -36,16 +36,10 @@ const ShareButtons: React.FC<{
       >
         <TwitterIcon round />
       </TwitterShareButton>
-      <FacebookShareButton
-        className="share-btn-items"
-        url={postUrl}
-      >
+      <FacebookShareButton className="share-btn-items" url={postUrl}>
         <FacebookIcon round />
       </FacebookShareButton>
-      <HatenaShareButton
-        className="share-btn-items"
-        url={postUrl}
-      >
+      <HatenaShareButton className="share-btn-items" url={postUrl}>
         <HatenaIcon round />
       </HatenaShareButton>
     </ShareBtnWrapper>
@@ -71,8 +65,7 @@ const ShareBtnWrapper = styled.div`
 
       circle,
       path {
-        transition: ${(props) =>
-            props.theme.colorModeTransition},
+        transition: ${(props) => props.theme.colorModeTransition},
           opacity 0.25s var(--ease-in-out-quad);
       }
 

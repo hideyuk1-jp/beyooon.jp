@@ -19,8 +19,7 @@ export const baseTheme = {
     backgroundPostCard: '#fff',
     link: '#0070f3',
     border: '#b6d2e2',
-    gradient:
-      'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
+    gradient: 'linear-gradient(90deg, #4BC0C8 0%, #C779D0 50%, #FEAC5E 100%)',
   },
   sizes: {
     maxWidth: '1024px',

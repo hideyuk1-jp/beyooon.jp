@@ -40,15 +40,9 @@ const Button: React.FC<
           fullWidth ? 'by-btn-fullWidth' : ''
         }`}
       >
-        {startIcon && (
-          <span className="by-btn-start-icon">
-            {startIcon}
-          </span>
-        )}
+        {startIcon && <span className="by-btn-start-icon">{startIcon}</span>}
         {children}
-        {endIcon && (
-          <span className="by-btn-end-icon">{endIcon}</span>
-        )}
+        {endIcon && <span className="by-btn-end-icon">{endIcon}</span>}
       </LinkWrapper>
     </>
   ) : (
@@ -58,15 +52,9 @@ const Button: React.FC<
         fullWidth ? 'by-btn-fullWidth' : ''
       }`}
     >
-      {startIcon && (
-        <span className="by-btn-start-icon">
-          {startIcon}
-        </span>
-      )}
+      {startIcon && <span className="by-btn-start-icon">{startIcon}</span>}
       {children}
-      {endIcon && (
-        <span className="by-btn-end-icon">{endIcon}</span>
-      )}
+      {endIcon && <span className="by-btn-end-icon">{endIcon}</span>}
     </ButtonWrapper>
   );
 };

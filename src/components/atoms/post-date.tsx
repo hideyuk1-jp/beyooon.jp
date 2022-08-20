@@ -11,10 +11,8 @@ const PostDate: React.FC<{
   update?: string;
   size?: Size;
 }> = ({ publish, update, size = 'medium' }) => {
-  const type =
-    !update || publish === update ? 'publish' : 'update';
-  const date =
-    !update || publish === update ? publish : update;
+  const type = !update || publish === update ? 'publish' : 'update';
+  const date = !update || publish === update ? publish : update;
   return (
     <Wrapper size={size}>
       <div className="icon-wrapper">
@@ -42,9 +40,7 @@ const PostDate: React.FC<{
           </svg>
         )}
       </div>
-      <time
-        dateTime={moment(date).tz('Asia/Tokyo').format()}
-      >
+      <time dateTime={moment(date).tz('Asia/Tokyo').format()}>
         {moment(date).local().format('YYYY.MM.DD')}
       </time>
     </Wrapper>

@@ -31,18 +31,15 @@ const Wrapper = styled.header`
     line-height: 1.15;
     font-size: 2rem;
 
-    @media screen and (min-width: ${(props) =>
-        props.theme.responsive.small}) {
+    @media screen and (min-width: ${(props) => props.theme.responsive.small}) {
       font-size: 2.4rem;
     }
 
-    @media screen and (min-width: ${(props) =>
-        props.theme.responsive.medium}) {
+    @media screen and (min-width: ${(props) => props.theme.responsive.medium}) {
       font-size: 2.8rem;
     }
 
-    @media screen and (min-width: ${(props) =>
-        props.theme.responsive.large}) {
+    @media screen and (min-width: ${(props) => props.theme.responsive.large}) {
       font-size: 3.2rem;
     }
 

@@ -7,11 +7,11 @@ import SEO from '../components/organisms/seo';
 import PostList from '../components/organisms/works-post-list';
 import PageHero from '../components/organisms/hero';
 
-const WorksIndex: React.FC<
-  PageProps<GatsbyTypes.WorksIndexQuery>
-> = ({ data, location }) => {
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
+const WorksIndex: React.FC<PageProps<GatsbyTypes.WorksIndexQuery>> = ({
+  data,
+  location,
+}) => {
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
 
   return (
@@ -35,16 +35,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {
-        fields: {
-          draft: { eq: false }
-          collection: { eq: "works" }
-        }
-      }
-      sort: {
-        fields: [frontmatter___startDate]
-        order: DESC
-      }
+      filter: { fields: { draft: { eq: false }, collection: { eq: "works" } } }
+      sort: { fields: [frontmatter___startDate], order: DESC }
     ) {
       nodes {
         excerpt
@@ -62,10 +54,7 @@ export const pageQuery = graphql`
           link
           image {
             childImageSharp {
-              gatsbyImageData(
-                width: 600
-                layout: CONSTRAINED
-              )
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }

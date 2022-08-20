@@ -36,18 +36,12 @@ const Footer: React.FC<{ title: string }> = ({ title }) => {
           </Link>
           {` `}
           <Tooltip
-            tooltipContent={`Last build: ${moment(
-              site?.buildTime,
-            )
+            tooltipContent={`Last build: ${moment(site?.buildTime)
               .tz('Asia/Tokyo')
               .format()}`}
             position="top"
           >
-            <Twemoji
-              onlyEmojiClassName="emoji"
-              svg
-              text="🚀"
-            />
+            <Twemoji onlyEmojiClassName="emoji" svg text="🚀" />
           </Tooltip>
         </div>
         <div className="footer-icons">
@@ -100,8 +94,7 @@ export default Footer;
 
 const Wrapper = styled.footer`
   background: ${(props) => props.theme.colors.background};
-  border-top: 1px solid
-    ${(props) => props.theme.colors.border};
+  border-top: 1px solid ${(props) => props.theme.colors.border};
   padding: 0 ${(props) => props.theme.sideSpace.base};
   color: ${(props) => props.theme.colors.base};
   transition: ${(props) => props.theme.colorModeTransition};
@@ -134,8 +127,7 @@ const Wrapper = styled.footer`
           width: 20px;
           height: 20px;
           fill: ${(props) => props.theme.colors.base};
-          transition: ${(props) =>
-            props.theme.colorModeTransition};
+          transition: ${(props) => props.theme.colorModeTransition};
         }
       }
     }

@@ -37,9 +37,7 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
   display: block;
   transform: translateY(-50%);
   background: ${(props) =>
-    props.isOpen
-      ? 'transparent'
-      : props.theme.colors.header};
+    props.isOpen ? 'transparent' : props.theme.colors.header};
   transition: background 0.25s var(--ease-in-out-quad);
 
   &,
@@ -65,14 +63,12 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
   &::before {
     width: ${(props) => (props.isOpen ? '24px' : '18px')};
     top: ${(props) => (props.isOpen ? '0px' : '-8px')};
-    transform: ${(props) =>
-      props.isOpen ? 'rotate(315deg)' : 'rotate(0deg)'};
+    transform: ${(props) => (props.isOpen ? 'rotate(315deg)' : 'rotate(0deg)')};
   }
 
   &::after {
     width: ${(props) => (props.isOpen ? '24px' : '20px')};
     bottom: ${(props) => (props.isOpen ? '0px' : '-8px')};
-    transform: ${(props) =>
-      props.isOpen ? 'rotate(-315deg)' : 'rotate(0)'};
+    transform: ${(props) => (props.isOpen ? 'rotate(-315deg)' : 'rotate(0)')};
   }
 `;

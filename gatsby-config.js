@@ -102,29 +102,16 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({
-              query: { site, allMarkdownRemark },
-            }) => {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map((edge) => {
-                return Object.assign(
-                  {},
-                  edge.node.frontmatter,
-                  {
-                    description:
-                      edge.node.frontmatter.description ||
-                      edge.node.excerpt,
-                    date: edge.node.frontmatter.date,
-                    url:
-                      site.siteMetadata.siteUrl +
-                      edge.node.fields.slug,
-                    guid:
-                      site.siteMetadata.siteUrl +
-                      edge.node.fields.slug,
-                    custom_elements: [
-                      { 'content:encoded': edge.node.html },
-                    ],
-                  },
-                );
+                return Object.assign({}, edge.node.frontmatter, {
+                  description:
+                    edge.node.frontmatter.description || edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                });
               });
             },
             query: `
@@ -194,13 +181,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
-        test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
-        exclude: /(node_modules|.cache|public)/,
         stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: true,
-        },
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        exclude: ['node_modules', 'bower_components', '.cache', 'public'],
       },
     },
   ],

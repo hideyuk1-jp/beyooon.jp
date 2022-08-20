@@ -14,10 +14,7 @@ const Layout: React.FC<{
   const isRootPath = location.pathname === rootPath;
 
   return (
-    <GlobalWrapper
-      className="global-wrapper"
-      data-is-root-path={isRootPath}
-    >
+    <GlobalWrapper className="global-wrapper" data-is-root-path={isRootPath}>
       <Header location={location} />
       <Main>{children}</Main>
       <Footer title={title} />
@@ -33,23 +30,20 @@ const GlobalWrapper = styled.div`
   background: ${(props) => props.theme.colors.background};
   font-size: 0.875rem;
   color: ${(props) => props.theme.colors.base};
-  font-family: 'Helvetica Neue', Arial,
-    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
-    sans-serif;
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
   transition: ${(props) => props.theme.colorModeTransition};
   a {
     color: ${(props) => props.theme.colors.link};
     text-decoration: none;
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
   }
   button {
     text-decoration: none;
     cursor: pointer;
   }
   svg {
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
   }
   .by-spacer {
     padding: 64px 0;
@@ -70,8 +64,7 @@ const GlobalWrapper = styled.div`
   }
   .by-container-small {
     margin: 0 auto;
-    max-width: ${(props) =>
-      props.theme.sizes.maxWidthSmall};
+    max-width: ${(props) => props.theme.sizes.maxWidthSmall};
     width: 100%;
   }
   .flex-center {
@@ -91,8 +84,7 @@ const GlobalWrapper = styled.div`
         content: '';
         position: absolute;
         border-radius: 2px;
-        background: ${(props) =>
-          props.theme.colors.gradient};
+        background: ${(props) => props.theme.colors.gradient};
         bottom: 0;
         left: 0;
         width: 80px;

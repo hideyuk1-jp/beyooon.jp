@@ -19,17 +19,14 @@ const BlogPostTemplate: React.FC<
   PageProps<GatsbyTypes.BlogPostBySlugQuery>
 > = ({ data, location }) => {
   const post = data.markdownRemark;
-  const siteTitle =
-    data.site?.siteMetadata?.title || `Title`;
+  const siteTitle = data.site?.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post?.frontmatter?.title ?? ''}
-        description={
-          post?.frontmatter?.description || post?.excerpt
-        }
+        description={post?.frontmatter?.description || post?.excerpt}
         // TODO: gatsby-plugin-typegen が gatsby v3 に対応したら修正
         // @ts-ignore
         image={getSrc(post?.frontmatter?.image)}
@@ -62,22 +59,16 @@ const BlogPostTemplate: React.FC<
                   </div>
                 ))}
             </header>
-            <h1 itemProp="headline">
-              {post?.frontmatter?.title}
-            </h1>
+            <h1 itemProp="headline">{post?.frontmatter?.title}</h1>
             <footer className="post-header-footer">
               <Tooltip
                 tooltipContent={
                   <>
-                    {`投稿日: ${moment(
-                      post?.frontmatter?.date,
-                    )
+                    {`投稿日: ${moment(post?.frontmatter?.date)
                       .local()
                       .format('YYYY.MM.DD')}`}
                     <br />
-                    {`更新日: ${moment(
-                      post?.frontmatter?.update,
-                    )
+                    {`更新日: ${moment(post?.frontmatter?.update)
                       .local()
                       .format('YYYY.MM.DD')}`}
                   </>
@@ -91,18 +82,12 @@ const BlogPostTemplate: React.FC<
                   />
                 )}
               </Tooltip>
-              {post?.timeToRead && (
-                <TimeToRead time={post?.timeToRead} />
-              )}
+              {post?.timeToRead && <TimeToRead time={post?.timeToRead} />}
             </footer>
           </div>
-          {post?.frontmatter?.image?.childImageSharp
-            ?.gatsbyImageData && (
+          {post?.frontmatter?.image?.childImageSharp?.gatsbyImageData && (
             <GatsbyImage
-              image={
-                post?.frontmatter?.image?.childImageSharp
-                  ?.gatsbyImageData
-              }
+              image={post?.frontmatter?.image?.childImageSharp?.gatsbyImageData}
               className="by-container head-image"
               alt={post?.frontmatter?.title ?? 'Thumbnail'}
             />
@@ -138,10 +123,7 @@ const BlogPostTemplate: React.FC<
           >
             <li>
               {previous?.fields?.slug && (
-                <Link
-                  to={previous?.fields?.slug}
-                  rel="prev"
-                >
+                <Link to={previous?.fields?.slug} rel="prev">
                   ← {previous?.frontmatter?.title}
                 </Link>
               )}
@@ -268,12 +250,10 @@ const Wrapper = styled.article`
       align-items: center;
       flex-direction: row;
       line-height: 22px;
-      border-top: 1px solid
-        ${(props) => props.theme.colors.border};
+      border-top: 1px solid ${(props) => props.theme.colors.border};
       padding-top: 8px;
       color: ${(props) => props.theme.colors.light};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: ${(props) => props.theme.colorModeTransition};
 
       & > * {
         margin-right: 12px;
@@ -311,15 +291,13 @@ const Wrapper = styled.article`
         left: 0;
         height: 4px;
         border-radius: 2px;
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
+        transition: ${(props) => props.theme.colorModeTransition};
       }
 
       &::before {
         z-index: -1;
         width: 20%;
-        background: ${(props) =>
-          props.theme.colors.gradient};
+        background: ${(props) => props.theme.colors.gradient};
       }
 
       &::after {
@@ -341,8 +319,7 @@ const Wrapper = styled.article`
         height: 100%;
         border-radius: 2px;
         background: ${(props) => props.theme.colors.border};
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
+        transition: ${(props) => props.theme.colorModeTransition};
       }
     }
 
@@ -357,8 +334,7 @@ const Wrapper = styled.article`
       height: 1px;
       background: ${(props) => props.theme.colors.border};
       border: 0;
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: ${(props) => props.theme.colorModeTransition};
     }
 
     ul,
@@ -414,8 +390,7 @@ const Wrapper = styled.article`
       padding: 0.1em 0.3em;
       margin: 0px 0.2em;
       border-radius: 4px;
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: ${(props) => props.theme.colorModeTransition};
     }
 
     a:hover {
@@ -425,8 +400,7 @@ const Wrapper = styled.article`
     blockquote {
       margin: 0 0 24px 0;
       padding: 8px 16px;
-      border-left: 4px solid
-        ${(props) => props.theme.colors.border};
+      border-left: 4px solid ${(props) => props.theme.colors.border};
       transition: border 0.25s var(--ease-in-out-quad);
 
       p {
@@ -449,13 +423,10 @@ const Wrapper = styled.article`
 
       th,
       td {
-        border-top: 1px solid
-          ${(props) => props.theme.colors.border};
-        border-bottom: 1px solid
-          ${(props) => props.theme.colors.border};
+        border-top: 1px solid ${(props) => props.theme.colors.border};
+        border-bottom: 1px solid ${(props) => props.theme.colors.border};
         padding: 8px 16px;
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
+        transition: ${(props) => props.theme.colorModeTransition};
       }
 
       th {

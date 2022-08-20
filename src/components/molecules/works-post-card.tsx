@@ -10,22 +10,16 @@ const PostCard: React.FC<{
 }> = ({ node }) => (
   <Wrapper itemScope itemType="http://schema.org/Article">
     {node.fields?.slug && (
-      <Link
-        className="postcard-link"
-        to={node.fields?.slug}
-        itemProp="url"
-      >
+      <Link className="postcard-link" to={node.fields?.slug} itemProp="url">
         <div className="postcard-inner">
-          {node.frontmatter?.image?.childImageSharp
-            ?.gatsbyImageData && (
+          {node.frontmatter?.image?.childImageSharp?.gatsbyImageData && (
             <div className="postcard-image-wrapper">
               <div className="postcard-category">
                 {node.frontmatter?.category}
               </div>
               <GatsbyImage
                 image={
-                  node.frontmatter?.image?.childImageSharp
-                    ?.gatsbyImageData
+                  node.frontmatter?.image?.childImageSharp?.gatsbyImageData
                 }
                 className="postcard-image"
                 alt={node.frontmatter?.title ?? 'Thumbnail'}
@@ -33,9 +27,7 @@ const PostCard: React.FC<{
             </div>
           )}
           <div className="postcard-title">
-            <span itemProp="headline">
-              {node.frontmatter?.title}
-            </span>
+            <span itemProp="headline">{node.frontmatter?.title}</span>
           </div>
           {(node.frontmatter?.description && (
             <div
@@ -84,14 +76,12 @@ const Wrapper = styled.article`
   .postcard-inner {
     display: flex;
     flex-direction: column;
-    background: ${(props) =>
-      props.theme.colors.backgroundPostCard};
+    background: ${(props) => props.theme.colors.backgroundPostCard};
     height: 100%;
     padding: 8px 16px;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
-    transition: ${(props) =>
-      props.theme.colorModeTransition};
+    transition: ${(props) => props.theme.colorModeTransition};
 
     .postcard-image-wrapper {
       position: relative;
@@ -113,10 +103,8 @@ const Wrapper = styled.article`
         border-bottom-right-radius: 8px;
         color: ${(props) => props.theme.colors.background};
         background: ${(props) => props.theme.colors.base};
-        border: 1px solid
-          ${(props) => props.theme.colors.base};
-        transition: ${(props) =>
-          props.theme.colorModeTransition};
+        border: 1px solid ${(props) => props.theme.colors.base};
+        transition: ${(props) => props.theme.colorModeTransition};
       }
       .postcard-image,
       .postcard-image img {
@@ -130,8 +118,7 @@ const Wrapper = styled.article`
       margin-top: 16px;
       margin-bottom: 8px;
       color: ${(props) => props.theme.colors.base};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: ${(props) => props.theme.colorModeTransition};
     }
 
     .postcard-description {
@@ -148,12 +135,10 @@ const Wrapper = styled.article`
       align-items: center;
       flex-direction: row;
       line-height: 22px;
-      border-top: 1px solid
-        ${(props) => props.theme.colors.border};
+      border-top: 1px solid ${(props) => props.theme.colors.border};
       padding-top: 8px;
       color: ${(props) => props.theme.colors.light};
-      transition: ${(props) =>
-        props.theme.colorModeTransition};
+      transition: ${(props) => props.theme.colorModeTransition};
 
       & > * {
         margin-right: 8px;

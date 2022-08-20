@@ -9,9 +9,7 @@ const PostList: React.FC<{
   <Wrapper className="by-container">
     <div className="post-list">
       {posts.map((node) => {
-        return (
-          <PostCard key={node.fields?.slug} node={node} />
-        );
+        return <PostCard key={node.fields?.slug} node={node} />;
       })}
     </div>
   </Wrapper>

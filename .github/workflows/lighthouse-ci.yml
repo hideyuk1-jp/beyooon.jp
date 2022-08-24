@@ -1,6 +1,9 @@
 name: lighthouse CI
 
 on:
+  pull_request:
+    branches:
+      - master
   pull_request_target:
     branches:
       - master
@@ -9,8 +12,22 @@ jobs:
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
+    # pull_request は Dependabot 以外のユーザーのみ、
+    # pull_request_target は Dependabot のみが実行できる
+    if: |
+      (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]') ||
+      (github.event_name != 'pull_request_target' && github.actor != 'dependabot[bot]')
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        if: ${{ github.event_name != 'pull_request_target' }}
+        uses: actions/checkout@v2
+      # pull_request_target 駆動の場合、コンテキストは Pull request のターゲットブランチ (main ブランチ) になるので、
+      # 当該 Pull request の HEAD コミットを明示的に指定しないと変更内容に対する CI を実行できない
+      - name: Checkout PR
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Set GitHub Actions URL
         run: echo "GHA_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> $GITHUB_ENV
       - name: Use Node.js 16

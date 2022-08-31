@@ -1984,7 +1984,7 @@
     "@parcel/plugin" "2.6.2"
     gatsby-core-utils "^3.21.0"
 
-"@gatsbyjs/potrace@^2.2.0":
+"@gatsbyjs/potrace@^2.2.0", "@gatsbyjs/potrace@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/potrace/-/potrace-2.3.0.tgz#0ac22fb56a02ebc64ce55e4666c4b741cbf27377"
   integrity sha512-72szhSY/4tPiPPOzq15CG6LW0s9FuWQ86gkLSUvBNoF0s+jsEdRaZmATYNjiY2Skg//EuyPLEqUQnXKXME0szg==
@@ -6981,6 +6981,27 @@ gatsby-core-utils@^3.21.0:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
+gatsby-core-utils@^3.22.0:
+  version "3.22.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-3.22.0.tgz#5d7c15722961ba8c97507a42841e95ea2622e730"
+  integrity sha512-/0FEKdnNCSn/f7dapxmBFxdFCWhteEZcsrwg/jxtXzSWRzs/7mzG8tyPCVUFlCnw3lLPSfej/9KBlGjXTvIIkQ==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    fastq "^1.13.0"
+    file-type "^16.5.3"
+    fs-extra "^10.1.0"
+    got "^11.8.5"
+    import-from "^4.0.0"
+    lmdb "2.5.3"
+    lock "^1.1.0"
+    node-object-hash "^2.3.10"
+    proper-lockfile "^4.1.2"
+    resolve-from "^5.0.0"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
+
 gatsby-graphiql-explorer@^2.21.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-2.21.0.tgz#7d42bd0349532ce30696a1206aba4110c5766e6a"
@@ -7073,16 +7094,16 @@ gatsby-plugin-eslint@^4.0.2:
   dependencies:
     webpack-merge "^5.8.0"
 
-gatsby-plugin-feed@^4.21.0:
-  version "4.21.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-4.21.0.tgz#863286af8611e89069aeb57c23ac0c795c62a7c3"
-  integrity sha512-8pgdLjMp04QeGMvDsgHWhxLHZLI3yEEbUnIjXJXXJH1xhgRaaLNbawrLMXLqX6mk9vd8XCoERZjoESZmTXMaVg==
+gatsby-plugin-feed@^4.22.0:
+  version "4.22.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-4.22.0.tgz#541b92be3a775687ec6f69981eb7b4da205b5fe3"
+  integrity sha512-SA6k0CHmPbfyt0NH0N4+HUZ6jdq4QKoR7Tm3qTaj2nqNzYzb3c2Yo7hVUvV5G6pbZ317DpNWkey/Hy/785YNog==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@hapi/joi" "^15.1.1"
     common-tags "^1.8.2"
     fs-extra "^10.1.0"
-    gatsby-plugin-utils "^3.15.0"
+    gatsby-plugin-utils "^3.16.0"
     lodash.merge "^4.6.2"
     rss "^1.2.2"
 
@@ -7230,17 +7251,17 @@ gatsby-plugin-typescript@^4.21.0:
     "@babel/runtime" "^7.15.4"
     babel-plugin-remove-graphql-queries "^4.21.0"
 
-gatsby-plugin-utils@^3.15.0:
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-3.15.0.tgz#1d1d7a3e696c38aa7db848e0d52aaa4ded841172"
-  integrity sha512-O4dm4ntakCoQZnnnS4oGihtT48Rrh888fMpcxj0zWu/6/8Uyz8IgagJyJAz0MMdcfhrLIE+X8Rszjk8hINDQhA==
+gatsby-plugin-utils@^3.15.0, gatsby-plugin-utils@^3.16.0:
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-3.16.0.tgz#c789486e27c7ac6470159a82d86c066848be623e"
+  integrity sha512-GemN7/f+yxQQuOPeq+Q7hoVY9TTeN3LdL8b8q+a4qBBjHBwp4w+hcYR4j+pPYUFMya9dvOyMZcc3pkfhMGUaRw==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    "@gatsbyjs/potrace" "^2.2.0"
+    "@gatsbyjs/potrace" "^2.3.0"
     fastq "^1.13.0"
     fs-extra "^10.1.0"
-    gatsby-core-utils "^3.21.0"
-    gatsby-sharp "^0.15.0"
+    gatsby-core-utils "^3.22.0"
+    gatsby-sharp "^0.16.0"
     graphql-compose "^9.0.7"
     import-from "^4.0.0"
     joi "^17.4.2"
@@ -7334,6 +7355,14 @@ gatsby-sharp@^0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/gatsby-sharp/-/gatsby-sharp-0.15.0.tgz#a911f9ffe0efee947ae762b83fb0c8f343c87195"
   integrity sha512-JtW6lLW5GmuQSyZ5l64Cg1qjXhFsMDAf9nzc2RC8srf6hsr2ifI0vTCHh0jImFXQqseaQ3HVlbCKYMbDtXXCIg==
+  dependencies:
+    "@types/sharp" "^0.30.5"
+    sharp "^0.30.7"
+
+gatsby-sharp@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/gatsby-sharp/-/gatsby-sharp-0.16.0.tgz#c909b6d179de58c74d36671fb0848f3219c0d5f4"
+  integrity sha512-ApkxUe04waBzqyTE1x9OcP/ZzIbFBYxkjsrBoK+Fl2CZrQgBk7433kVVufy7FVW4o69StQmztrwaNEh2t5miTQ==
   dependencies:
     "@types/sharp" "^0.30.5"
     sharp "^0.30.7"

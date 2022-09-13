@@ -11,8 +11,6 @@
     "@chakra-ui/react": "^2.3.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@types/react-helmet": "^6.1.1",
-    "@types/yup": "^0.32.0",
     "axios": "^0.27.2",
     "formik": "^2.2.6",
     "framer-motion": "^7.3.2",
@@ -50,6 +48,8 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
+    "@types/yup": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.1",

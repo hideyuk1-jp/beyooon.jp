@@ -24,7 +24,7 @@ const WorksPostTemplate: React.FC<
         title={post?.frontmatter?.title ?? ''}
         description={post?.frontmatter?.description || post?.excerpt}
         // TODO: gatsby-plugin-typegen が gatsby v3 に対応したら修正
-        // @ts-ignore
+        // @ts-expect-error
         image={getSrc(post?.frontmatter?.image)}
       />
       <Wrapper
@@ -136,24 +136,22 @@ export const pageQuery = graphql`
   }
 `;
 
+// prettier-ignore
 const Wrapper = styled.article`
   & > header {
     h1 {
       font-size: 2rem;
       margin-bottom: 16px;
 
-      @media screen and (min-width: ${(props) =>
-          props.theme.responsive.small}) {
+      @media screen and (min-width: ${(props) => props.theme.responsive.small}) {
         font-size: 2.4rem;
       }
 
-      @media screen and (min-width: ${(props) =>
-          props.theme.responsive.medium}) {
+      @media screen and (min-width: ${(props) => props.theme.responsive.medium}) {
         font-size: 2.8rem;
       }
 
-      @media screen and (min-width: ${(props) =>
-          props.theme.responsive.large}) {
+      @media screen and (min-width: ${(props) => props.theme.responsive.large}) {
         font-size: 3.2rem;
       }
     }

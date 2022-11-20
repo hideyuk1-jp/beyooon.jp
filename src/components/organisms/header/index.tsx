@@ -13,6 +13,7 @@ const MENU_ITEMS = [
   { title: 'beyooonとは', name: 'About' },
   { title: 'お問い合わせ', name: 'Contact' },
 ];
+
 const Header: React.FC<{
   location: WindowLocation<unknown>;
 }> = ({ location }) => {
@@ -246,7 +247,6 @@ const Navbar = styled.nav`
     color: ${(props) => props.theme.colors.header};
     text-decoration: none;
     opacity: 0.8;
-    transition: opacity 0.25s ease;
     transition: ${(props) => props.theme.colorModeTransition},
       opacity 0.25s var(--ease-in-out-quad);
 

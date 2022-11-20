@@ -26,9 +26,11 @@ const IconWrapper = styled.button`
   width: 24px;
   height: 24px;
 
-  &:hover > *::before,
-  &:hover > *::after {
-    width: 24px;
+  @media (hover: hover) {
+    &:hover > *::before,
+    &:hover > *::after {
+      width: 24px;
+    }
   }
 `;
 
@@ -58,6 +60,15 @@ const HumbergerInner = styled.div<{ isOpen: boolean }>`
       background 0.25s var(--ease-in-out-quad),
       width 0.25s var(--ease-in-out-quad),
       transform 0.25s var(--ease-in-out-quad);
+
+    @media (hover: none) {
+      transition: top 0.25s var(--ease-in-out-quad),
+        background 0.25s var(--ease-in-out-quad),
+        // スマホでは閉じた時に少し遅れて幅を変える
+        width 0.25s var(--ease-in-out-quad)
+          ${(props) => (props.isOpen ? '0s' : '0.5s')},
+        transform 0.25s var(--ease-in-out-quad);
+    }
   }
 
   &::before {

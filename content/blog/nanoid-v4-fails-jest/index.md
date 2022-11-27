@@ -1,5 +1,5 @@
 ---
-title: nanoid v4 をインストールしたら jest が通らなくなったので対応した
+title: nanoid v4 を使ったら jest が通らなくなった
 date: 2022-11-27T23:47:00+09:00
 update: 2022-11-27T23:47:00+09:00
 description: nanoid v4 を使ったら jest のテストが落ちるようになってしまったため対応しました。

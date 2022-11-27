@@ -1,7 +1,7 @@
 ---
 title: nanoid v4 をインストールしたら jest が通らなくなったので対応した
-date: 2022-11-27T23:00:00+09:00
-update: 2020-12-27T23:00:00+09:00
+date: 2022-11-27T23:47:00+09:00
+update: 2020-12-27T23:47:00+09:00
 description: nanoid v4 をインストールしたら jest が通らなくなったので対応した
 category: Dev
 tags: [jest]

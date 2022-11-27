@@ -83,5 +83,5 @@ modules.exports = {
 
 ## 参考
 
-https://zenn.dev/t_yng/scraps/d701cdae1071fd
-https://github.com/ai/nanoid/issues/365
+- https://zenn.dev/t_yng/scraps/d701cdae1071fd
+- https://github.com/ai/nanoid/issues/365

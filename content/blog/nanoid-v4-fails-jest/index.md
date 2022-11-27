@@ -2,7 +2,7 @@
 title: nanoid v4 をインストールしたら jest が通らなくなったので対応した
 date: 2022-11-27T23:47:00+09:00
 update: 2020-12-27T23:47:00+09:00
-description: nanoid v4 をインストールしたら jest が通らなくなったので対応した
+description: 最近、プロダクトに nanoid を新規インストールすることがあったのですが、その際に nanoid を使っている部分の jest のテストが落ちるようになってしまったため対応しました。
 category: Dev
 tags: [jest]
 image: ./thumbnail.jpg
@@ -84,5 +84,4 @@ modules.exports = {
 ## 参考
 
 https://zenn.dev/t_yng/scraps/d701cdae1071fd
-
 https://github.com/ai/nanoid/issues/365

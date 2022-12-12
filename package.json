@@ -14,7 +14,7 @@
     "axios": "^1.2.0",
     "formik": "^2.2.6",
     "framer-motion": "^7.6.18",
-    "gatsby": "^4.24.8",
+    "gatsby": "^4.25.0",
     "gatsby-image": "^3.4.0",
     "gatsby-plugin-draft": "^0.2.0",
     "gatsby-plugin-emotion": "^7.24.0",

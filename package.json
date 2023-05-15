@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
     "formik": "^2.2.6",
-    "framer-motion": "^10.12.8",
+    "framer-motion": "^10.12.10",
     "gatsby": "^4.25.6",
     "gatsby-image": "^3.4.0",
     "gatsby-plugin-draft": "^0.2.0",

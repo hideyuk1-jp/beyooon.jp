@@ -44,7 +44,7 @@
     "react-emoji-render": "^2.0.1",
     "react-helmet": "^6.1.0",
     "react-share": "^4.4.1",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.3",
     "yup": "^1.2.0"
   },
   "devDependencies": {

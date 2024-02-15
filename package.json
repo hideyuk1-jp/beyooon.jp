@@ -43,7 +43,7 @@
     "react-dom": "^18.2.0",
     "react-emoji-render": "^1.2.4",
     "react-helmet": "^6.1.0",
-    "react-share": "^4.4.1",
+    "react-share": "^5.1.0",
     "sharp": "^0.33.2",
     "yup": "^0.32.9"
   },

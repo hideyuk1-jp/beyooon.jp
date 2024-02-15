@@ -51,8 +51,8 @@ const PostCard: React.FC<{
           <footer className="postcard-footer">
             {node.frontmatter?.date && (
               <PostDate
-                publish={node.frontmatter?.date}
-                update={node.frontmatter?.update}
+                publish={node.frontmatter.date}
+                update={node.frontmatter.update}
                 size="small"
               />
             )}

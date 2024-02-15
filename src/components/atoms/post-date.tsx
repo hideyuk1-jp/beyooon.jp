@@ -8,7 +8,7 @@ type Size = 'small' | 'medium';
 
 const PostDate: React.FC<{
   publish: string;
-  update?: string;
+  update: string | null;
   size?: Size;
 }> = ({ publish, update, size = 'medium' }) => {
   const type = !update || publish === update ? 'publish' : 'update';

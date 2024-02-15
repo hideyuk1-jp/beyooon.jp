@@ -108,7 +108,7 @@ export const pageQuery = graphql`
     }
     allBlogPosts: allMarkdownRemark(
       filter: { fields: { draft: { eq: false }, collection: { eq: "blog" } } }
-      sort: { fields: [frontmatter___update], order: DESC }
+      sort: { frontmatter: { update: DESC } }
       limit: 6
     ) {
       nodes {
@@ -134,7 +134,7 @@ export const pageQuery = graphql`
     }
     allWorksPosts: allMarkdownRemark(
       filter: { fields: { draft: { eq: false }, collection: { eq: "works" } } }
-      sort: { fields: [frontmatter___startDate], order: DESC }
+      sort: { frontmatter: { startDate: DESC } }
       limit: 6
     ) {
       nodes {

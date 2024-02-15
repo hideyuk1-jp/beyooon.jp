@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           filter: {
             fields: { draft: { eq: false }, collection: { eq: "blog" } }
           }
-          sort: { fields: [frontmatter___update], order: ASC }
+          sort: { frontmatter: { update: ASC } }
         ) {
           nodes {
             id
@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           filter: {
             fields: { draft: { eq: false }, collection: { eq: "works" } }
           }
-          sort: { fields: [frontmatter___startDate], order: ASC }
+          sort: { frontmatter: { startDate: ASC } }
         ) {
           nodes {
             id

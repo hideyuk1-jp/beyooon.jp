@@ -114,32 +114,27 @@ module.exports = {
                 });
               });
             },
-            query: `
-                 {
-                   allMarkdownRemark(
-                     filter: { fields: {
-                       draft: { eq: false },
-                       collection: { eq: "blog" }
-                     } }
-                     sort: {order: DESC, fields: [frontmatter___update]},
-                     ) {
-                     edges {
-                       node {
-                         excerpt
-                         html
-                         fields {
-                           slug
-                         }
-                         frontmatter {
-                           title
-                           date
-                           description
-                         }
-                       }
-                     }
-                   }
-                 }
-                 `,
+            query: `{
+  allMarkdownRemark(
+    filter: {fields: {draft: {eq: false}, collection: {eq: "blog"}}}
+    sort: {frontmatter: {update: DESC}}
+  ) {
+    edges {
+      node {
+        excerpt
+        html
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date
+          description
+        }
+      }
+    }
+  }
+}`,
             output: 'rss.xml',
             title: 'beyooon Blog',
             description: 'beyooon Blogを表示します',

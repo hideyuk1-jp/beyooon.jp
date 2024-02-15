@@ -36,7 +36,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fields: { draft: { eq: false }, collection: { eq: "blog" } } }
-      sort: { fields: [frontmatter___update], order: DESC }
+      sort: { frontmatter: { update: DESC } }
     ) {
       nodes {
         excerpt

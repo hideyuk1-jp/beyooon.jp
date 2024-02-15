@@ -15,7 +15,6 @@
     "formik": "^2.2.6",
     "framer-motion": "^7.6.12",
     "gatsby": "^5.13.3",
-    "gatsby-image": "^3.4.0",
     "gatsby-plugin-draft": "^0.2.0",
     "gatsby-plugin-emotion": "^8.13.1",
     "gatsby-plugin-feed": "^5.13.1",

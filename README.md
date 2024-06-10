@@ -1,5 +1,7 @@
 # beyooon.jp
 
+test
+
 [hideyuk1-jp](https://github.com/hideyuk1-jp) の事業用サイト
 
 ```shell

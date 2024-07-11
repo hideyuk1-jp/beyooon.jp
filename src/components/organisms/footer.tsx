@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import moment from 'moment';
-import 'moment-timezone';
+import moment from 'moment-timezone';
 import { Twemoji } from 'react-emoji-render';
 
 import styled from '@emotion/styled';

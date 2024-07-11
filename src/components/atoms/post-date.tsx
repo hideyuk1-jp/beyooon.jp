@@ -1,6 +1,5 @@
 import React from 'react';
-import moment from 'moment';
-import 'moment-timezone';
+import moment from 'moment-timezone';
 
 import styled from '@emotion/styled';
 

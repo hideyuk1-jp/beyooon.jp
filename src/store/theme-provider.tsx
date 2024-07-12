@@ -1,4 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useLayoutEffect,
+} from 'react';
 import { ThemeProvider as EmotionProvider } from '@emotion/react';
 
 import { getTheme } from '../styles/theme';
@@ -15,7 +20,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const [colorMode, setColorMode] = useState<ColorMode>('light');
   const theme = getTheme(colorMode);
 
-  useEffect(
+  useLayoutEffect(
     () =>
       setColorMode(
         localStorage.getItem('colorMode') === 'dark' ? 'dark' : 'light',

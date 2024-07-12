@@ -24,9 +24,8 @@ const Index: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({
       <SEO />
       <TopHeaderWrapper>
         <Hero
-          title="Develop & Design"
-          description="Web制作 /
-            アプリ開発を中心に活動するデジタルなモノづくりが好きなエンジニア"
+          title="Develop & Beyond"
+          description="Web開発を中心に活動するデジタルなモノづくりが好きなエンジニア"
           top
         />
         <WavesDivider />
@@ -34,7 +33,7 @@ const Index: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({
       <section className="by-spacer">
         <header className="by-section-head by-container">
           <h2>{`ブログ`}</h2>
-          <p>{`Web制作やアプリ開発に関する知見などを書いています。`}</p>
+          <p>{`Web開発に関する知見や雑記などなど。`}</p>
         </header>
         <BlogPostList posts={blogPosts} />
         <footer className="by-section-foot by-container">
@@ -58,7 +57,7 @@ const Index: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({
       <section className="by-spacer">
         <header className="by-section-head by-container">
           <h2>{`つくったもの`}</h2>
-          <p>{`Web制作やアプリ開発などで制作した実績です。`}</p>
+          <p>{`Web開発などの制作物。（個人開発含む）`}</p>
         </header>
         <WorksPostList posts={worksPosts} />
         <footer className="by-section-foot by-container">

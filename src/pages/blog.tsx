@@ -17,7 +17,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={`Blog`} />
-      <Hero title="beyooon Blog" />
+      <Hero title="Blog" />
       <section className="by-spacer">
         <PostList posts={posts} />
       </section>

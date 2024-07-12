@@ -1,7 +1,8 @@
 ---
-title: 'GITHUB_TOKEN によってトリガーされたイベントでは他のワークフローが走らない仕様'
+title: 'GITHUB_TOKEN によってトリガーされたイベントでは他のワークフローは走らない'
 date: 2024-07-11T23:00:00+09:00
-update: 2024-07-11T23:00:00+09:00
+update: 2024-07-12T21:50:00+09:00
+description: GitHub Actions の GITHUB_TOKEN によりトリガーしたイベントの仕様のお話
 category: Dev
 tags: [GitHub Actions]
 image: ./thumbnail.png

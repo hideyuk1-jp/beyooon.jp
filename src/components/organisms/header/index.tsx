@@ -9,9 +9,9 @@ import Hamburger from './hamburger';
 import { Twemoji } from 'react-emoji-render';
 
 const MENU_ITEMS = [
+  { title: 'About', name: 'About' },
   { title: 'Blog', name: 'Blog' },
   { title: 'Works', name: 'Works' },
-  { title: 'About', name: 'About' },
   {
     title: <Twemoji onlyEmojiClassName="emoji" svg text="✉️" />,
     name: 'Contact',

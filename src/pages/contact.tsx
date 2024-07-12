@@ -18,12 +18,7 @@ import SEO from '../components/organisms/seo';
 import PageHero from '../components/organisms/hero';
 import Button from '../components/atoms/button';
 
-const CONTACT_CATEGORIES = [
-  'Web制作を依頼したい',
-  'アプリ開発を依頼したい',
-  'ブログについて',
-  'その他',
-];
+const CONTACT_CATEGORIES = ['Web開発を依頼したい', 'ブログについて', 'その他'];
 
 type FormValues = {
   'bot-field': string;
@@ -236,18 +231,18 @@ const ContactIndex: React.FC<PageProps<GatsbyTypes.ContactIndexQuery>> = ({
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={`Contact`} />
-      <PageHero title="お問い合わせ" />
+      <PageHero title="Contact" />
       <section className="by-spacer">
         <header className="by-section-head by-container-small">
           <p>
             <a
-              href={`https://twitter.com/${
+              href={`https://x.com/${
                 data.site?.siteMetadata?.social?.twitter || ``
               }`}
             >
-              Twitter
+              X
             </a>
-            {`からダイレクトメッセージを送っていただくか、下のフォームからお問い合わせください。`}
+            {`からDMを送っていただくか、下のフォームからお問い合わせください。`}
           </p>
         </header>
         <FormWrapper className="by-container-small">

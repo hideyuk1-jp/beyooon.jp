@@ -6,12 +6,16 @@ import { throttle } from 'lodash';
 import styled from '@emotion/styled';
 import DarkModeToggle from './darkmode-toggle';
 import Hamburger from './hamburger';
+import { Twemoji } from 'react-emoji-render';
 
 const MENU_ITEMS = [
-  { title: 'ブログ', name: 'Blog' },
-  { title: 'つくったもの', name: 'Works' },
-  { title: 'beyooonとは', name: 'About' },
-  { title: 'お問い合わせ', name: 'Contact' },
+  { title: 'About', name: 'About' },
+  { title: 'Blog', name: 'Blog' },
+  { title: 'Works', name: 'Works' },
+  {
+    title: <Twemoji onlyEmojiClassName="emoji" svg text="✉️" />,
+    name: 'Contact',
+  },
 ];
 
 const Header: React.FC<{
@@ -144,7 +148,6 @@ const Header: React.FC<{
             />
           </NavbarLeft>
           <NavbarCenter>
-            {' '}
             {isRootPath ? (
               <h1 className="navbar-item main-heading">{logoLinkMobile}</h1>
             ) : (

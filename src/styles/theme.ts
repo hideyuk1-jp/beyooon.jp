@@ -41,9 +41,9 @@ export const darkTheme = {
   colors: {
     base: '#fff',
     light: '#92a3ab',
-    background: '#1e1f26',
+    background: '#16171d',
     backgroundAccent: '#000',
-    backgroundPostCard: '#000',
+    backgroundPostCard: '#2d2f39',
     border: '#464c5d',
     link: '#03a9f4',
   },

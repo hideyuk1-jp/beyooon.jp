@@ -84,7 +84,7 @@ const Wrapper = styled.article`
     height: 100%;
     padding: 8px 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.08);
     transition: ${(props) => props.theme.colorModeTransition};
 
     .postcard-image-wrapper {

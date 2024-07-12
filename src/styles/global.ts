@@ -93,6 +93,11 @@ const baseStyle = css`
   html {
     box-sizing: border-box;
   }
+
+  body {
+    word-break: break-word;
+    word-wrap: break-word;
+  }
 `;
 
 const globalStyle = css`

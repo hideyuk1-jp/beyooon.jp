@@ -150,7 +150,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `beyooon | Web開発`,
+        name: `beyooon | Develop & Beyond`,
         short_name: `beyooon`,
         start_url: `/`,
         // TODO: 背景色やテーマカラー、アイコンは変更する

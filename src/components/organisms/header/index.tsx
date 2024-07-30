@@ -87,7 +87,7 @@ const Header: React.FC<{
   );
 
   const menuLinks = (
-    <>
+    <div className="menu-links">
       {MENU_ITEMS.map((menuItem) => (
         <div className="menu-link-wrapper" key={menuItem.name}>
           <Link
@@ -105,7 +105,7 @@ const Header: React.FC<{
           </Link>
         </div>
       ))}
-    </>
+    </div>
   );
 
   function toggleMobileMenuOpen(event: React.MouseEvent<HTMLElement>) {
@@ -127,8 +127,8 @@ const Header: React.FC<{
               <h3 className="navbar-item main-heading">{logoLink}</h3>
             )}
           </NavbarLeft>
-          <NavbarCenter>{menuLinks}</NavbarCenter>
           <NavbarRight>
+            {menuLinks}
             <DarkModeToggle />
           </NavbarRight>
         </Navbar>
@@ -245,6 +245,12 @@ const Navbar = styled.nav`
   .logo {
     display: block;
   }
+
+  .menu-links {
+    display: flex;
+    align-items: center;
+  }
+
   .menu-link {
     display: block;
     color: ${(props) => props.theme.colors.header};
@@ -272,6 +278,7 @@ const NavbarCenter = styled.div`
 const NavbarRight = styled.div`
   display: flex;
   align-items: center;
+  gap: 30px;
 `;
 
 /* MobileMenu */

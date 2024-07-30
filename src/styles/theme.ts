@@ -2,6 +2,9 @@ import { ColorMode, Theme } from '../types';
 
 export const baseTheme = {
   colors: {
+    white: '#fff',
+    black: '#000',
+
     base: '#000',
     light: '#62767e',
     primary: '#4BC0C8',

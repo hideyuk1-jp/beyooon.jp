@@ -196,38 +196,6 @@ const AboutIndex: React.FC<PageProps<GatsbyTypes.AboutIndexQuery>> = ({
           </div>
         </section>
 
-        <section className="about-section-item by-container-small">
-          <header className="by-section-head">
-            <h2>職務経歴</h2>
-          </header>
-          <div>
-            <Timeline data={timelineData} />
-          </div>
-        </section>
-
-        <section className="about-section-item by-container-small">
-          <header className="by-section-head">
-            <h2>資格</h2>
-          </header>
-          <div>
-            <ul>
-              <li>情報セキュリティマネジメント試験</li>
-              <li>LPIC level1</li>
-              <li>AWS認定SysOpsアドミニストレーター - アソシエイト</li>
-              <li>AWS認定デベロッパー - アソシエイト</li>
-              <li>AWS認定ソリューションアーキテクト - アソシエイト</li>
-              <li>Python3エンジニア認定データ分析試験</li>
-              <li>AWS認定クラウドプラクティショナー</li>
-              <li>Python3エンジニア認定基礎試験</li>
-              <li>日商簿記2級</li>
-              <li>Excel VBA Standard</li>
-              <li>ほめ達検定3級、2級</li>
-              <li>Microsoft Office Specialist 2013 Master</li>
-              <li>応用情報技術者</li>
-            </ul>
-          </div>
-        </section>
-
         <section className="about-section-item">
           <header className="by-section-head by-container-small">
             <h2>プロフィール</h2>
@@ -264,6 +232,38 @@ const AboutIndex: React.FC<PageProps<GatsbyTypes.AboutIndexQuery>> = ({
                 </tr>
               </tbody>
             </table>
+          </div>
+        </section>
+
+        <section className="about-section-item by-container-small">
+          <header className="by-section-head">
+            <h2>職務経歴</h2>
+          </header>
+          <div>
+            <Timeline data={timelineData} />
+          </div>
+        </section>
+
+        <section className="about-section-item by-container-small">
+          <header className="by-section-head">
+            <h2>資格</h2>
+          </header>
+          <div>
+            <ul>
+              <li>情報セキュリティマネジメント試験</li>
+              <li>LPIC level1</li>
+              <li>AWS認定SysOpsアドミニストレーター - アソシエイト</li>
+              <li>AWS認定デベロッパー - アソシエイト</li>
+              <li>AWS認定ソリューションアーキテクト - アソシエイト</li>
+              <li>Python3エンジニア認定データ分析試験</li>
+              <li>AWS認定クラウドプラクティショナー</li>
+              <li>Python3エンジニア認定基礎試験</li>
+              <li>日商簿記2級</li>
+              <li>Excel VBA Standard</li>
+              <li>ほめ達検定3級、2級</li>
+              <li>Microsoft Office Specialist 2013 Master</li>
+              <li>応用情報技術者</li>
+            </ul>
           </div>
         </section>
       </Wrapper>

@@ -105,9 +105,9 @@ const Wrapper = styled.article`
         padding: 2px 8px;
         border-top-left-radius: 8px;
         border-bottom-right-radius: 8px;
-        color: ${(props) => props.theme.colors.background};
-        background: ${(props) => props.theme.colors.base};
-        border: 1px solid ${(props) => props.theme.colors.base};
+        color: ${(props) => props.theme.colors.white};
+        background: ${(props) => props.theme.colors.black};
+        border: 1px solid ${(props) => props.theme.colors.black};
         transition: ${(props) => props.theme.colorModeTransition};
       }
       .postcard-image,

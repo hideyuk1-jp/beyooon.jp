@@ -64,7 +64,7 @@ const Wrapper = styled.div`
     }
 
     .content {
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       border-radius: 0.5rem;
       background: ${(props) => props.theme.colors.backgroundPostCard};
       transition: ${(props) => props.theme.colorModeTransition};

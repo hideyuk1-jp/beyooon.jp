@@ -245,6 +245,15 @@ export const pageQuery = graphql`
 const Wrapper = styled.div`
   .about-section-item {
     padding: 64px 0px 32px;
+
+    &:last-of-type {
+      padding-bottom: 64px;
+    }
+
+    & > :last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   }
 
   h3 {
